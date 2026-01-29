@@ -1,0 +1,35 @@
+# ===== BUILD OUTPUT =====
+bin/
+obj/
+
+# ===== USER-SPECIFIC FILES =====
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ===== VISUAL STUDIO =====
+.vs/
+
+# ===== DOTNET CORE =====
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ===== LOG FILES =====
+*.log
+
+# ===== OS FILES =====
+.DS_Store
+Thumbs.db
+
+# ===== IDE FILES =====
+*.vscode/
+*.idea/
+
+# ===== DATABASE FILES (optional) =====
+*.mdf
+*.ldf
+
+# ===== PUBLISH OUTPUT =====
+publish/
