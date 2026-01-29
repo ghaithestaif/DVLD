@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,12 +15,30 @@ namespace DVLD_DataAccess
 {
     static public class People
     {
-        //ThirdName , email, imagePath are allow null
-        static public bool AddNewPerson( ref int ID,
+
+        public enum PeopleFilter
+        {
+            FirstName,
+            LastName,
+            SecondName,
+            NationalNumber
+        }
+        private static readonly Dictionary <PeopleFilter,string> _ColumnMap
+            = new Dictionary<PeopleFilter, string>()
+        {
+            { PeopleFilter.FirstName, "FirstName" },
+            { PeopleFilter.LastName, "LastName" },
+            { PeopleFilter.SecondName, "SecondName" },
+            { PeopleFilter.NationalNumber, "NationalNo" }
+        };
+
+
+        static public int AddNewPerson(  
                 string NationalNo, string FirstName, string SecondName,
                 string ThirdName, string LastName, string Address, DateTime DateOfBirth,
                 int Gendor, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
+           int ID = -1;
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[People]
@@ -56,16 +76,39 @@ namespace DVLD_DataAccess
             cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
             cmd.Parameters.AddWithValue("@FirstName", FirstName);
             cmd.Parameters.AddWithValue("@SecondName", SecondName);
-            cmd.Parameters.AddWithValue("@ThirdName", ThirdName);
-            cmd.Parameters.AddWithValue("@LastName", LastName);
+
+            if (ThirdName != null)
+            {
+                cmd.Parameters.AddWithValue("@ThirdName", ThirdName);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ThirdName", DBNull.Value);
+            }
+
+                cmd.Parameters.AddWithValue("@LastName", LastName);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             cmd.Parameters.AddWithValue("@Gendor", Gendor);
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@Phone", Phone);
-            cmd.Parameters.AddWithValue("@Email", Email);
-            cmd.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-            cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
+            if (Email != null)
+            {
+                cmd.Parameters.AddWithValue("@Email", Email);
 
+            }
+            else
+            {
+                               cmd.Parameters.AddWithValue("@Email", DBNull.Value);
+            }
+                cmd.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
+            if(ImagePath != null)
+            {
+                cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ImagePath", DBNull.Value);
+            }
             try
             {
                 connection.Open();
@@ -73,15 +116,15 @@ namespace DVLD_DataAccess
                 if (id != null)
                 {
                     ID = Convert.ToInt32(id);
-                    return ID > 0;
+                    return ID ;
                 }
 
-                return false;
+                return ID;
             }
             catch (Exception ex)
             {
                 // You can log ex.Message here
-                return false;
+                return ID;
             }
             finally
             {
@@ -89,16 +132,16 @@ namespace DVLD_DataAccess
             }
         }
 
-        static public bool DeletePerson(string NationalNo)
+        static public bool DeletePerson(int PersonID)
         {
             bool IsDeleted= false;  
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
-            string query = "DELETE FROM [dbo].[People]     WHERE NationalNo=@NationalNo";
+            string query = "DELETE FROM [dbo].[People]     WHERE PersonID=@PersonID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("@NationalNo",NationalNo);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
 
 
             try{
@@ -194,7 +237,7 @@ namespace DVLD_DataAccess
 
         static public bool FindPersonByID(
              int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName,
-             ref string ThirdName,ref string LastName,ref DateTime DateOfBirth,ref int Gendor,ref string Address,
+             ref string ThirdName,ref string LastName,ref DateTime DateOfBirth,ref byte Gendor,ref string Address,
              ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
         {
             bool IsFound = false;
@@ -223,7 +266,7 @@ namespace DVLD_DataAccess
                     ThirdName = reader["ThirdName"]== DBNull.Value?null:reader["ThirdName"].ToString(); 
                     LastName = reader["LastName"].ToString();
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
-                    Gendor = (int)reader["Gendor"];
+                    Gendor = (byte)reader["Gendor"];
                     Address = reader["Address"] .ToString();
                     Phone = reader["Phone"].ToString();
                     Email = reader["Email"]==DBNull.Value?null:reader["Email"].ToString(); 
@@ -244,11 +287,98 @@ namespace DVLD_DataAccess
 
             return IsFound;
         }
+        
+
+        static public DataTable GetAllPeople()
+        {
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+            string query = "SELECT * FROM [dbo].[People]";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dataTable);
+            }
+            catch (Exception ex)
+            {
+                // Log ex.Message if needed
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable;
+        }
+
+        static public bool IspersonExist(string NationalNo)
+        {
+            bool IsExist = false;
+
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+            string query = @"SELECT *
+                     FROM People
+                     WHERE NationalNo = @NationalNo";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                IsExist = reader.HasRows;
 
 
+                reader.Close();
+            }
+            catch
+            {
+                IsExist = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
 
+            return IsExist;
 
+        }
 
+        //static public DataTable FilterPeople(PeopleFilter FilterBy,string FilterExpression)
+        //{
+        //    string ColumnName = _ColumnMap[FilterBy];
+
+        //    SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+        //    string query = @"SELECT *
+        //             FROM People
+        //             WHERE  {ColumnName} = @FilterExpression";
+
+        //    SqlCommand cmd = new SqlCommand(query, connection);
+        //    cmd.Parameters.AddWithValue("@FilterExpression", FilterExpression);
+        //    DataTable dataTable = new DataTable();
+        //    try
+        //    {
+        //        connection.Open();
+
+        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        //        adapter.Fill(dataTable);
+
+        //    }
+        //    catch
+        //    {
+
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+
+        //    return dataTable;
+        //}
 
 
 
