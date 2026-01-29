@@ -14,11 +14,17 @@ namespace TestCode
     {
         static void Main(string[] args)
         {
-            //DataTable dt = People.FilterPeople(, "Omar");
-            //foreach(DataRow row in dt.Rows)
-            //{
-            //     Console.WriteLine(row["FirstName"].ToString());
-            //}
+            DVLD_General.Common.PeopleFilterSort n=new DVLD_General.Common.PeopleFilterSort();
+            n = DVLD_General.Common.PeopleFilterSort.NationalNo;
+
+            DVLD_General.Common.SortType s = new DVLD_General.Common.SortType();
+            s = DVLD_General.Common.SortType.Ascending;
+
+            DataTable dt = People.SortPeople(n, s);
+            foreach (DataRow row in dt.Rows)
+            {
+                Console.WriteLine(row["NationalNo"].ToString());
+            }
 
         }
     }

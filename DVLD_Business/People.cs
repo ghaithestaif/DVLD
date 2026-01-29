@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DVLD_DataAccess;
+using DVLD_General;
+using static DVLD_DataAccess.People;
 namespace DVLD_Business
 {
     public class People
@@ -175,18 +177,16 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.People.IspersonExist(NationalNo);
         }
-        //public enum PeopleFilter
-        //{
-        //    FirstName,
-        //    LastName,
-        //    SecondName,
-        //    NationalNumber
-        //}
-        //static public DataTable FilterPeople( PeopleFilter peopleFilter , string Info)
-        //{
-        //    return DVLD_DataAccess.People.FilterPeople(peopleFilter, Info);
-        //}
+        
+        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort peopleFilter,string FilterExpression)
+        {
+            return DVLD_DataAccess.People.FilterPeople(peopleFilter, FilterExpression);
+        }
 
+        static public DataTable SortPeople(DVLD_General.Common.PeopleFilterSort peopleSort, DVLD_General.Common.SortType Type )
+        {
+            return DVLD_DataAccess.People.SortPeople(peopleSort, Type);
+        }
 
 
 

@@ -54,6 +54,10 @@
       <Project>{208de959-7558-4dd2-8dee-e9535600c991}</Project>
       <Name>DVLD_Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DVLD_General\DVLD_General.csproj">
+      <Project>{dcf988ce-9929-48a7-968e-4b78eec6454c}</Project>
+      <Name>DVLD_General</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

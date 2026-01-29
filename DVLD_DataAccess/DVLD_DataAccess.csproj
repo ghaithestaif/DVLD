@@ -45,5 +45,11 @@
     <Compile Include="People.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DVLD_General\DVLD_General.csproj">
+      <Project>{dcf988ce-9929-48a7-968e-4b78eec6454c}</Project>
+      <Name>DVLD_General</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

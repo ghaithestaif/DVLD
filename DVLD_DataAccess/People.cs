@@ -9,36 +9,42 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-
+using DVLD_General;
 
 namespace DVLD_DataAccess
 {
     static public class People
     {
+        private static readonly Dictionary<DVLD_General.Common.PeopleFilterSort, string> _ColumnMap
+             = new Dictionary<DVLD_General.Common.PeopleFilterSort, string>()
+         {
+            { DVLD_General.Common.PeopleFilterSort.FirstName, "FirstName" },
+            { DVLD_General.Common.PeopleFilterSort.LastName, "LastName" },
+            { DVLD_General.Common.PeopleFilterSort.SecondName, "SecondName" },
+            { DVLD_General.Common.PeopleFilterSort.NationalNo, "NationalNo" },
+            {DVLD_General.Common.PeopleFilterSort.ThirdName,"ThirdName" },
+            {DVLD_General.Common.PeopleFilterSort.Phone,"Phone" },
+            {DVLD_General.Common.PeopleFilterSort.DateOfBirth,"DateOfBirth" },
+            {DVLD_General.Common.PeopleFilterSort.Gender,"Gender" }
+         };
+        //private static readonly Dictionary<DVLD_General.Common.PeopleSort, string> _ColumnMapSort
+        //     = new Dictionary<DVLD_General.Common.PeopleSort, string>()
+        // {
+        //    { DVLD_General.Common.PeopleSort.FirstName, "FirstName" },
+        //    { DVLD_General.Common.PeopleSort.LastName, "LastName" },
+        //    { DVLD_General.Common.PeopleSort.SecondName, "SecondName" },
+        //    { DVLD_General.Common.PeopleSort.NationalNo, "NationalNo" },
+        //    {DVLD_General.Common.PeopleSort.ThirdName,"ThirdName" },
+        //    {DVLD_General.Common.PeopleSort.DateOfBirth,"DateOfBirth" }
+        // };
 
-        public enum PeopleFilter
-        {
-            FirstName,
-            LastName,
-            SecondName,
-            NationalNumber
-        }
-        private static readonly Dictionary <PeopleFilter,string> _ColumnMap
-            = new Dictionary<PeopleFilter, string>()
-        {
-            { PeopleFilter.FirstName, "FirstName" },
-            { PeopleFilter.LastName, "LastName" },
-            { PeopleFilter.SecondName, "SecondName" },
-            { PeopleFilter.NationalNumber, "NationalNo" }
-        };
 
-
-        static public int AddNewPerson(  
+        static public int AddNewPerson(
                 string NationalNo, string FirstName, string SecondName,
                 string ThirdName, string LastName, string Address, DateTime DateOfBirth,
                 int Gendor, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
-           int ID = -1;
+            int ID = -1;
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[People]
@@ -86,7 +92,7 @@ namespace DVLD_DataAccess
                 cmd.Parameters.AddWithValue("@ThirdName", DBNull.Value);
             }
 
-                cmd.Parameters.AddWithValue("@LastName", LastName);
+            cmd.Parameters.AddWithValue("@LastName", LastName);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             cmd.Parameters.AddWithValue("@Gendor", Gendor);
             cmd.Parameters.AddWithValue("@Address", Address);
@@ -98,10 +104,10 @@ namespace DVLD_DataAccess
             }
             else
             {
-                               cmd.Parameters.AddWithValue("@Email", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Email", DBNull.Value);
             }
-                cmd.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-            if(ImagePath != null)
+            cmd.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
+            if (ImagePath != null)
             {
                 cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
             }
@@ -116,7 +122,7 @@ namespace DVLD_DataAccess
                 if (id != null)
                 {
                     ID = Convert.ToInt32(id);
-                    return ID ;
+                    return ID;
                 }
 
                 return ID;
@@ -128,13 +134,13 @@ namespace DVLD_DataAccess
             }
             finally
             {
-                    connection.Close();
+                connection.Close();
             }
         }
 
         static public bool DeletePerson(int PersonID)
         {
-            bool IsDeleted= false;  
+            bool IsDeleted = false;
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
             string query = "DELETE FROM [dbo].[People]     WHERE PersonID=@PersonID";
@@ -144,13 +150,15 @@ namespace DVLD_DataAccess
             cmd.Parameters.AddWithValue("@PersonID", PersonID);
 
 
-            try{
+            try
+            {
                 connection.Open();
-               int RowsAffected= cmd.ExecuteNonQuery();
-                if(RowsAffected > 0)    {
-                    IsDeleted= true;
+                int RowsAffected = cmd.ExecuteNonQuery();
+                if (RowsAffected > 0)
+                {
+                    IsDeleted = true;
                 }
-                else { IsDeleted= false; }
+                else { IsDeleted = false; }
 
 
 
@@ -216,7 +224,7 @@ namespace DVLD_DataAccess
                 cmd.Parameters.AddWithValue("@ImagePath", DBNull.Value);
             else
                 cmd.Parameters.AddWithValue("@ImagePath", Email);
-            
+
             try
             {
                 connection.Open();
@@ -237,7 +245,7 @@ namespace DVLD_DataAccess
 
         static public bool FindPersonByID(
              int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName,
-             ref string ThirdName,ref string LastName,ref DateTime DateOfBirth,ref byte Gendor,ref string Address,
+             ref string ThirdName, ref string LastName, ref DateTime DateOfBirth, ref byte Gendor, ref string Address,
              ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
         {
             bool IsFound = false;
@@ -263,13 +271,13 @@ namespace DVLD_DataAccess
                     NationalNo = reader["NationalNo"].ToString();
                     FirstName = reader["FirstName"].ToString();
                     SecondName = reader["SecondName"].ToString();
-                    ThirdName = reader["ThirdName"]== DBNull.Value?null:reader["ThirdName"].ToString(); 
+                    ThirdName = reader["ThirdName"] == DBNull.Value ? null : reader["ThirdName"].ToString();
                     LastName = reader["LastName"].ToString();
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
                     Gendor = (byte)reader["Gendor"];
-                    Address = reader["Address"] .ToString();
+                    Address = reader["Address"].ToString();
                     Phone = reader["Phone"].ToString();
-                    Email = reader["Email"]==DBNull.Value?null:reader["Email"].ToString(); 
+                    Email = reader["Email"] == DBNull.Value ? null : reader["Email"].ToString();
                     NationalityCountryID = (int)reader["NationalityCountryID"];
                     ImagePath = reader["ImagePath"] == DBNull.Value ? null : reader["ImagePath"].ToString();
                 }
@@ -287,7 +295,7 @@ namespace DVLD_DataAccess
 
             return IsFound;
         }
-        
+
 
         static public DataTable GetAllPeople()
         {
@@ -347,39 +355,87 @@ namespace DVLD_DataAccess
 
         }
 
-        //static public DataTable FilterPeople(PeopleFilter FilterBy,string FilterExpression)
-        //{
-        //    string ColumnName = _ColumnMap[FilterBy];
+        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort FilterBy, string FilterExpression)
+        {
+            string ColumnName = _ColumnMap[FilterBy];
 
-        //    SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
-        //    string query = @"SELECT *
-        //             FROM People
-        //             WHERE  {ColumnName} = @FilterExpression";
+            string query = $@"SELECT *
+                          FROM People
+                          WHERE {ColumnName} = @FilterExpression";
 
-        //    SqlCommand cmd = new SqlCommand(query, connection);
-        //    cmd.Parameters.AddWithValue("@FilterExpression", FilterExpression);
-        //    DataTable dataTable = new DataTable();
-        //    try
-        //    {
-        //        connection.Open();
 
-        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //        adapter.Fill(dataTable);
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@FilterExpression", FilterExpression);
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
 
-        //    }
-        //    catch
-        //    {
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dataTable);
 
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
+            }
+            catch
+            {
 
-        //    return dataTable;
-        //}
+            }
+            finally
+            {
+                connection.Close();
+            }
 
+            return dataTable;
+        }
+
+        static private string GetSortQuery(DVLD_General.Common.SortType Type, string ColumnName)
+        {
+            if (Type == DVLD_General.Common.SortType.Ascending)
+            {
+                return $@"SELECT *
+                        FROM People
+                        ORDER BY {ColumnName} ASC";
+            }
+            else
+            {
+                return $@"SELECT *
+                          FROM People
+                          ORDER BY {ColumnName} Desc"; ;
+            }
+        }
+
+        static public DataTable SortPeople(DVLD_General.Common.PeopleFilterSort PeopleSortBy, DVLD_General.Common.SortType Type)
+        {
+            string ColumnName = _ColumnMap[PeopleSortBy];
+
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+            string query = GetSortQuery(Type, ColumnName);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            DataTable dataTable = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dataTable);
+
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+                  
+            return dataTable;
+
+
+
+
+            }
 
 
 

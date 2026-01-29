@@ -10,14 +10,15 @@ using System.Windows.Forms;
 
 namespace DVLD
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void MainForm_Load_1(object sender, EventArgs e)
         {
 
         }
