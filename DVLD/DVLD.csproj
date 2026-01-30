@@ -62,19 +62,38 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\AddEditPeople.cs">
+    <Compile Include="People\crtAddEditPeople.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\AddEditPeople.Designer.cs">
-      <DependentUpon>AddEditPeople.cs</DependentUpon>
+    <Compile Include="People\crtAddEditPeople.Designer.cs">
+      <DependentUpon>crtAddEditPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\AddNewEditPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\AddNewEditPeople.Designer.cs">
+      <DependentUpon>AddNewEditPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\Manage People.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\Manage People.Designer.cs">
+      <DependentUpon>Manage People.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validating\Validating.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\AddEditPeople.resx">
-      <DependentUpon>AddEditPeople.cs</DependentUpon>
+    <EmbeddedResource Include="People\crtAddEditPeople.resx">
+      <DependentUpon>crtAddEditPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\AddNewEditPeople.resx">
+      <DependentUpon>AddNewEditPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\Manage People.resx">
+      <DependentUpon>Manage People.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -100,10 +120,101 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DVLD_Business\DVLD_Business.csproj">
+      <Project>{208de959-7558-4dd2-8dee-e9535600c991}</Project>
+      <Name>DVLD_Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DVLD_General\DVLD_General.csproj">
       <Project>{dcf988ce-9929-48a7-968e-4b78eec6454c}</Project>
       <Name>DVLD_General</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application Types 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New Application 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application Types 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application Types 5121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application Types 5122.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\People 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drivers 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users 2 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account_settings 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\People 4001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Person 72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Person 40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send email 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phone 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Number 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Man 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Address 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phone 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Country 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Man 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Woman 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

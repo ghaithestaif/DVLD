@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DVLD.People
 {
-    public partial class AddEditPeople : UserControl
+    public partial class AddNewEditPeople : Form
     {
-        public AddEditPeople()
+        public AddNewEditPeople()
         {
             InitializeComponent();
         }

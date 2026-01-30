@@ -10,16 +10,17 @@ namespace DVLD_General
     {
         public enum PeopleFilterSort
         {
+            none,
+            PersonID,
             NationalNo,
             FirstName,
             SecondName,
             ThirdName,
             LastName,
-            DateOfBirth,
-            Gender,
+            Gendor,
             Phone,
             Email,
-            NationalityCountry
+            CountryID
         }
         public enum SortType
         {

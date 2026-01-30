@@ -178,7 +178,7 @@ namespace DVLD_Business
             return DVLD_DataAccess.People.IspersonExist(NationalNo);
         }
         
-        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort peopleFilter,string FilterExpression)
+        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort peopleFilter,string FilterExpression="")
         {
             return DVLD_DataAccess.People.FilterPeople(peopleFilter, FilterExpression);
         }

@@ -24,20 +24,12 @@ namespace DVLD_DataAccess
             { DVLD_General.Common.PeopleFilterSort.NationalNo, "NationalNo" },
             {DVLD_General.Common.PeopleFilterSort.ThirdName,"ThirdName" },
             {DVLD_General.Common.PeopleFilterSort.Phone,"Phone" },
-            {DVLD_General.Common.PeopleFilterSort.DateOfBirth,"DateOfBirth" },
-            {DVLD_General.Common.PeopleFilterSort.Gender,"Gender" }
+            {DVLD_General.Common.PeopleFilterSort.Gendor,"Gendor" },
+            {DVLD_General.Common.PeopleFilterSort.PersonID, "PersonID"},
+            {Common.PeopleFilterSort.CountryID,"NationalityCountryID"},
+            {Common.PeopleFilterSort.Email,"Email" }
          };
-        //private static readonly Dictionary<DVLD_General.Common.PeopleSort, string> _ColumnMapSort
-        //     = new Dictionary<DVLD_General.Common.PeopleSort, string>()
-        // {
-        //    { DVLD_General.Common.PeopleSort.FirstName, "FirstName" },
-        //    { DVLD_General.Common.PeopleSort.LastName, "LastName" },
-        //    { DVLD_General.Common.PeopleSort.SecondName, "SecondName" },
-        //    { DVLD_General.Common.PeopleSort.NationalNo, "NationalNo" },
-        //    {DVLD_General.Common.PeopleSort.ThirdName,"ThirdName" },
-        //    {DVLD_General.Common.PeopleSort.DateOfBirth,"DateOfBirth" }
-        // };
-
+        
 
         static public int AddNewPerson(
                 string NationalNo, string FirstName, string SecondName,
@@ -357,6 +349,10 @@ namespace DVLD_DataAccess
 
         static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort FilterBy, string FilterExpression)
         {
+            if (FilterBy == DVLD_General.Common.PeopleFilterSort.none)
+            {
+                return GetAllPeople();
+            }
             string ColumnName = _ColumnMap[FilterBy];
 
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
@@ -389,7 +385,7 @@ namespace DVLD_DataAccess
             return dataTable;
         }
 
-        static private string GetSortQuery(DVLD_General.Common.SortType Type, string ColumnName)
+        static private string GetSortQuery(DVLD_General.Common.SortType Type, string ColumnName="")
         {
             if (Type == DVLD_General.Common.SortType.Ascending)
             {
@@ -405,9 +401,13 @@ namespace DVLD_DataAccess
             }
         }
 
-        static public DataTable SortPeople(DVLD_General.Common.PeopleFilterSort PeopleSortBy, DVLD_General.Common.SortType Type)
+        static public DataTable SortPeople(DVLD_General.Common.PeopleFilterSort SortBy, DVLD_General.Common.SortType Type)
         {
-            string ColumnName = _ColumnMap[PeopleSortBy];
+            if(SortBy== DVLD_General.Common.PeopleFilterSort.none)
+            {
+                return GetAllPeople();
+            }
+            string ColumnName = _ColumnMap[SortBy];
 
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
