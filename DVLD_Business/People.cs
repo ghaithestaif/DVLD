@@ -11,7 +11,7 @@ namespace DVLD_Business
 {
     public class People
     {
-        enum enMode{enUpdate,enAddnew}
+       public enum enMode{enUpdate,enAddnew}
         enMode _Mode;
         public int PersonID { get; set; }
         public string NationalNo { get; set; }
@@ -20,7 +20,7 @@ namespace DVLD_Business
         public string ThirdName { get; set; }// allows NULL
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public byte Gender { get; set; }              // tinyint
+        public byte Gendor { get; set; }              // tinyint
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }            // allows NULL
@@ -56,7 +56,7 @@ namespace DVLD_Business
             ThirdName = thirdName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;
-            Gender = gender;
+            Gendor = gender;
             Address = address;
             Phone = phone;
             Email = email;
@@ -79,7 +79,7 @@ namespace DVLD_Business
                 LastName,
                 Address,
                 DateOfBirth,
-                Gender,
+                Gendor,
                 Phone,
                 Email,
                 NationalityCountryID,
@@ -100,7 +100,7 @@ namespace DVLD_Business
                 LastName,
                 Address,
                 DateOfBirth,
-                Gender,
+                Gendor,
                 Phone,
                 Email,
                 NationalityCountryID,

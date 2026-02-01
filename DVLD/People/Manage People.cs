@@ -17,20 +17,27 @@ namespace DVLD.People
         public Manage_People()
         {
             InitializeComponent();
-        }
-
-
-        private void Manage_People_Load(object sender, EventArgs e)
-        {
-            PeopleGridView.DataSource = DVLD_Business.People.GetAll();
             cbFilter.DataSource = Enum.GetValues(typeof(Common.PeopleFilterSort));
             cbFilter.SelectedItem = Common.PeopleFilterSort.none;
         }
-
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        private void  _RefreshGrid()
         {
+            DataTable dt = DVLD_Business.clsPeople.GetAll();
+            PeopleGridView.DataSource = dt;
+            PeopleGridView.Columns["Address"].Visible = false;
+            PeopleGridView.Columns["ImagePath"].Visible = false;
+            PeopleGridView.Columns["NationalityCountryID"].Visible = false;
+            PeopleGridView.Columns["Gendor"].Visible = false;
+
+            txtNumberOfRecords.Text = dt.Rows.Count.ToString();
 
         }
+        private void Manage_People_Load(object sender, EventArgs e)
+        {
+            _RefreshGrid();
+        }
+
+    
 
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,7 +46,7 @@ namespace DVLD.People
             if ((filter == Common.PeopleFilterSort.none))
             {
                 txtFilter.Enabled = false;
-                PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter);
+                PeopleGridView.DataSource = DVLD_Business.clsPeople.FilterPeople(filter);
                 txtFilter.Text = "";
             }
             txtFilter.Enabled = true;
@@ -56,7 +63,7 @@ namespace DVLD.People
             string txt = txtFilter.Text;
 
 
-            PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter, txt);
+            PeopleGridView.DataSource = DVLD_Business.clsPeople.FilterPeople(filter, txt);
         }
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -85,8 +92,33 @@ namespace DVLD.People
 
         private void btnAddNewPersonButton_Click(object sender, EventArgs e)
         {
-            AddNewEditPeople addEditPeople = new AddNewEditPeople();  
-            addEditPeople.ShowDialog();
+            frmAddUpdatePerson addPerson = new frmAddUpdatePerson();
+            addPerson.crtAddEditPeople1.PersonSaved += _RefreshGrid;
+            addPerson.ShowDialog();
+        }
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson editPeople = new frmAddUpdatePerson();
+            editPeople.crtAddEditPeople1.mode = DVLD_Business.clsPeople.enMode.enUpdate;
+            editPeople.crtAddEditPeople1.PersonID = (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
+            editPeople.crtAddEditPeople1.PersonSaved += _RefreshGrid;
+            editPeople.ShowDialog();
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID = (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
+            DVLD_Business.clsPeople.Delete(PersonID);
+            _RefreshGrid();
+
+        }
+
+        private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson editPeople = new frmAddUpdatePerson();
+            editPeople.ShowDialog();
+
         }
     }
 }

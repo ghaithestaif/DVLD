@@ -197,7 +197,7 @@ namespace DVLD_DataAccess
             if (ThirdName == null)
                 cmd.Parameters.AddWithValue("@ThirdName", DBNull.Value);
             else
-                cmd.Parameters.AddWithValue("@ThirdName", Email);
+                cmd.Parameters.AddWithValue("@ThirdName", ThirdName);
 
             cmd.Parameters.AddWithValue("@LastName", LastName);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
@@ -215,7 +215,7 @@ namespace DVLD_DataAccess
             if (ImagePath == null)
                 cmd.Parameters.AddWithValue("@ImagePath", DBNull.Value);
             else
-                cmd.Parameters.AddWithValue("@ImagePath", Email);
+                cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
 
             try
             {
@@ -437,7 +437,7 @@ namespace DVLD_DataAccess
 
             }
 
-
+        
 
 
 

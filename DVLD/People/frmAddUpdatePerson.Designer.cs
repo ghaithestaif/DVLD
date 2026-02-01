@@ -1,6 +1,6 @@
 ﻿namespace DVLD.People
 {
-    partial class AddNewEditPeople
+    partial class frmAddUpdatePerson
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewEditPeople));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddUpdatePerson));
             this.txtAddNewEditPerson = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtPersonID = new System.Windows.Forms.Label();
             this.crtAddEditPeople1 = new DVLD.People.crtAddEditPeople();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,11 +88,34 @@
             this.crtAddEditPeople1.Size = new System.Drawing.Size(828, 389);
             this.crtAddEditPeople1.TabIndex = 55557;
             // 
+            // btnClose
+            // 
+            this.btnClose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnClose.CustomBorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnClose.CustomBorderThickness = new System.Windows.Forms.Padding(1);
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.SystemColors.Control;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnClose.Location = new System.Drawing.Point(374, 444);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(130, 34);
+            this.btnClose.TabIndex = 55558;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // AddNewEditPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 501);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.crtAddEditPeople1);
             this.Controls.Add(this.txtPersonID);
             this.Controls.Add(this.pictureBox2);
@@ -114,5 +138,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label txtPersonID;
         public crtAddEditPeople crtAddEditPeople1;
+        private Guna.UI2.WinForms.Guna2Button btnClose;
     }
 }

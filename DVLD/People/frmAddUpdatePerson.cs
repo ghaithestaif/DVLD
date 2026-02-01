@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,22 +11,31 @@ using System.Windows.Forms;
 
 namespace DVLD.People
 {
-    public partial class AddNewEditPeople : Form
+    public partial class frmAddUpdatePerson : Form
     {
-        public AddNewEditPeople()
+        int _PersonID;
+        clsPeople _Person=new clsPeople();
+
+        public frmAddUpdatePerson()
         {
             InitializeComponent();
 
         }
-       public void LoadFormTitle()
+        public frmAddUpdatePerson(int PersonID)
+        {
+
+            InitializeComponent();
+
+        }
+        public void LoadFormTitle()
        {
-            if (crtAddEditPeople1.mode == DVLD_Business.People.enMode.enAddnew)
+            if (crtAddEditPeople1.mode == DVLD_Business.clsPeople.enMode.enAddnew)
             {
                 this.Text = "Add New Person";
                 txtAddNewEditPerson.Text = "Add New Person";
 
             }
-            else if (crtAddEditPeople1.mode == DVLD_Business.People.enMode.enUpdate)
+            else if (crtAddEditPeople1.mode == DVLD_Business.clsPeople.enMode.enUpdate)
             {
                 this.Text = "Edit Person";
                 txtAddNewEditPerson.Text = "Edit Person";
@@ -41,9 +51,9 @@ namespace DVLD.People
 
         }
 
-
-
-
-
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

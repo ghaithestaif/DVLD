@@ -49,15 +49,15 @@
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.cbCountry = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pGendor = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rbtnFemale = new System.Windows.Forms.RadioButton();
-            this.rbtnMan = new System.Windows.Forms.RadioButton();
             this.SetImageLink = new System.Windows.Forms.LinkLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pPicture = new System.Windows.Forms.PictureBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.rbtnMan = new System.Windows.Forms.RadioButton();
+            this.rbtnFemale = new System.Windows.Forms.RadioButton();
+            this.pGendor = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -66,11 +66,10 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.dtpDateOfBirth = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.pGendor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPicture)).BeginInit();
+            this.pGendor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -95,10 +94,11 @@
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(16, 54);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(12, 54);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(52, 20);
             this.guna2HtmlLabel2.TabIndex = 1;
+            this.guna2HtmlLabel2.TabStop = false;
             this.guna2HtmlLabel2.Text = "Name:";
             // 
             // guna2HtmlLabel3
@@ -136,10 +136,11 @@
             this.guna2HtmlLabel6.AutoSize = false;
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(16, 234);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(12, 234);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(69, 20);
             this.guna2HtmlLabel6.TabIndex = 5;
+            this.guna2HtmlLabel6.TabStop = false;
             this.guna2HtmlLabel6.Text = "Address:";
             // 
             // guna2HtmlLabel7
@@ -147,10 +148,11 @@
             this.guna2HtmlLabel7.AutoSize = false;
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(16, 194);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(12, 194);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(50, 20);
             this.guna2HtmlLabel7.TabIndex = 6;
+            this.guna2HtmlLabel7.TabStop = false;
             this.guna2HtmlLabel7.Text = "Email:";
             // 
             // guna2HtmlLabel8
@@ -158,10 +160,11 @@
             this.guna2HtmlLabel8.AutoSize = false;
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(16, 150);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(12, 150);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             this.guna2HtmlLabel8.Size = new System.Drawing.Size(64, 20);
             this.guna2HtmlLabel8.TabIndex = 7;
+            this.guna2HtmlLabel8.TabStop = false;
             this.guna2HtmlLabel8.Text = "Gendor:";
             // 
             // guna2HtmlLabel9
@@ -169,10 +172,11 @@
             this.guna2HtmlLabel9.AutoSize = false;
             this.guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel9.Location = new System.Drawing.Point(16, 105);
+            this.guna2HtmlLabel9.Location = new System.Drawing.Point(12, 105);
             this.guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            this.guna2HtmlLabel9.Size = new System.Drawing.Size(94, 20);
+            this.guna2HtmlLabel9.Size = new System.Drawing.Size(106, 21);
             this.guna2HtmlLabel9.TabIndex = 8;
+            this.guna2HtmlLabel9.TabStop = false;
             this.guna2HtmlLabel9.Text = "national No:";
             // 
             // txtFirstName
@@ -289,10 +293,11 @@
             this.guna2HtmlLabel10.AutoSize = false;
             this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(363, 194);
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(353, 194);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
             this.guna2HtmlLabel10.Size = new System.Drawing.Size(67, 20);
             this.guna2HtmlLabel10.TabIndex = 17;
+            this.guna2HtmlLabel10.TabStop = false;
             this.guna2HtmlLabel10.Text = "Country:";
             // 
             // guna2HtmlLabel11
@@ -300,10 +305,11 @@
             this.guna2HtmlLabel11.AutoSize = false;
             this.guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel11.Location = new System.Drawing.Point(329, 100);
+            this.guna2HtmlLabel11.Location = new System.Drawing.Point(319, 100);
             this.guna2HtmlLabel11.Name = "guna2HtmlLabel11";
             this.guna2HtmlLabel11.Size = new System.Drawing.Size(101, 20);
             this.guna2HtmlLabel11.TabIndex = 18;
+            this.guna2HtmlLabel11.TabStop = false;
             this.guna2HtmlLabel11.Text = "Date of birth:";
             // 
             // guna2HtmlLabel12
@@ -311,10 +317,11 @@
             this.guna2HtmlLabel12.AutoSize = false;
             this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel12.Location = new System.Drawing.Point(374, 150);
+            this.guna2HtmlLabel12.Location = new System.Drawing.Point(364, 150);
             this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
             this.guna2HtmlLabel12.Size = new System.Drawing.Size(56, 20);
             this.guna2HtmlLabel12.TabIndex = 19;
+            this.guna2HtmlLabel12.TabStop = false;
             this.guna2HtmlLabel12.Text = "Phone:";
             // 
             // txtPhone
@@ -330,13 +337,13 @@
             this.txtPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Location = new System.Drawing.Point(486, 148);
+            this.txtPhone.Location = new System.Drawing.Point(470, 148);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PlaceholderText = "";
             this.txtPhone.SelectedText = "";
-            this.txtPhone.Size = new System.Drawing.Size(144, 22);
-            this.txtPhone.TabIndex = 7;
+            this.txtPhone.Size = new System.Drawing.Size(160, 22);
+            this.txtPhone.TabIndex = 8;
             this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhone_Validating);
             // 
             // cbCountry
@@ -351,10 +358,10 @@
             this.cbCountry.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCountry.ItemHeight = 20;
-            this.cbCountry.Location = new System.Drawing.Point(486, 188);
+            this.cbCountry.Location = new System.Drawing.Point(470, 188);
             this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(144, 26);
-            this.cbCountry.TabIndex = 9;
+            this.cbCountry.Size = new System.Drawing.Size(160, 26);
+            this.cbCountry.TabIndex = 10;
             // 
             // txtAddress
             // 
@@ -375,52 +382,8 @@
             this.txtAddress.PlaceholderText = "";
             this.txtAddress.SelectedText = "";
             this.txtAddress.Size = new System.Drawing.Size(479, 104);
-            this.txtAddress.TabIndex = 10;
+            this.txtAddress.TabIndex = 11;
             this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
-            // 
-            // pGendor
-            // 
-            this.pGendor.Controls.Add(this.pictureBox1);
-            this.pGendor.Controls.Add(this.rbtnFemale);
-            this.pGendor.Controls.Add(this.rbtnMan);
-            this.pGendor.Location = new System.Drawing.Point(152, 142);
-            this.pGendor.Name = "pGendor";
-            this.pGendor.Size = new System.Drawing.Size(176, 43);
-            this.pGendor.TabIndex = 6;
-            this.pGendor.TabStop = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DVLD.Properties.Resources.Woman_32;
-            this.pictureBox1.Location = new System.Drawing.Point(60, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 38;
-            this.pictureBox1.TabStop = false;
-            // 
-            // rbtnFemale
-            // 
-            this.rbtnFemale.AutoSize = true;
-            this.rbtnFemale.Location = new System.Drawing.Point(95, 8);
-            this.rbtnFemale.Name = "rbtnFemale";
-            this.rbtnFemale.Size = new System.Drawing.Size(74, 20);
-            this.rbtnFemale.TabIndex = 15;
-            this.rbtnFemale.TabStop = true;
-            this.rbtnFemale.Text = "Female";
-            this.rbtnFemale.UseVisualStyleBackColor = true;
-            // 
-            // rbtnMan
-            // 
-            this.rbtnMan.AutoSize = true;
-            this.rbtnMan.Location = new System.Drawing.Point(3, 7);
-            this.rbtnMan.Name = "rbtnMan";
-            this.rbtnMan.Size = new System.Drawing.Size(58, 20);
-            this.rbtnMan.TabIndex = 38;
-            this.rbtnMan.TabStop = true;
-            this.rbtnMan.Text = "Male";
-            this.rbtnMan.UseVisualStyleBackColor = true;
-            this.rbtnMan.CheckedChanged += new System.EventHandler(this.rbtnMan_CheckedChanged);
             // 
             // SetImageLink
             // 
@@ -428,9 +391,10 @@
             this.SetImageLink.Location = new System.Drawing.Point(688, 264);
             this.SetImageLink.Name = "SetImageLink";
             this.SetImageLink.Size = new System.Drawing.Size(68, 16);
-            this.SetImageLink.TabIndex = 37;
+            this.SetImageLink.TabIndex = 14;
             this.SetImageLink.TabStop = true;
             this.SetImageLink.Text = "Set Image";
+            this.SetImageLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SetImageLink_LinkClicked);
             // 
             // errorProvider1
             // 
@@ -466,29 +430,62 @@
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(144, 22);
-            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TabIndex = 9;
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
-            // btnClose
+            // rbtnMan
             // 
-            this.btnClose.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.btnClose.CustomBorderColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnClose.CustomBorderThickness = new System.Windows.Forms.Padding(1);
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.SystemColors.Control;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(364, 343);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(130, 34);
-            this.btnClose.TabIndex = 12;
-            this.btnClose.Text = "Close";
+            this.rbtnMan.AutoSize = true;
+            this.rbtnMan.Location = new System.Drawing.Point(3, 7);
+            this.rbtnMan.Name = "rbtnMan";
+            this.rbtnMan.Size = new System.Drawing.Size(58, 20);
+            this.rbtnMan.TabIndex = 6;
+            this.rbtnMan.TabStop = true;
+            this.rbtnMan.Text = "Male";
+            this.rbtnMan.UseVisualStyleBackColor = true;
+            this.rbtnMan.CheckedChanged += new System.EventHandler(this.rbtnMan_CheckedChanged);
+            // 
+            // rbtnFemale
+            // 
+            this.rbtnFemale.AutoSize = true;
+            this.rbtnFemale.Location = new System.Drawing.Point(95, 8);
+            this.rbtnFemale.Name = "rbtnFemale";
+            this.rbtnFemale.Size = new System.Drawing.Size(74, 20);
+            this.rbtnFemale.TabIndex = 7;
+            this.rbtnFemale.TabStop = true;
+            this.rbtnFemale.Text = "Female";
+            this.rbtnFemale.UseVisualStyleBackColor = true;
+            // 
+            // pGendor
+            // 
+            this.pGendor.Controls.Add(this.pictureBox1);
+            this.pGendor.Controls.Add(this.rbtnFemale);
+            this.pGendor.Controls.Add(this.rbtnMan);
+            this.pGendor.Location = new System.Drawing.Point(152, 142);
+            this.pGendor.Name = "pGendor";
+            this.pGendor.Size = new System.Drawing.Size(176, 43);
+            this.pGendor.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DVLD.Properties.Resources.Woman_32;
+            this.pictureBox1.Location = new System.Drawing.Point(60, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 38;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dtpDateOfBirth
+            // 
+            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(470, 103);
+            this.dtpDateOfBirth.MaxDate = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
+            this.dtpDateOfBirth.MinDate = new System.DateTime(1754, 1, 1, 0, 0, 0, 0);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(160, 22);
+            this.dtpDateOfBirth.TabIndex = 37;
+            this.dtpDateOfBirth.Value = new System.DateTime(2005, 7, 14, 0, 0, 0, 0);
             // 
             // btnSave
             // 
@@ -509,13 +506,14 @@
             this.btnSave.Location = new System.Drawing.Point(500, 343);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(130, 34);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pictureBox9
             // 
             this.pictureBox9.Image = global::DVLD.Properties.Resources.Phone_321;
-            this.pictureBox9.Location = new System.Drawing.Point(450, 148);
+            this.pictureBox9.Location = new System.Drawing.Point(434, 148);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(30, 26);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -525,7 +523,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::DVLD.Properties.Resources.Country_32;
-            this.pictureBox8.Location = new System.Drawing.Point(450, 190);
+            this.pictureBox8.Location = new System.Drawing.Point(434, 190);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(30, 26);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -535,7 +533,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLD.Properties.Resources.Calendar_32;
-            this.pictureBox7.Location = new System.Drawing.Point(450, 100);
+            this.pictureBox7.Location = new System.Drawing.Point(434, 100);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(30, 26);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -582,26 +580,12 @@
             this.pictureBox2.TabIndex = 27;
             this.pictureBox2.TabStop = false;
             // 
-            // dtpDateOfBirth
-            // 
-            this.dtpDateOfBirth.Checked = true;
-            this.dtpDateOfBirth.FillColor = System.Drawing.SystemColors.Control;
-            this.dtpDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(486, 100);
-            this.dtpDateOfBirth.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpDateOfBirth.MinDate = new System.DateTime(2026, 2, 1, 1, 15, 2, 0);
-            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(144, 22);
-            this.dtpDateOfBirth.TabIndex = 5;
-            this.dtpDateOfBirth.Value = new System.DateTime(2026, 2, 1, 1, 15, 2, 0);
-            // 
             // crtAddEditPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.SetImageLink);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
@@ -611,7 +595,6 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pGendor);
-            this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.pPicture);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.cbCountry);
@@ -637,11 +620,11 @@
             this.Name = "crtAddEditPeople";
             this.Size = new System.Drawing.Size(828, 389);
             this.Load += new System.EventHandler(this.AddEditPeople_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPicture)).EndInit();
             this.pGendor.ResumeLayout(false);
             this.pGendor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -677,7 +660,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cbCountry;
         private Guna.UI2.WinForms.Guna2TextBox txtAddress;
         private System.Windows.Forms.PictureBox pPicture;
-        private System.Windows.Forms.Panel pGendor;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -686,13 +668,13 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private Guna.UI2.WinForms.Guna2Button btnSave;
-        private Guna.UI2.WinForms.Guna2Button btnClose;
         private System.Windows.Forms.LinkLabel SetImageLink;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
+        private System.Windows.Forms.Panel pGendor;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton rbtnFemale;
         private System.Windows.Forms.RadioButton rbtnMan;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDateOfBirth;
+        private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
     }
 }

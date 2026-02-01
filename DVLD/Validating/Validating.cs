@@ -12,6 +12,7 @@ namespace DVLD.Validating
     {
         static internal bool IsEmail(string email)
         {// must contain @gmail.
+            
             if (!email.Contains("@gmail."))
                 return false;
 
