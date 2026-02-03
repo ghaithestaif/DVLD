@@ -26,7 +26,13 @@ namespace DVLD_Business
         public string Email { get; set; }            // allows NULL
         public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }        // allows NULL
-
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + SecondName + " " + (string.IsNullOrEmpty(ThirdName) ? "" : ThirdName + " ") + LastName;
+            }
+        }
 
 
 
@@ -146,7 +152,7 @@ namespace DVLD_Business
              int NationalityCountryID = 0; 
             DateTime DateOfBirth=DateTime.MinValue;
 
-            DVLD_DataAccess.People.FindPersonByID(personID, ref NationalNo, ref FirstName, ref SecondName,
+            DVLD_DataAccess.People.FindPerson(personID, ref NationalNo, ref FirstName, ref SecondName,
                 ref ThirdName, ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone,
                 ref Email, ref NationalityCountryID, ref ImagePath);
             
@@ -168,6 +174,43 @@ namespace DVLD_Business
             );
         }
 
+
+        public static People Find(string NationalNo)
+        {
+            int PersonID = -1;
+            string FirstName = "",
+             SecondName = "",
+             ThirdName = "",
+             LastName = "",
+             Address = "",
+             Phone = "",
+             Email = "",
+             ImagePath = "";
+            byte Gender = 0;
+            int NationalityCountryID = 0;
+            DateTime DateOfBirth = DateTime.MinValue;
+
+            DVLD_DataAccess.People.FindPerson(NationalNo, ref PersonID, ref FirstName, ref SecondName,
+                ref ThirdName, ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone,
+                ref Email, ref NationalityCountryID, ref ImagePath);
+
+
+
+            return new People(PersonID,
+                NationalNo,
+                FirstName,
+                SecondName,
+                ThirdName,
+                LastName,
+                DateOfBirth,
+                Gender,
+                Address,
+                Phone,
+                Email,
+                NationalityCountryID,
+                ImagePath
+            );
+        }
         public static DataTable GetAll()
         {
             return DVLD_DataAccess.People.GetAllPeople();

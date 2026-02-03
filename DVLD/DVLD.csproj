@@ -68,16 +68,28 @@
     <Compile Include="People\AddNewEditPeople.Designer.cs">
       <DependentUpon>AddNewEditPeople.cs</DependentUpon>
     </Compile>
+    <Compile Include="People\Controls\PersonDetailsWithFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People\Controls\PersonDetailsWithFilters.Designer.cs">
+      <DependentUpon>PersonDetailsWithFilters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmPersonDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmPersonDetails.Designer.cs">
+      <DependentUpon>frmPersonDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="People\Manage People.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="People\Manage People.Designer.cs">
       <DependentUpon>Manage People.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\PersonCard.cs">
+    <Compile Include="People\Controls\PersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\PersonCard.Designer.cs">
+    <Compile Include="People\Controls\PersonCard.Designer.cs">
       <DependentUpon>PersonCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -89,10 +101,16 @@
     <EmbeddedResource Include="People\AddNewEditPeople.resx">
       <DependentUpon>AddNewEditPeople.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="People\Controls\PersonDetailsWithFilters.resx">
+      <DependentUpon>PersonDetailsWithFilters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmPersonDetails.resx">
+      <DependentUpon>frmPersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\Manage People.resx">
       <DependentUpon>Manage People.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\PersonCard.resx">
+    <EmbeddedResource Include="People\Controls\PersonCard.resx">
       <DependentUpon>PersonCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -218,6 +236,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PersonDetails 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddPerson 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -235,7 +235,7 @@ namespace DVLD_DataAccess
             }
         }
 
-        static public bool FindPersonByID(
+        static public bool FindPerson(
              int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName,
              ref string ThirdName, ref string LastName, ref DateTime DateOfBirth, ref byte Gendor, ref string Address,
              ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
@@ -303,7 +303,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                // Log ex.Message if needed
+                throw;
             }
             finally
             {
@@ -436,8 +436,60 @@ namespace DVLD_DataAccess
 
 
             }
+        static public bool FindPerson(
+             string NationalNo, ref int PersonID, ref string FirstName, ref string SecondName,
+             ref string ThirdName, ref string LastName, ref DateTime DateOfBirth, ref byte Gendor, ref string Address,
+             ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        {
+            bool IsFound = false;
 
-        
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+            string query = @"SELECT *
+                     FROM People
+                     WHERE NationalNo = @NationalNo";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    PersonID = (int)reader["PersonID"];
+                    FirstName = reader["FirstName"].ToString();
+                    SecondName = reader["SecondName"].ToString();
+                    ThirdName = reader["ThirdName"] == DBNull.Value ? null : reader["ThirdName"].ToString();
+                    LastName = reader["LastName"].ToString();
+                    DateOfBirth = (DateTime)reader["DateOfBirth"];
+                    Gendor = (byte)reader["Gendor"];
+                    Address = reader["Address"].ToString();
+                    Phone = reader["Phone"].ToString();
+                    Email = reader["Email"] == DBNull.Value ? null : reader["Email"].ToString();
+                    NationalityCountryID = (int)reader["NationalityCountryID"];
+                    ImagePath = reader["ImagePath"] == DBNull.Value ? null : reader["ImagePath"].ToString();
+                }
+
+                reader.Close();
+            }
+            catch
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
+
 
 
 

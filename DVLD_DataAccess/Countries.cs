@@ -35,5 +35,31 @@ namespace DVLD_DataAccess
             return dataTable;
         }
 
+        static public void FindCountryByID(int countryID, ref string Name)
+        {
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+            string query = "SELECT CountryID, CountryName FROM [dbo].[Countries] WHERE CountryID = @CountryID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@CountryID", countryID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    Name = reader["CountryName"].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log ex.Message if needed
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }

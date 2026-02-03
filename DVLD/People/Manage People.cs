@@ -121,5 +121,14 @@ namespace DVLD.People
             editPeople.ShowDialog();
 
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPersonDetails frmPersonDetails = new frmPersonDetails();
+            int ID= (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
+            frmPersonDetails.personCard1.LoadPersonInfo(ID);
+
+            frmPersonDetails.ShowDialog();
+        }
     }
 }
