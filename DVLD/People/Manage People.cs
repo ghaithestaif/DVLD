@@ -20,9 +20,11 @@ namespace DVLD.People
             cbFilter.DataSource = Enum.GetValues(typeof(Common.PeopleFilterSort));
             cbFilter.SelectedItem = Common.PeopleFilterSort.none;
         }
+
+
         private void  _RefreshGrid()
         {
-            DataTable dt = DVLD_Business.clsPeople.GetAll();
+            DataTable dt = DVLD_Business.People.GetAll();
             PeopleGridView.DataSource = dt;
             PeopleGridView.Columns["Address"].Visible = false;
             PeopleGridView.Columns["ImagePath"].Visible = false;
@@ -46,7 +48,7 @@ namespace DVLD.People
             if ((filter == Common.PeopleFilterSort.none))
             {
                 txtFilter.Enabled = false;
-                PeopleGridView.DataSource = DVLD_Business.clsPeople.FilterPeople(filter);
+                PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter);
                 txtFilter.Text = "";
             }
             txtFilter.Enabled = true;
@@ -63,7 +65,7 @@ namespace DVLD.People
             string txt = txtFilter.Text;
 
 
-            PeopleGridView.DataSource = DVLD_Business.clsPeople.FilterPeople(filter, txt);
+            PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter, txt);
         }
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -92,16 +94,15 @@ namespace DVLD.People
 
         private void btnAddNewPersonButton_Click(object sender, EventArgs e)
         {
-            frmAddUpdatePerson addPerson = new frmAddUpdatePerson();
-            addPerson.crtAddEditPeople1.PersonSaved += _RefreshGrid;
+            AddNewEditPeople addPerson = new AddNewEditPeople(-1);
+            addPerson.PersonSaved += _RefreshGrid;
             addPerson.ShowDialog();
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdatePerson editPeople = new frmAddUpdatePerson();
-            editPeople.crtAddEditPeople1.mode = DVLD_Business.clsPeople.enMode.enUpdate;
-            editPeople.crtAddEditPeople1.PersonID = (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
-            editPeople.crtAddEditPeople1.PersonSaved += _RefreshGrid;
+            AddNewEditPeople editPeople = new AddNewEditPeople((int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value);
+            editPeople.mode = DVLD_Business.People.enMode.enUpdate;
+            editPeople.PersonSaved += _RefreshGrid;
             editPeople.ShowDialog();
 
         }
@@ -109,14 +110,14 @@ namespace DVLD.People
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
-            DVLD_Business.clsPeople.Delete(PersonID);
+            DVLD_Business.People.Delete(PersonID);
             _RefreshGrid();
 
         }
 
         private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdatePerson editPeople = new frmAddUpdatePerson();
+            AddNewEditPeople editPeople = new AddNewEditPeople(-1);
             editPeople.ShowDialog();
 
         }
