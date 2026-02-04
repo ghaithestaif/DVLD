@@ -45,5 +45,10 @@ namespace DVLD.People.Controls
             AddNewEditPeople addNewEditPeople = new AddNewEditPeople(-1);
             addNewEditPeople.ShowDialog();
         }
+
+        private void personCard1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

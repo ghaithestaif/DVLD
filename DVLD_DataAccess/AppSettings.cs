@@ -10,6 +10,5 @@ namespace DVLD_DataAccess
     {
     static    public string ConnectionString = "server=localhost;database=DVLD;Integrated Security=true";
 
-
     }
 }

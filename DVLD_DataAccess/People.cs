@@ -292,7 +292,20 @@ namespace DVLD_DataAccess
         static public DataTable GetAllPeople()
         {
             SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
-            string query = "SELECT * FROM [dbo].[People]";
+            string query = @"SELECT People.PersonID, People.NationalNo,
+              People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+			  People.DateOfBirth, People.Gendor,  
+				  CASE
+                  WHEN People.Gendor = 0 THEN 'Male'
+
+                  ELSE 'Female'
+
+                  END as GendorCaption ,
+			  People.Address, People.Phone, People.Email, 
+              People.NationalityCountryID, Countries.CountryName, People.ImagePath
+              FROM            People INNER JOIN
+                         Countries ON People.NationalityCountryID = Countries.CountryID
+                ORDER BY People.FirstName"; ;
             SqlCommand cmd = new SqlCommand(query, connection);
             DataTable dataTable = new DataTable();
             try

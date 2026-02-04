@@ -31,12 +31,18 @@ namespace DVLD.People
             PeopleGridView.Columns["NationalityCountryID"].Visible = false;
             PeopleGridView.Columns["Gendor"].Visible = false;
 
+          
+
             txtNumberOfRecords.Text = dt.Rows.Count.ToString();
 
         }
         private void Manage_People_Load(object sender, EventArgs e)
         {
             _RefreshGrid();
+
+
+
+
         }
 
     
@@ -66,6 +72,7 @@ namespace DVLD.People
 
 
             PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter, txt);
+            txtNumberOfRecords.Text = (PeopleGridView.RowCount-1).ToString();
         }
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -124,9 +131,10 @@ namespace DVLD.People
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPersonDetails frmPersonDetails = new frmPersonDetails();
+            
             int ID= (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
-            frmPersonDetails.personCard1.LoadPersonInfo(ID);
+            frmPersonDetails frmPersonDetails = new frmPersonDetails(ID);
+            
 
             frmPersonDetails.ShowDialog();
         }

@@ -35,7 +35,7 @@ namespace DVLD_Business
         }
 
 
-
+        public Countries Countries { get; set; }
         public People() { 
         _Mode = enMode.enAddnew;
         }
@@ -69,6 +69,7 @@ namespace DVLD_Business
             NationalityCountryID = nationalityCountryID;
             ImagePath = imagePath;
             _Mode = enMode.enUpdate;
+            Countries= Countries.Find(nationalityCountryID);
         }
 
         // =======================

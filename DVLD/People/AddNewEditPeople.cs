@@ -1,4 +1,5 @@
 ﻿using DVLD.Properties;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,15 +68,8 @@ namespace DVLD.People
 
             if (File.Exists(Path))
             {
-                // Dispose previous image if any
-                if (pPicture.Image != null)
-                    pPicture.Image.Dispose();
-
-                // Load image into PictureBox safely
-                using (var temp = Image.FromFile(Path))
-                {
-                    pPicture.Image = new Bitmap(temp); // make a copy
-                }
+               pPicture.ImageLocation = Path;
+                llRemove.Enabled= true;
             }
             else
             {
@@ -118,6 +112,7 @@ namespace DVLD.People
             txtLastName.Text = _AddEditPerson.LastName;
             _LoadImage(_AddEditPerson.ImagePath);
             
+
             cbCountry.SelectedValue = _AddEditPerson.NationalityCountryID;
 
             if (_AddEditPerson.Gendor == 0)
@@ -152,31 +147,31 @@ namespace DVLD.People
 
 
 
-        private string _CopyImage(string oldpath)
+        private bool _HandleImage()
         {
-
-
-
-            // Step 2: Define folder to store images
-            string folderPath = Path.Combine(Application.StartupPath, "Images");
-            Directory.CreateDirectory(folderPath); // creates folder if it doesn't exist
-
-            // Step 3: Generate unique file name with GUID
-            string newFileName = Guid.NewGuid().ToString() + Path.GetExtension(oldpath);
-            string newFilePath = Path.Combine(folderPath, newFileName);
-
-            // Step 4: Copy the file to the new folder
-            File.Copy(oldpath, newFilePath);
-
-            // Step 5: Load the picture into PictureBox
-            if (pPicture.Image != null)
-                pPicture.Image.Dispose(); // free previous image
-
-            pPicture.Image = Image.FromFile(newFilePath);
-
-            return newFilePath;
-
-
+            if(_AddEditPerson.ImagePath!=pPicture.ImageLocation)
+            {
+                if(_AddEditPerson.ImagePath!=null)
+                {
+                    _DeleteOldImage(_AddEditPerson.ImagePath);
+                }
+                if(pPicture.ImageLocation!=null)
+                {
+                    string SourceImagePath = pPicture.ImageLocation;
+                    if (Util.Utill.CopyImageToProjectFolder(ref SourceImagePath))
+                    {
+                        pPicture.ImageLocation = SourceImagePath;
+                        _AddEditPerson.ImagePath = SourceImagePath;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
         void _DeleteOldImage(string OldImagePath)
         {
@@ -198,36 +193,24 @@ namespace DVLD.People
         private void SetImageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Title = "Choose a picture";
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        _DeleteOldImage(_AddEditPerson.ImagePath);
-                        string originalPath = ofd.FileName;
-
-                        string NewPath = _CopyImage(originalPath);
-                        _AddEditPerson.ImagePath = NewPath;
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error loading image: " + ex.Message);
-                    }
-
-                }
-            }
+            
         }
 
             
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+
+            //if (!this.ValidateChildren())
+            //{
+            //    //Here we dont continue becuase the form is not valid
+            //    MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+
+            //}
+            if (!_HandleImage())
+            {
+                return;
+            }
             _AddEditPerson.NationalNo = txtNationalNo.Text;
             _AddEditPerson.FirstName = txtFirstName.Text;
             _AddEditPerson.SecondName =txtSecondName.Text;
@@ -237,7 +220,7 @@ namespace DVLD.People
             _AddEditPerson.Phone = txtPhone.Text;
             _AddEditPerson.Address = txtAddress.Text;
             _AddEditPerson.Email = txtEmail.Text;
-
+          //  _AddEditPerson.ImagePath = ImageFilePath;
 
             _AddEditPerson.NationalityCountryID = (int)cbCountry.SelectedValue;
             if (rbtnFemale.Checked)
@@ -393,6 +376,46 @@ namespace DVLD.People
             {
                 pPicture.Image= Resources.Female_512;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (rbtnFemale.Checked)
+            {
+                pPicture.Image = Resources.Female_512;
+                pPicture.ImageLocation = null;
+            }
+            else if (rbtnMan.Checked)
+            {
+                pPicture.Image = Resources.Male_512;
+                pPicture.ImageLocation = null;
+
+            }
+        }
+
+        private void SetImageLink_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+                openFileDialog1.Title = "Choose a picture";
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                 pPicture.ImageLocation = openFileDialog1.FileName;
+                    llRemove.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading image: " + ex.Message);
+                }
+
+            }
+            
+
+
+            
         }
     }
 }

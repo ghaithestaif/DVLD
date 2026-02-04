@@ -35,11 +35,12 @@
             // 
             // personCard1
             // 
-            this.personCard1.Location = new System.Drawing.Point(9, 80);
-            this.personCard1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.personCard1.Location = new System.Drawing.Point(15, 100);
+            this.personCard1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.personCard1.Name = "personCard1";
-            this.personCard1.Size = new System.Drawing.Size(645, 235);
+            this.personCard1.Size = new System.Drawing.Size(1044, 289);
             this.personCard1.TabIndex = 0;
+            this.personCard1.Load += new System.EventHandler(this.personCard1_Load);
             // 
             // btnClose
             // 
@@ -57,10 +58,10 @@
             this.btnClose.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(488, 320);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(847, 393);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(98, 28);
+            this.btnClose.Size = new System.Drawing.Size(131, 34);
             this.btnClose.TabIndex = 55592;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -69,24 +70,23 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(111, 31);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.Location = new System.Drawing.Point(287, 33);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(366, 39);
+            this.lblTitle.Size = new System.Drawing.Size(488, 53);
             this.lblTitle.TabIndex = 55595;
             this.lblTitle.Text = "Person Details";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmPersonDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 358);
+            this.ClientSize = new System.Drawing.Size(1052, 441);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.personCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPersonDetails";
             this.Text = "frmPersonDetails";
             this.Load += new System.EventHandler(this.frmPersonDetails_Load);

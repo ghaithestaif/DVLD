@@ -13,10 +13,12 @@ namespace DVLD.People
     public partial class frmPersonDetails : Form
     {
 
-        public frmPersonDetails()
+        public frmPersonDetails(int ID)
         {
             InitializeComponent();
-            
+
+            personCard1.LoadPersonInfo(ID);
+
         }
  
        
@@ -39,6 +41,11 @@ namespace DVLD.People
         }
 
         private void frmPersonDetails_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void personCard1_Load(object sender, EventArgs e)
         {
 
         }

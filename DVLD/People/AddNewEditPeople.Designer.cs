@@ -72,6 +72,9 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.llRemove = new System.Windows.Forms.LinkLabel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -92,9 +95,10 @@
             this.txtAddNewEditPerson.BackColor = System.Drawing.Color.Transparent;
             this.txtAddNewEditPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddNewEditPerson.ForeColor = System.Drawing.Color.Red;
-            this.txtAddNewEditPerson.Location = new System.Drawing.Point(290, 30);
+            this.txtAddNewEditPerson.Location = new System.Drawing.Point(221, 11);
+            this.txtAddNewEditPerson.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddNewEditPerson.Name = "txtAddNewEditPerson";
-            this.txtAddNewEditPerson.Size = new System.Drawing.Size(259, 33);
+            this.txtAddNewEditPerson.Size = new System.Drawing.Size(304, 53);
             this.txtAddNewEditPerson.TabIndex = 1;
             this.txtAddNewEditPerson.TabStop = false;
             this.txtAddNewEditPerson.Text = "Add new Person";
@@ -103,7 +107,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 71);
+            this.label1.Location = new System.Drawing.Point(16, 58);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 111;
@@ -112,9 +117,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLD.Properties.Resources.Number_32;
-            this.pictureBox2.Location = new System.Drawing.Point(126, 71);
+            this.pictureBox2.Location = new System.Drawing.Point(94, 58);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox2.Size = new System.Drawing.Size(22, 21);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 28;
             this.pictureBox2.TabStop = false;
@@ -123,7 +129,8 @@
             // 
             this.txtPersonID.AutoSize = true;
             this.txtPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPersonID.Location = new System.Drawing.Point(162, 71);
+            this.txtPersonID.Location = new System.Drawing.Point(122, 58);
+            this.txtPersonID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtPersonID.Name = "txtPersonID";
             this.txtPersonID.Size = new System.Drawing.Size(40, 20);
             this.txtPersonID.TabIndex = 55555;
@@ -145,9 +152,10 @@
             this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSave.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSave.Location = new System.Drawing.Point(507, 433);
+            this.btnSave.Location = new System.Drawing.Point(491, 351);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(130, 34);
+            this.btnSave.Size = new System.Drawing.Size(98, 28);
             this.btnSave.TabIndex = 55558;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -155,30 +163,34 @@
             // dtpDateOfBirth
             // 
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(477, 187);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(456, 151);
+            this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateOfBirth.MaxDate = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.MinDate = new System.DateTime(1754, 1, 1, 0, 0, 0, 0);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(160, 22);
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(121, 20);
             this.dtpDateOfBirth.TabIndex = 55590;
             this.dtpDateOfBirth.Value = new System.DateTime(2005, 7, 14, 0, 0, 0, 0);
             // 
             // SetImageLink
             // 
             this.SetImageLink.AutoSize = true;
-            this.SetImageLink.Location = new System.Drawing.Point(695, 348);
+            this.SetImageLink.Location = new System.Drawing.Point(644, 276);
+            this.SetImageLink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SetImageLink.Name = "SetImageLink";
-            this.SetImageLink.Size = new System.Drawing.Size(68, 16);
+            this.SetImageLink.Size = new System.Drawing.Size(63, 15);
             this.SetImageLink.TabIndex = 55578;
             this.SetImageLink.TabStop = true;
             this.SetImageLink.Text = "Set Image";
+            this.SetImageLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SetImageLink_LinkClicked_1);
             // 
             // pictureBox9
             // 
             this.pictureBox9.Image = global::DVLD.Properties.Resources.Phone_321;
-            this.pictureBox9.Location = new System.Drawing.Point(441, 232);
+            this.pictureBox9.Location = new System.Drawing.Point(430, 188);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox9.Size = new System.Drawing.Size(22, 21);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 55589;
             this.pictureBox9.TabStop = false;
@@ -186,9 +198,10 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::DVLD.Properties.Resources.Country_32;
-            this.pictureBox8.Location = new System.Drawing.Point(441, 274);
+            this.pictureBox8.Location = new System.Drawing.Point(430, 223);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox8.Size = new System.Drawing.Size(22, 21);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 55588;
             this.pictureBox8.TabStop = false;
@@ -196,9 +209,10 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLD.Properties.Resources.Calendar_32;
-            this.pictureBox7.Location = new System.Drawing.Point(441, 184);
+            this.pictureBox7.Location = new System.Drawing.Point(430, 150);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox7.Size = new System.Drawing.Size(22, 21);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 55587;
             this.pictureBox7.TabStop = false;
@@ -206,9 +220,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DVLD.Properties.Resources.Address_32;
-            this.pictureBox3.Location = new System.Drawing.Point(123, 316);
+            this.pictureBox3.Location = new System.Drawing.Point(92, 257);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox3.Size = new System.Drawing.Size(22, 21);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 55586;
             this.pictureBox3.TabStop = false;
@@ -216,9 +231,10 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::DVLD.Properties.Resources.Email_32;
-            this.pictureBox6.Location = new System.Drawing.Point(123, 278);
+            this.pictureBox6.Location = new System.Drawing.Point(92, 226);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox6.Size = new System.Drawing.Size(22, 21);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 55585;
             this.pictureBox6.TabStop = false;
@@ -226,9 +242,10 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::DVLD.Properties.Resources.Man_32;
-            this.pictureBox5.Location = new System.Drawing.Point(123, 229);
+            this.pictureBox5.Location = new System.Drawing.Point(92, 186);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox5.Size = new System.Drawing.Size(22, 21);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 55584;
             this.pictureBox5.TabStop = false;
@@ -241,9 +258,10 @@
             // 
             this.errorProvider1.SetIconAlignment(this.pPicture, System.Windows.Forms.ErrorIconAlignment.TopLeft);
             this.pPicture.Image = global::DVLD.Properties.Resources.Female_512;
-            this.pPicture.Location = new System.Drawing.Point(660, 177);
+            this.pPicture.Location = new System.Drawing.Point(625, 146);
+            this.pPicture.Margin = new System.Windows.Forms.Padding(2);
             this.pPicture.Name = "pPicture";
-            this.pPicture.Size = new System.Drawing.Size(144, 157);
+            this.pPicture.Size = new System.Drawing.Size(108, 128);
             this.pPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pPicture.TabIndex = 55582;
             this.pPicture.TabStop = false;
@@ -251,9 +269,10 @@
             // rbtnMan
             // 
             this.rbtnMan.AutoSize = true;
-            this.rbtnMan.Location = new System.Drawing.Point(3, 7);
+            this.rbtnMan.Location = new System.Drawing.Point(2, 6);
+            this.rbtnMan.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnMan.Name = "rbtnMan";
-            this.rbtnMan.Size = new System.Drawing.Size(58, 20);
+            this.rbtnMan.Size = new System.Drawing.Size(56, 19);
             this.rbtnMan.TabIndex = 6;
             this.rbtnMan.TabStop = true;
             this.rbtnMan.Text = "Male";
@@ -263,9 +282,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLD.Properties.Resources.Number_32;
-            this.pictureBox1.Location = new System.Drawing.Point(123, 183);
+            this.pictureBox1.Location = new System.Drawing.Point(92, 149);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(22, 21);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 55583;
             this.pictureBox1.TabStop = false;
@@ -282,17 +302,19 @@
             this.cbCountry.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbCountry.ItemHeight = 20;
-            this.cbCountry.Location = new System.Drawing.Point(477, 272);
+            this.cbCountry.Location = new System.Drawing.Point(455, 218);
+            this.cbCountry.Margin = new System.Windows.Forms.Padding(2);
             this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(160, 26);
+            this.cbCountry.Size = new System.Drawing.Size(134, 26);
             this.cbCountry.TabIndex = 55576;
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLD.Properties.Resources.Woman_32;
-            this.pictureBox4.Location = new System.Drawing.Point(60, 3);
+            this.pictureBox4.Location = new System.Drawing.Point(45, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox4.Size = new System.Drawing.Size(22, 21);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 38;
             this.pictureBox4.TabStop = false;
@@ -310,21 +332,22 @@
             this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.Location = new System.Drawing.Point(158, 316);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAddress.Location = new System.Drawing.Point(118, 257);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PlaceholderText = "";
             this.txtAddress.SelectedText = "";
-            this.txtAddress.Size = new System.Drawing.Size(479, 104);
+            this.txtAddress.Size = new System.Drawing.Size(471, 84);
             this.txtAddress.TabIndex = 55577;
             this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
             // 
             // rbtnFemale
             // 
             this.rbtnFemale.AutoSize = true;
-            this.rbtnFemale.Location = new System.Drawing.Point(95, 8);
+            this.rbtnFemale.Location = new System.Drawing.Point(71, 6);
+            this.rbtnFemale.Margin = new System.Windows.Forms.Padding(2);
             this.rbtnFemale.Name = "rbtnFemale";
-            this.rbtnFemale.Size = new System.Drawing.Size(74, 20);
+            this.rbtnFemale.Size = new System.Drawing.Size(70, 19);
             this.rbtnFemale.TabIndex = 7;
             this.rbtnFemale.TabStop = true;
             this.rbtnFemale.Text = "Female";
@@ -335,9 +358,10 @@
             this.pGendor.Controls.Add(this.pictureBox4);
             this.pGendor.Controls.Add(this.rbtnFemale);
             this.pGendor.Controls.Add(this.rbtnMan);
-            this.pGendor.Location = new System.Drawing.Point(159, 226);
+            this.pGendor.Location = new System.Drawing.Point(119, 184);
+            this.pGendor.Margin = new System.Windows.Forms.Padding(2);
             this.pGendor.Name = "pGendor";
-            this.pGendor.Size = new System.Drawing.Size(176, 43);
+            this.pGendor.Size = new System.Drawing.Size(149, 35);
             this.pGendor.TabIndex = 55571;
             // 
             // txtPhone
@@ -353,12 +377,12 @@
             this.txtPhone.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Location = new System.Drawing.Point(477, 232);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPhone.Location = new System.Drawing.Point(456, 188);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PlaceholderText = "";
             this.txtPhone.SelectedText = "";
-            this.txtPhone.Size = new System.Drawing.Size(160, 22);
+            this.txtPhone.Size = new System.Drawing.Size(133, 18);
             this.txtPhone.TabIndex = 55574;
             this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhone_Validating);
             // 
@@ -367,9 +391,10 @@
             this.guna2HtmlLabel12.AutoSize = false;
             this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel12.Location = new System.Drawing.Point(371, 234);
+            this.guna2HtmlLabel12.Location = new System.Drawing.Point(370, 192);
+            this.guna2HtmlLabel12.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
-            this.guna2HtmlLabel12.Size = new System.Drawing.Size(56, 20);
+            this.guna2HtmlLabel12.Size = new System.Drawing.Size(42, 16);
             this.guna2HtmlLabel12.TabIndex = 55581;
             this.guna2HtmlLabel12.TabStop = false;
             this.guna2HtmlLabel12.Text = "Phone:";
@@ -379,9 +404,10 @@
             this.guna2HtmlLabel11.AutoSize = false;
             this.guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel11.Location = new System.Drawing.Point(326, 184);
+            this.guna2HtmlLabel11.Location = new System.Drawing.Point(336, 152);
+            this.guna2HtmlLabel11.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel11.Name = "guna2HtmlLabel11";
-            this.guna2HtmlLabel11.Size = new System.Drawing.Size(101, 20);
+            this.guna2HtmlLabel11.Size = new System.Drawing.Size(76, 16);
             this.guna2HtmlLabel11.TabIndex = 55580;
             this.guna2HtmlLabel11.TabStop = false;
             this.guna2HtmlLabel11.Text = "Date of birth:";
@@ -391,9 +417,10 @@
             this.guna2HtmlLabel10.AutoSize = false;
             this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(360, 278);
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(362, 228);
+            this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(67, 20);
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(50, 16);
             this.guna2HtmlLabel10.TabIndex = 55579;
             this.guna2HtmlLabel10.TabStop = false;
             this.guna2HtmlLabel10.Text = "Country:";
@@ -411,12 +438,12 @@
             this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(158, 278);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.Location = new System.Drawing.Point(118, 226);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(144, 22);
+            this.txtEmail.Size = new System.Drawing.Size(133, 18);
             this.txtEmail.TabIndex = 55575;
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating_1);
             // 
@@ -433,12 +460,12 @@
             this.txtNationalNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNationalNo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNationalNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNationalNo.Location = new System.Drawing.Point(159, 184);
-            this.txtNationalNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNationalNo.Location = new System.Drawing.Point(119, 150);
+            this.txtNationalNo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtNationalNo.Name = "txtNationalNo";
             this.txtNationalNo.PlaceholderText = "";
             this.txtNationalNo.SelectedText = "";
-            this.txtNationalNo.Size = new System.Drawing.Size(144, 22);
+            this.txtNationalNo.Size = new System.Drawing.Size(133, 18);
             this.txtNationalNo.TabIndex = 55568;
             this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
             // 
@@ -455,12 +482,12 @@
             this.txtSecondName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSecondName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSecondName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSecondName.Location = new System.Drawing.Point(326, 138);
-            this.txtSecondName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSecondName.Location = new System.Drawing.Point(287, 112);
+            this.txtSecondName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSecondName.Name = "txtSecondName";
             this.txtSecondName.PlaceholderText = "";
             this.txtSecondName.SelectedText = "";
-            this.txtSecondName.Size = new System.Drawing.Size(144, 22);
+            this.txtSecondName.Size = new System.Drawing.Size(133, 18);
             this.txtSecondName.TabIndex = 55562;
             this.txtSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.txtSecondName_Validating);
             // 
@@ -477,12 +504,12 @@
             this.txtThirdName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtThirdName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtThirdName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtThirdName.Location = new System.Drawing.Point(493, 138);
-            this.txtThirdName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtThirdName.Location = new System.Drawing.Point(456, 112);
+            this.txtThirdName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtThirdName.Name = "txtThirdName";
             this.txtThirdName.PlaceholderText = "";
             this.txtThirdName.SelectedText = "";
-            this.txtThirdName.Size = new System.Drawing.Size(144, 22);
+            this.txtThirdName.Size = new System.Drawing.Size(133, 18);
             this.txtThirdName.TabIndex = 55563;
             // 
             // txtLastName
@@ -498,12 +525,12 @@
             this.txtLastName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtLastName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLastName.Location = new System.Drawing.Point(660, 138);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtLastName.Location = new System.Drawing.Point(625, 112);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.PlaceholderText = "";
             this.txtLastName.SelectedText = "";
-            this.txtLastName.Size = new System.Drawing.Size(144, 22);
+            this.txtLastName.Size = new System.Drawing.Size(133, 18);
             this.txtLastName.TabIndex = 55565;
             this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
@@ -520,12 +547,12 @@
             this.txtFirstName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFirstName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFirstName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFirstName.Location = new System.Drawing.Point(158, 138);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFirstName.Location = new System.Drawing.Point(118, 112);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.PlaceholderText = "";
             this.txtFirstName.SelectedText = "";
-            this.txtFirstName.Size = new System.Drawing.Size(144, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(133, 18);
             this.txtFirstName.TabIndex = 55560;
             this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
@@ -534,9 +561,10 @@
             this.guna2HtmlLabel9.AutoSize = false;
             this.guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel9.Location = new System.Drawing.Point(19, 189);
+            this.guna2HtmlLabel9.Location = new System.Drawing.Point(14, 154);
+            this.guna2HtmlLabel9.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            this.guna2HtmlLabel9.Size = new System.Drawing.Size(106, 21);
+            this.guna2HtmlLabel9.Size = new System.Drawing.Size(80, 17);
             this.guna2HtmlLabel9.TabIndex = 55573;
             this.guna2HtmlLabel9.TabStop = false;
             this.guna2HtmlLabel9.Text = "national No:";
@@ -546,9 +574,10 @@
             this.guna2HtmlLabel8.AutoSize = false;
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(19, 234);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(14, 190);
+            this.guna2HtmlLabel8.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(64, 20);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(48, 16);
             this.guna2HtmlLabel8.TabIndex = 55572;
             this.guna2HtmlLabel8.TabStop = false;
             this.guna2HtmlLabel8.Text = "Gendor:";
@@ -558,9 +587,10 @@
             this.guna2HtmlLabel7.AutoSize = false;
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(19, 278);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(14, 226);
+            this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(50, 20);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(38, 16);
             this.guna2HtmlLabel7.TabIndex = 55570;
             this.guna2HtmlLabel7.TabStop = false;
             this.guna2HtmlLabel7.Text = "Email:";
@@ -570,9 +600,10 @@
             this.guna2HtmlLabel6.AutoSize = false;
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(19, 318);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(14, 258);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(69, 20);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(52, 16);
             this.guna2HtmlLabel6.TabIndex = 55569;
             this.guna2HtmlLabel6.TabStop = false;
             this.guna2HtmlLabel6.Text = "Address:";
@@ -581,9 +612,10 @@
             // 
             this.guna2HtmlLabel5.AutoSize = false;
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(370, 113);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(321, 92);
+            this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(50, 18);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(38, 15);
             this.guna2HtmlLabel5.TabIndex = 55567;
             this.guna2HtmlLabel5.Text = "Second";
             // 
@@ -591,9 +623,10 @@
             // 
             this.guna2HtmlLabel4.AutoSize = false;
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(548, 113);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(499, 92);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(34, 18);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(26, 15);
             this.guna2HtmlLabel4.TabIndex = 55566;
             this.guna2HtmlLabel4.Text = "Third";
             // 
@@ -601,9 +634,10 @@
             // 
             this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(710, 113);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(665, 92);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(28, 18);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(21, 15);
             this.guna2HtmlLabel3.TabIndex = 55564;
             this.guna2HtmlLabel3.Text = "Last";
             // 
@@ -612,9 +646,10 @@
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(19, 138);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(14, 112);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(52, 20);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(39, 16);
             this.guna2HtmlLabel2.TabIndex = 55561;
             this.guna2HtmlLabel2.TabStop = false;
             this.guna2HtmlLabel2.Text = "Name:";
@@ -623,9 +658,10 @@
             // 
             this.guna2HtmlLabel1.AutoSize = false;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(219, 113);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(164, 92);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(23, 18);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(17, 15);
             this.guna2HtmlLabel1.TabIndex = 55559;
             this.guna2HtmlLabel1.Text = "first";
             // 
@@ -645,18 +681,42 @@
             this.btnClose.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(371, 433);
+            this.btnClose.Location = new System.Drawing.Point(389, 351);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(130, 34);
+            this.btnClose.Size = new System.Drawing.Size(98, 28);
             this.btnClose.TabIndex = 55591;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // llRemove
+            // 
+            this.llRemove.AutoSize = true;
+            this.llRemove.Enabled = false;
+            this.llRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llRemove.Location = new System.Drawing.Point(644, 296);
+            this.llRemove.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.llRemove.Name = "llRemove";
+            this.llRemove.Size = new System.Drawing.Size(53, 15);
+            this.llRemove.TabIndex = 55592;
+            this.llRemove.TabStop = true;
+            this.llRemove.Text = "Remove";
+            this.llRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
             // AddNewEditPeople
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 480);
+            this.ClientSize = new System.Drawing.Size(756, 390);
+            this.Controls.Add(this.llRemove);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.SetImageLink);
@@ -697,6 +757,7 @@
             this.Controls.Add(this.txtAddNewEditPerson);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddNewEditPeople";
             this.Text = "AddNewEditPeople";
             this.Load += new System.EventHandler(this.AddNewEditPeople_Load);
@@ -761,5 +822,8 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private System.Windows.Forms.LinkLabel llRemove;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
