@@ -10,6 +10,7 @@ public class clsUserData
         ref int PersonID,
         ref string outUserName,
         ref string outPassword,
+        ref string PasswordSalt,
         ref bool outIsActive)
     {
         SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
@@ -30,7 +31,7 @@ public class clsUserData
                 outUserName = (string)reader["UserName"];
                 outPassword = (string)reader["Password"];
                 outIsActive = (bool)reader["IsActive"];
-
+                PasswordSalt = (string)reader["PasswordSalt"];
                 int personID = (int)reader["PersonID"];                
 
                 return true;
@@ -52,13 +53,15 @@ public class clsUserData
     public static int AddNew(
         int personID,
         string userName,
+       
         string password,
+        string PasswordSalt,
         bool isActive)
     {
         SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
         SqlCommand command = new SqlCommand(
-            @"INSERT INTO Users (PersonID, UserName, Password, IsActive)
-              VALUES (@PersonID, @UserName, @Password, @IsActive);
+            @"INSERT INTO Users (PersonID, UserName, Password,PasswordSalt, IsActive)
+              VALUES (@PersonID, @UserName, @Password,@PasswordSalt, @IsActive);
               SELECT SCOPE_IDENTITY();",
             connection);
 
@@ -66,6 +69,7 @@ public class clsUserData
         command.Parameters.AddWithValue("@UserName", userName);
         command.Parameters.AddWithValue("@Password", password);
         command.Parameters.AddWithValue("@IsActive", isActive);
+        command.Parameters.AddWithValue("@PasswordSalt", PasswordSalt);
 
         try
         {
@@ -141,6 +145,7 @@ public class clsUserData
            int userID,
            int personID,
            string userName,
+           string PasswordSalt,
            string password,
            bool isActive)
         {
@@ -150,6 +155,7 @@ public class clsUserData
                  SET PersonID = @PersonID,
                      UserName = @UserName,
                      Password = @Password,
+                        PasswordSalt = @PasswordSalt,
                      IsActive = @IsActive
                  WHERE UserID = @UserID",
                    connection);
@@ -159,8 +165,8 @@ public class clsUserData
                command.Parameters.AddWithValue("@UserName", userName);
                command.Parameters.AddWithValue("@Password", password);
                command.Parameters.AddWithValue("@IsActive", isActive);
-               
-               try
+               command.Parameters.AddWithValue("@PasswordSalt", PasswordSalt);
+        try
                {
                    connection.Open();
                    return command.ExecuteNonQuery() > 0;
@@ -174,5 +180,104 @@ public class clsUserData
                    connection.Close();
                }
         }
+
+    public static bool Find(
+        string UserName,
+        ref int PersonID,
+        ref int userID,
+        ref string outPassword,
+        ref string PasswordSalt,
+        ref bool outIsActive)
+    {
+        SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+        SqlCommand command = new SqlCommand(
+            "SELECT * FROM Users WHERE UserName = @UserName",
+            connection);
+
+        command.Parameters.AddWithValue("@UserName", UserName);
+
+        try
+        {
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                userID = (int)reader["UserID"];
+                UserName = (string)reader["UserName"];
+                outPassword = (string)reader["Password"];
+                PasswordSalt = (string)reader["PasswordSalt"];
+                outIsActive = (bool)reader["IsActive"];
+                PersonID = (int)reader["PersonID"];
+
+                return true;
+            }
+
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+        finally
+        {
+            connection.Close();
+        }
+    }
+    public static bool GetUserInfoByUsernameAndPassword(string UserName, string Password,
+            ref int UserID, ref int PersonID, ref bool IsActive)
+    {
+        bool isFound = false;
+
+        SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+        string query = "SELECT * FROM Users WHERE Username = @Username and Password=@Password;";
+
+        SqlCommand command = new SqlCommand(query, connection);
+
+        command.Parameters.AddWithValue("@Username", UserName);
+        command.Parameters.AddWithValue("@Password", Password);
+
+
+        try
+        {
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                // The record was found
+                isFound = true;
+                UserID = (int)reader["UserID"];
+                PersonID = (int)reader["PersonID"];
+                UserName = (string)reader["UserName"];
+                Password = (string)reader["Password"];
+                IsActive = (bool)reader["IsActive"];
+
+
+            }
+            else
+            {
+                // The record was not found
+                isFound = false;
+            }
+
+            reader.Close();
+
+
+        }
+        catch (Exception ex)
+        {
+            //Console.WriteLine("Error: " + ex.Message);
+
+            isFound = false;
+        }
+        finally
+        {
+            connection.Close();
+        }
+
+        return isFound;
+    }
 
 }

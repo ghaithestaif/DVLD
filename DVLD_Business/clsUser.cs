@@ -8,6 +8,7 @@ public class clsUser
     public string UserName { get; set; }
     public string Password { get; set; }
     public bool IsActive { get; set; }
+    public string PasswordSalt { get; set; }
 
     // This is what you asked for
     public DVLD_Business.People Person { get; set; }
@@ -19,6 +20,7 @@ public class clsUser
         UserName = "";
         Password = "";
         IsActive = false;
+        PasswordSalt = "";
         Person = new DVLD_Business.People();
         _Mode=enMode.Addnew;
     }
@@ -26,27 +28,31 @@ public class clsUser
     private clsUser(int UserID,int PersonID,
     string UserName,
     string Password ,
+    string PasswordSalt,
     bool IsActive)
     {
        this.UserID = UserID;
-        this.UserName = "";
-        this.Password = "";
-        this.IsActive = false;
+        this.UserName = UserName;
+        this.Password = Password;
+        this.IsActive = IsActive;
+        this.PasswordSalt = PasswordSalt;
         this.Person = DVLD_Business.People.Find(PersonID);
         _Mode=enMode.Update;
     }
     // ---------- FIND ----------
-    public clsUser Find(int userID)
+    static  public clsUser Find(int userID)
     {
       int PersonID = -1;
         string UserName = "";
         string Password = "";
+        string PasswordSalt = "";
         bool IsActive = false;
         if(clsUserData.Find(
                 userID,
                 ref PersonID,
                 ref UserName,
                 ref Password,
+                    ref PasswordSalt,
                 ref IsActive
             ))
         {
@@ -54,12 +60,39 @@ public class clsUser
                  PersonID,
                  UserName,
                  Password,
+                    PasswordSalt,
                  IsActive);
         }
         return null;
   
     }
 
+   static  public clsUser Find(string UserName)
+    {
+        int PersonID = -1
+        , UserID= -1;   
+        string Password = "";
+        string PasswordSalt = "";
+        bool IsActive = false;
+        if (clsUserData.Find(
+                UserName,
+                ref PersonID,
+                ref UserID,
+                ref Password,
+                ref PasswordSalt,
+                ref IsActive
+            ))
+        {
+            return new clsUser(UserID,
+                 PersonID,
+                 UserName,
+                 Password,
+                    PasswordSalt,
+                 IsActive);
+        }
+        return null;
+
+    }
     // ---------- ADD NEW ----------
     private int _AddNew()
     {
@@ -68,6 +101,7 @@ public class clsUser
                 Person.PersonID,
                 UserName,
                 Password,
+                PasswordSalt,
                 IsActive
             );
 
@@ -82,6 +116,7 @@ public class clsUser
                 Person.PersonID,
                 UserName,
                 Password,
+                PasswordSalt,
                 IsActive
             );
         
@@ -103,7 +138,22 @@ public class clsUser
 
     }
 
+    public static clsUser FindByUsernameAndPassword(string UserName, string Password)
+    {
+        int UserID = -1;
+        int PersonID = -1;
+        string PasswordSalt = "";
+        bool IsActive = false;
 
+        bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword
+                            (UserName, Password, ref UserID, ref PersonID, ref IsActive);
+
+        if (IsFound)
+            //we return new object of that User with the right data
+            return new clsUser(UserID, PersonID, UserName, Password, PasswordSalt, IsActive);
+        else
+            return null;
+    }
     public  bool Save()
     {
 

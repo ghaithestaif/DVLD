@@ -4,28 +4,36 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace TestCode
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static string HashPasswordWithoutSalt(string password)
         {
-            DVLD_General.Common.PeopleFilterSort n=new DVLD_General.Common.PeopleFilterSort();
-            n = DVLD_General.Common.PeopleFilterSort.NationalNo;
+            // Convert password string to bytes
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
 
-            DVLD_General.Common.SortType s = new DVLD_General.Common.SortType();
-            s = DVLD_General.Common.SortType.Ascending;
-
-            DataTable dt = People.SortPeople(n, s);
-            foreach (DataRow row in dt.Rows)
+            // Use SHA256 to hash
+            using (SHA256 sha256 = SHA256.Create())
             {
-                Console.WriteLine(row["NationalNo"].ToString());
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+                return Convert.ToBase64String(hashBytes);
             }
 
+        }
+        static void Main(string[] args)
+        {
+            string password = "MyStrongPass123";
+            string hash = HashPasswordWithoutSalt(password);
+
+            Console.WriteLine(hash);
+            // Example output: "y+F0lN7kSkx9A0YxGq8ZkZJh6gV6Yv0fh7Xk5M+Wz5I="
+            //Iu04B0Jb4n7FmakhLk9/b1e0yPCibl+sJuPoYpBK1es=
+            //Iu04B0Jb4n7FmakhLk9/b1e0yPCibl+sJuPoYpBK1es=
         }
     }
 }
