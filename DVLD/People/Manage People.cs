@@ -17,8 +17,8 @@ namespace DVLD.People
         public Manage_People()
         {
             InitializeComponent();
-            cbFilter.DataSource = Enum.GetValues(typeof(Common.PeopleFilterSort));
-            cbFilter.SelectedItem = Common.PeopleFilterSort.none;
+            cbFilter.DataSource = Enum.GetValues(typeof(Common.PeopleFilter));
+            cbFilter.SelectedItem = Common.PeopleFilter.none;
         }
 
 
@@ -50,8 +50,8 @@ namespace DVLD.People
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Common.PeopleFilterSort filter = (Common.PeopleFilterSort)cbFilter.SelectedItem;
-            if ((filter == Common.PeopleFilterSort.none))
+            Common.PeopleFilter filter = (Common.PeopleFilter)cbFilter.SelectedItem;
+            if ((filter == Common.PeopleFilter.none))
             {
                 txtFilter.Enabled = false;
                 PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter);
@@ -64,7 +64,7 @@ namespace DVLD.People
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            Common.PeopleFilterSort filter = (Common.PeopleFilterSort)cbFilter.SelectedItem;
+            Common.PeopleFilter filter = (Common.PeopleFilter)cbFilter.SelectedItem;
             //upper case for name fields
 
 
@@ -77,9 +77,9 @@ namespace DVLD.People
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Common.PeopleFilterSort filter = (Common.PeopleFilterSort)cbFilter.SelectedItem;
-            if (filter == Common.PeopleFilterSort.Phone || filter == Common.PeopleFilterSort.PersonID
-                || filter == Common.PeopleFilterSort.Gendor || filter == Common.PeopleFilterSort.CountryID)
+            Common.PeopleFilter filter = (Common.PeopleFilter)cbFilter.SelectedItem;
+            if (filter == Common.PeopleFilter.Phone || filter == Common.PeopleFilter.PersonID
+                || filter == Common.PeopleFilter.Gendor || filter == Common.PeopleFilter.CountryID)
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {
@@ -87,8 +87,8 @@ namespace DVLD.People
                 }
 
             }
-            else if (filter == Common.PeopleFilterSort.FirstName || filter == Common.PeopleFilterSort.SecondName
-                || filter == Common.PeopleFilterSort.ThirdName || filter == Common.PeopleFilterSort.LastName
+            else if (filter == Common.PeopleFilter.FirstName || filter == Common.PeopleFilter.SecondName
+                || filter == Common.PeopleFilter.ThirdName || filter == Common.PeopleFilter.LastName
                  )
             {
                 if (!(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsWhiteSpace(e.KeyChar)))
@@ -137,6 +137,11 @@ namespace DVLD.People
             
 
             frmPersonDetails.ShowDialog();
+        }
+
+        private void txtNumberOfRecords_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

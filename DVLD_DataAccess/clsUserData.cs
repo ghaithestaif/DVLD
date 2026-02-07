@@ -1,16 +1,30 @@
 ﻿using DVLD_DataAccess;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
+using DVLD_General;
 public class clsUserData
 {
+
+
+    private static readonly Dictionary<Common.UsersFilter, string> _UserColumnMap = new Dictionary<Common.UsersFilter, string>()
+{
+    { Common.UsersFilter.UserID, "UserID" },
+    { Common.UsersFilter.PersonID, "People.PersonID" },
+    { Common.UsersFilter.UserName, "UserName" },
+        { Common.UsersFilter.FullName, "FullName"   },
+        {Common.UsersFilter.IsActive, "IsActive" }
+
+};
+
     // ---------- FIND ----------
     public static bool Find(
         int userID,
         ref int PersonID,
         ref string outUserName,
         ref string outPassword,
-        ref string PasswordSalt,
         ref bool outIsActive)
     {
         SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
@@ -31,7 +45,6 @@ public class clsUserData
                 outUserName = (string)reader["UserName"];
                 outPassword = (string)reader["Password"];
                 outIsActive = (bool)reader["IsActive"];
-                PasswordSalt = (string)reader["PasswordSalt"];
                 int personID = (int)reader["PersonID"];                
 
                 return true;
@@ -48,6 +61,32 @@ public class clsUserData
             connection.Close();
         }
     }
+    public static DataTable GetAllUsers()
+    {
+        DataTable dtUsers = new DataTable();
+
+        using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+        {
+            string query = @"
+                       SELECT Users.*,
+                              CASE 
+                                  WHEN People.ThirdName IS NULL OR People.ThirdName = '' THEN
+                                       People.FirstName + ' ' + People.SecondName + ' ' + People.LastName
+                                  ELSE
+                                       People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
+                              END AS FullName
+                       FROM People
+                       INNER JOIN Users ON People.PersonID = Users.PersonID";
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                adapter.Fill(dtUsers);
+            }
+        }
+
+        return dtUsers;
+    }
 
     // ---------- ADD NEW ----------
     public static int AddNew(
@@ -55,13 +94,12 @@ public class clsUserData
         string userName,
        
         string password,
-        string PasswordSalt,
         bool isActive)
     {
         SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
         SqlCommand command = new SqlCommand(
             @"INSERT INTO Users (PersonID, UserName, Password,PasswordSalt, IsActive)
-              VALUES (@PersonID, @UserName, @Password,@PasswordSalt, @IsActive);
+              VALUES (@PersonID, @UserName, @Password, @IsActive);
               SELECT SCOPE_IDENTITY();",
             connection);
 
@@ -69,7 +107,6 @@ public class clsUserData
         command.Parameters.AddWithValue("@UserName", userName);
         command.Parameters.AddWithValue("@Password", password);
         command.Parameters.AddWithValue("@IsActive", isActive);
-        command.Parameters.AddWithValue("@PasswordSalt", PasswordSalt);
 
         try
         {
@@ -145,7 +182,6 @@ public class clsUserData
            int userID,
            int personID,
            string userName,
-           string PasswordSalt,
            string password,
            bool isActive)
         {
@@ -155,7 +191,6 @@ public class clsUserData
                  SET PersonID = @PersonID,
                      UserName = @UserName,
                      Password = @Password,
-                        PasswordSalt = @PasswordSalt,
                      IsActive = @IsActive
                  WHERE UserID = @UserID",
                    connection);
@@ -165,7 +200,6 @@ public class clsUserData
                command.Parameters.AddWithValue("@UserName", userName);
                command.Parameters.AddWithValue("@Password", password);
                command.Parameters.AddWithValue("@IsActive", isActive);
-               command.Parameters.AddWithValue("@PasswordSalt", PasswordSalt);
         try
                {
                    connection.Open();
@@ -186,7 +220,6 @@ public class clsUserData
         ref int PersonID,
         ref int userID,
         ref string outPassword,
-        ref string PasswordSalt,
         ref bool outIsActive)
     {
         SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
@@ -206,7 +239,6 @@ public class clsUserData
                 userID = (int)reader["UserID"];
                 UserName = (string)reader["UserName"];
                 outPassword = (string)reader["Password"];
-                PasswordSalt = (string)reader["PasswordSalt"];
                 outIsActive = (bool)reader["IsActive"];
                 PersonID = (int)reader["PersonID"];
 
@@ -279,5 +311,71 @@ public class clsUserData
 
         return isFound;
     }
+
+
+
+    public static DataTable FilterUsers(Common.UsersFilter filterBy, string filterExpression)
+    {
+        if (filterBy == Common.UsersFilter.None)
+            return GetAllUsers(); // returns all users
+
+        string columnName = _UserColumnMap[filterBy];
+
+        using (SqlConnection connection = new SqlConnection(AppSettings.ConnectionString))
+        {
+            string query = $@"
+                       SELECT Users.UserID, Users.PersonID, Users.UserName, Users.Password, Users.IsActive,
+                              CASE 
+                                  WHEN People.ThirdName IS NULL OR People.ThirdName = '' THEN
+                                       People.FirstName + ' ' + People.SecondName + ' ' + People.LastName
+                                  ELSE
+                                       People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
+                              END AS FullName
+                       FROM Users
+                       INNER JOIN People ON People.PersonID = Users.PersonID";
+
+
+            if (filterBy == Common.UsersFilter.FullName)
+            {
+                query += @"
+                       WHERE
+                       (
+                           CASE 
+                               WHEN People.ThirdName IS NULL OR People.ThirdName = '' THEN
+                                    People.FirstName + ' ' + People.SecondName + ' ' + People.LastName
+                               ELSE
+                                    People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName
+                           END
+                       ) LIKE '%' + @FilterExpression + '%'";
+            }
+            else
+            {
+                query += $" WHERE {columnName} = @FilterExpression";
+            }
+
+
+
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@FilterExpression", filterExpression);
+
+                DataTable dataTable = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    // optionally log ex.Message
+                    throw; // or handle exception properly
+                }
+
+                return dataTable;
+            }
+        }
+    }
+
 
 }

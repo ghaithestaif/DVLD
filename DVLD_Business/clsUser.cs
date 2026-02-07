@@ -1,6 +1,8 @@
 ﻿using DVLD_DataAccess;
+using DVLD_General;
+using System.Data;
+using System.Data.SqlClient;
 using System.Xml.Linq;
-
 public class clsUser
 {
     // Data Members (same as table, no nulls)
@@ -8,7 +10,6 @@ public class clsUser
     public string UserName { get; set; }
     public string Password { get; set; }
     public bool IsActive { get; set; }
-    public string PasswordSalt { get; set; }
 
     // This is what you asked for
     public DVLD_Business.People Person { get; set; }
@@ -20,7 +21,6 @@ public class clsUser
         UserName = "";
         Password = "";
         IsActive = false;
-        PasswordSalt = "";
         Person = new DVLD_Business.People();
         _Mode=enMode.Addnew;
     }
@@ -28,14 +28,12 @@ public class clsUser
     private clsUser(int UserID,int PersonID,
     string UserName,
     string Password ,
-    string PasswordSalt,
     bool IsActive)
     {
        this.UserID = UserID;
         this.UserName = UserName;
         this.Password = Password;
         this.IsActive = IsActive;
-        this.PasswordSalt = PasswordSalt;
         this.Person = DVLD_Business.People.Find(PersonID);
         _Mode=enMode.Update;
     }
@@ -45,14 +43,12 @@ public class clsUser
       int PersonID = -1;
         string UserName = "";
         string Password = "";
-        string PasswordSalt = "";
         bool IsActive = false;
         if(clsUserData.Find(
                 userID,
                 ref PersonID,
                 ref UserName,
                 ref Password,
-                    ref PasswordSalt,
                 ref IsActive
             ))
         {
@@ -60,7 +56,6 @@ public class clsUser
                  PersonID,
                  UserName,
                  Password,
-                    PasswordSalt,
                  IsActive);
         }
         return null;
@@ -72,14 +67,12 @@ public class clsUser
         int PersonID = -1
         , UserID= -1;   
         string Password = "";
-        string PasswordSalt = "";
         bool IsActive = false;
         if (clsUserData.Find(
                 UserName,
                 ref PersonID,
                 ref UserID,
                 ref Password,
-                ref PasswordSalt,
                 ref IsActive
             ))
         {
@@ -87,7 +80,6 @@ public class clsUser
                  PersonID,
                  UserName,
                  Password,
-                    PasswordSalt,
                  IsActive);
         }
         return null;
@@ -101,7 +93,6 @@ public class clsUser
                 Person.PersonID,
                 UserName,
                 Password,
-                PasswordSalt,
                 IsActive
             );
 
@@ -116,7 +107,6 @@ public class clsUser
                 Person.PersonID,
                 UserName,
                 Password,
-                PasswordSalt,
                 IsActive
             );
         
@@ -142,7 +132,6 @@ public class clsUser
     {
         int UserID = -1;
         int PersonID = -1;
-        string PasswordSalt = "";
         bool IsActive = false;
 
         bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword
@@ -150,7 +139,7 @@ public class clsUser
 
         if (IsFound)
             //we return new object of that User with the right data
-            return new clsUser(UserID, PersonID, UserName, Password, PasswordSalt, IsActive);
+            return new clsUser(UserID, PersonID, UserName, Password, IsActive);
         else
             return null;
     }
@@ -167,5 +156,14 @@ public class clsUser
         {
             return _Update();
         }
+    }
+
+    public static DataTable GetAllUsers()
+    {
+        return clsUserData.GetAllUsers();
+    }
+    public static DataTable GetUsersByFilter(Common.UsersFilter filter, string FilterExpression)
+    {
+        return clsUserData.FilterUsers(filter, FilterExpression);
     }
 }

@@ -15,19 +15,19 @@ namespace DVLD_DataAccess
 {
     static public class People
     {
-        private static readonly Dictionary<DVLD_General.Common.PeopleFilterSort, string> _ColumnMap
-             = new Dictionary<DVLD_General.Common.PeopleFilterSort, string>()
+        private static readonly Dictionary<DVLD_General.Common.PeopleFilter, string> _ColumnMap
+             = new Dictionary<DVLD_General.Common.PeopleFilter, string>()
          {
-            { DVLD_General.Common.PeopleFilterSort.FirstName, "FirstName" },
-            { DVLD_General.Common.PeopleFilterSort.LastName, "LastName" },
-            { DVLD_General.Common.PeopleFilterSort.SecondName, "SecondName" },
-            { DVLD_General.Common.PeopleFilterSort.NationalNo, "NationalNo" },
-            {DVLD_General.Common.PeopleFilterSort.ThirdName,"ThirdName" },
-            {DVLD_General.Common.PeopleFilterSort.Phone,"Phone" },
-            {DVLD_General.Common.PeopleFilterSort.Gendor,"Gendor" },
-            {DVLD_General.Common.PeopleFilterSort.PersonID, "PersonID"},
-            {Common.PeopleFilterSort.CountryID,"NationalityCountryID"},
-            {Common.PeopleFilterSort.Email,"Email" }
+            { DVLD_General.Common.PeopleFilter.FirstName, "FirstName" },
+            { DVLD_General.Common.PeopleFilter.LastName, "LastName" },
+            { DVLD_General.Common.PeopleFilter.SecondName, "SecondName" },
+            { DVLD_General.Common.PeopleFilter.NationalNo, "NationalNo" },
+            {DVLD_General.Common.PeopleFilter.ThirdName,"ThirdName" },
+            {DVLD_General.Common.PeopleFilter.Phone,"Phone" },
+            {DVLD_General.Common.PeopleFilter.Gendor,"Gendor" },
+            {DVLD_General.Common.PeopleFilter.PersonID, "PersonID"},
+            {Common.PeopleFilter.CountryID,"NationalityCountryID"},
+            {Common.PeopleFilter.Email,"Email" }
          };
         
 
@@ -360,9 +360,9 @@ namespace DVLD_DataAccess
 
         }
 
-        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort FilterBy, string FilterExpression)
+        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilter FilterBy, string FilterExpression)
         {
-            if (FilterBy == DVLD_General.Common.PeopleFilterSort.none)
+            if (FilterBy == DVLD_General.Common.PeopleFilter.none)
             {
                 return GetAllPeople();
             }
@@ -398,57 +398,9 @@ namespace DVLD_DataAccess
             return dataTable;
         }
 
-        static private string GetSortQuery(DVLD_General.Common.SortType Type, string ColumnName="")
-        {
-            if (Type == DVLD_General.Common.SortType.Ascending)
-            {
-                return $@"SELECT *
-                        FROM People
-                        ORDER BY {ColumnName} ASC";
-            }
-            else
-            {
-                return $@"SELECT *
-                          FROM People
-                          ORDER BY {ColumnName} Desc"; ;
-            }
-        }
-
-        static public DataTable SortPeople(DVLD_General.Common.PeopleFilterSort SortBy, DVLD_General.Common.SortType Type)
-        {
-            if(SortBy== DVLD_General.Common.PeopleFilterSort.none)
-            {
-                return GetAllPeople();
-            }
-            string ColumnName = _ColumnMap[SortBy];
-
-            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
-
-            string query = GetSortQuery(Type, ColumnName);
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-            DataTable dataTable = new DataTable();
-            try
-            {
-                connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
-
-            }
-            catch
-            {
-            }
-            finally
-            {
-                connection.Close();
-            }
-                  
-            return dataTable;
+        
 
 
-
-
-            }
         static public bool FindPerson(
              string NationalNo, ref int PersonID, ref string FirstName, ref string SecondName,
              ref string ThirdName, ref string LastName, ref DateTime DateOfBirth, ref byte Gendor, ref string Address,

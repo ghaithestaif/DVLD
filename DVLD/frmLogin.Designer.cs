@@ -154,6 +154,7 @@
             // rbRememberMe
             // 
             this.rbRememberMe.AutoSize = true;
+            this.rbRememberMe.Checked = true;
             this.rbRememberMe.Location = new System.Drawing.Point(185, 315);
             this.rbRememberMe.Name = "rbRememberMe";
             this.rbRememberMe.Size = new System.Drawing.Size(118, 20);

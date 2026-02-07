@@ -66,7 +66,11 @@ namespace DVLD
             _LogInUser=clsUser.FindByUsernameAndPassword(UserName, HashedPassword);
             if (_LogInUser != null)
             {
-
+                if(_LogInUser.IsActive == false)
+                {
+                    MessageBox.Show("Your account is inactive. Please contact the administrator.");
+                    return;
+                }
                 if (rbRememberMe.Checked)
                 {
                     Global_Classes.General.RemeberUser(UserName, txtPassword.Text);
@@ -76,7 +80,6 @@ namespace DVLD
                     Global_Classes.General.RemeberUser("","");
                 }
 
-                MessageBox.Show("Login successful!");
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
 

@@ -8,7 +8,7 @@ namespace DVLD_General
 {
     public class Common
     {
-        public enum PeopleFilterSort
+        public enum PeopleFilter
         {
             none,
             PersonID,
@@ -22,11 +22,17 @@ namespace DVLD_General
             Email,
             CountryID
         }
-        public enum SortType
+        public enum UsersFilter
         {
-            Ascending,
-            Descending
+            None,        // no filter
+            UserID,
+            PersonID,
+            UserName,
+            FullName,
+            IsActive
+            
         }
+
 
     }
 }
