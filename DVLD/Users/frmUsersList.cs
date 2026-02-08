@@ -17,9 +17,9 @@ namespace DVLD.Users
         {
             InitializeComponent();
         }
-        void _RefreshgridView()
+        void _RefreshgridView(DataTable dt)
         {
-            UsersGridView.DataSource=clsUser.GetAllUsers();
+            UsersGridView.DataSource = dt;
             UsersGridView.Columns[0].Width = 120;
             UsersGridView.Columns[1].Width = 120;
             UsersGridView.Columns[2].Width = 120;
@@ -34,7 +34,7 @@ namespace DVLD.Users
 
         private void frmUsersList_Load(object sender, EventArgs e)
         {
-            _RefreshgridView();
+            _RefreshgridView(clsUser.GetAllUsers());
             cbFilter.DataSource = Enum.GetValues(typeof(Common.UsersFilter));
         }
 
@@ -42,20 +42,43 @@ namespace DVLD.Users
         {
             string FilterExpression= txtFilter.Text.Trim();
             Common.UsersFilter filter = (Common.UsersFilter)cbFilter.SelectedItem;
-            UsersGridView.DataSource = clsUser.GetUsersByFilter(filter, FilterExpression);
+            _RefreshgridView(clsUser.GetUsersByFilter(filter, FilterExpression));
              txtNumberOfRecords.Text = (UsersGridView.Rows.Count-1).ToString();
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _RefreshgridView(clsUser.GetAllUsers());
             if ((Common.UsersFilter)cbFilter.SelectedItem != Common.UsersFilter.None)
             {
-                txtFilter.Enabled = true;
+                
+                if ((Common.UsersFilter)cbFilter.SelectedItem == Common.UsersFilter.IsActive)
+                {
+                    txtFilter.Enabled = false;
+                    txtFilter.Visible = false;
+
+                    cbIsActive.Visible = true;
+                    cbIsActive.Enabled = true;
+                    cbIsActive.SelectedIndex = 0; // Set default selection to "All"
+
+                }
+                else
+                {
+                    txtFilter.Enabled = true;
+                    txtFilter.Visible = true;
+                    cbIsActive.Visible = false;
+                    cbIsActive.Enabled = false;
+                }
                 txtFilter.Clear();
             }
             else
             {
+             
+                cbIsActive.Visible = false;
+                cbIsActive.Enabled = false;
                 txtFilter.Enabled = false;
+                txtFilter.Visible = false;
+
                 txtFilter.Clear();
                 UsersGridView.DataSource = clsUser.GetAllUsers();
             }
@@ -86,6 +109,29 @@ namespace DVLD.Users
                     e.Handled = true;
                 }
             }
+        }
+
+        private void btnAddNewUserButton_Click(object sender, EventArgs e)
+        {
+            AddEditUser AddNewUser=new AddEditUser();   
+            AddNewUser.ShowDialog();
+        }
+
+        private void cbIsActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbIsActive.SelectedItem.ToString() == "All")
+            {
+                _RefreshgridView(clsUser.GetAllUsers());
+            }
+            else if (cbIsActive.SelectedItem.ToString() == "Yes")
+            {
+                _RefreshgridView(clsUser.GetUsersByFilter(Common.UsersFilter.IsActive, "true"));
+            }
+            else if (cbIsActive.SelectedItem.ToString() == "No")
+            {
+                _RefreshgridView(clsUser.GetUsersByFilter(Common.UsersFilter.IsActive, "false"));
+            }
+             txtNumberOfRecords.Text = (UsersGridView.Rows.Count - 1).ToString();
         }
     }
 }

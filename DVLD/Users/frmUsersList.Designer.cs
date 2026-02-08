@@ -37,6 +37,7 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnAddNewUserButton = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.cbIsActive = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -44,15 +45,15 @@
             // UsersGridView
             // 
             this.UsersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGridView.Location = new System.Drawing.Point(7, 293);
-            this.UsersGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.UsersGridView.Location = new System.Drawing.Point(9, 361);
+            this.UsersGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UsersGridView.MultiSelect = false;
             this.UsersGridView.Name = "UsersGridView";
             this.UsersGridView.ReadOnly = true;
             this.UsersGridView.RowHeadersWidth = 51;
             this.UsersGridView.RowTemplate.Height = 24;
             this.UsersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UsersGridView.Size = new System.Drawing.Size(807, 242);
+            this.UsersGridView.Size = new System.Drawing.Size(1076, 298);
             this.UsersGridView.TabIndex = 9;
             // 
             // txtNumberOfRecords
@@ -60,10 +61,10 @@
             this.txtNumberOfRecords.AutoSize = false;
             this.txtNumberOfRecords.BackColor = System.Drawing.Color.Transparent;
             this.txtNumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfRecords.Location = new System.Drawing.Point(80, 549);
-            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNumberOfRecords.Location = new System.Drawing.Point(107, 676);
+            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumberOfRecords.Name = "txtNumberOfRecords";
-            this.txtNumberOfRecords.Size = new System.Drawing.Size(72, 18);
+            this.txtNumberOfRecords.Size = new System.Drawing.Size(96, 22);
             this.txtNumberOfRecords.TabIndex = 14;
             this.txtNumberOfRecords.TabStop = false;
             this.txtNumberOfRecords.Text = null;
@@ -73,10 +74,10 @@
             this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(8, 549);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(11, 676);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(68, 18);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(91, 22);
             this.guna2HtmlLabel3.TabIndex = 13;
             this.guna2HtmlLabel3.Text = "Records:";
             // 
@@ -97,12 +98,12 @@
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFilter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtFilter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilter.Location = new System.Drawing.Point(261, 261);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtFilter.Location = new System.Drawing.Point(349, 317);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.PlaceholderText = "";
             this.txtFilter.SelectedText = "";
-            this.txtFilter.Size = new System.Drawing.Size(187, 27);
+            this.txtFilter.Size = new System.Drawing.Size(249, 33);
             this.txtFilter.TabIndex = 19;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
@@ -119,10 +120,10 @@
             this.cbFilter.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbFilter.ItemHeight = 20;
-            this.cbFilter.Location = new System.Drawing.Point(70, 261);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilter.Location = new System.Drawing.Point(93, 321);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(187, 26);
+            this.cbFilter.Size = new System.Drawing.Size(248, 26);
             this.cbFilter.TabIndex = 18;
             this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
@@ -131,10 +132,10 @@
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(12, 264);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(16, 325);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(54, 18);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(72, 22);
             this.guna2HtmlLabel2.TabIndex = 17;
             this.guna2HtmlLabel2.Text = "FilterBy:";
             // 
@@ -144,10 +145,10 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(352, 215);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(469, 265);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(159, 27);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(212, 33);
             this.guna2HtmlLabel1.TabIndex = 16;
             this.guna2HtmlLabel1.Text = "Manage Users";
             // 
@@ -157,6 +158,7 @@
             this.btnAddNewUserButton.AutoRoundedCorners = true;
             this.btnAddNewUserButton.BackgroundImage = global::DVLD.Properties.Resources.Users_2_64;
             this.btnAddNewUserButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNewUserButton.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
             this.btnAddNewUserButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNewUserButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNewUserButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -164,29 +166,54 @@
             this.btnAddNewUserButton.FillColor = System.Drawing.Color.Transparent;
             this.btnAddNewUserButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddNewUserButton.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUserButton.Location = new System.Drawing.Point(753, 235);
-            this.btnAddNewUserButton.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNewUserButton.Location = new System.Drawing.Point(1004, 289);
+            this.btnAddNewUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddNewUserButton.Name = "btnAddNewUserButton";
-            this.btnAddNewUserButton.Size = new System.Drawing.Size(61, 47);
+            this.btnAddNewUserButton.Size = new System.Drawing.Size(81, 58);
             this.btnAddNewUserButton.TabIndex = 21;
+            this.btnAddNewUserButton.Click += new System.EventHandler(this.btnAddNewUserButton_Click);
             // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Image = global::DVLD.Properties.Resources.Users_2_4001;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(318, 10);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(424, 12);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(226, 201);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(301, 247);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 15;
             this.guna2PictureBox1.TabStop = false;
             // 
+            // cbIsActive
+            // 
+            this.cbIsActive.BackColor = System.Drawing.Color.Transparent;
+            this.cbIsActive.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbIsActive.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIsActive.FillColor = System.Drawing.Color.Silver;
+            this.cbIsActive.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbIsActive.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbIsActive.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbIsActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbIsActive.ItemHeight = 20;
+            this.cbIsActive.Items.AddRange(new object[] {
+            "All",
+            "Yes",
+            "No"});
+            this.cbIsActive.Location = new System.Drawing.Point(350, 321);
+            this.cbIsActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbIsActive.Name = "cbIsActive";
+            this.cbIsActive.Size = new System.Drawing.Size(248, 26);
+            this.cbIsActive.TabIndex = 23;
+            this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
+            // 
             // frmUsersList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 574);
+            this.ClientSize = new System.Drawing.Size(1096, 706);
+            this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.btnAddNewUserButton);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.cbFilter);
@@ -197,7 +224,7 @@
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.UsersGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmUsersList";
             this.Text = "frmUsersList";
             this.Load += new System.EventHandler(this.frmUsersList_Load);
@@ -218,5 +245,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnAddNewUserButton;
+        private Guna.UI2.WinForms.Guna2ComboBox cbIsActive;
     }
 }

@@ -221,7 +221,10 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.People.IspersonExist(NationalNo);
         }
-        
+        static public bool IspersonExist(int ID)
+        {
+            return DVLD_DataAccess.People.IspersonExist(ID);
+        }
         static public DataTable FilterPeople(DVLD_General.Common.PeopleFilter peopleFilter,string FilterExpression="")
         {
             return DVLD_DataAccess.People.FilterPeople(peopleFilter, FilterExpression);

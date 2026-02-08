@@ -359,6 +359,40 @@ namespace DVLD_DataAccess
             return IsExist;
 
         }
+        static public bool IspersonExist(int PersonID )
+        {
+            bool IsExist = false;
+
+            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+            string query = @"SELECT *
+                     FROM People
+                     WHERE PersonID = @PersonID";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                IsExist = reader.HasRows;
+
+
+                reader.Close();
+            }
+            catch
+            {
+                IsExist = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsExist;
+
+        }
 
         static public DataTable FilterPeople(DVLD_General.Common.PeopleFilter FilterBy, string FilterExpression)
         {
