@@ -17,13 +17,16 @@ namespace DVLD.People.Controls
 
        public  DVLD_Business.People SelectedPerson { get { return personCard1.SelectedPersonInfo; } }
 
-        //int _PersonID;
-        //public int PersonID { get { return _PersonID; } }
+
+        public int PersonID { get { return personCard1.PersonID; } }
         public PersonDetailsWithFilters()
         {
             InitializeComponent();
         }
-
+        public   void loadPersonInfo(int personID)
+        {
+            personCard1.LoadPersonInfo(personID);
+        }
 
         private void PersonDetailsWithFilters_Load(object sender, EventArgs e)
         {
@@ -34,8 +37,13 @@ namespace DVLD.People.Controls
         {
                 if (cbFilterBy.SelectedIndex == 0)
                 {
-                    //search by national no
-                    string NationalNO = txtFilterValue.Text;
+                    if(txtFilterValue.Text == "")
+                    {
+                        MessageBox.Show("Please enter a valid National Number", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                //search by national no
+                string NationalNO = txtFilterValue.Text;
                     personCard1.LoadPersonInfo(NationalNO);
                 if (!DVLD_Business.People.IspersonExist(personCard1.SelectedPersonInfo.NationalNo))
                 {
@@ -44,6 +52,11 @@ namespace DVLD.People.Controls
             }
                 else
                 {
+                if (txtFilterValue.Text == "")
+                {
+                    MessageBox.Show("Please enter a valid Person ID", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                     int ID = Convert.ToInt32(txtFilterValue.Text);
                     personCard1.LoadPersonInfo(ID);
                 if (!DVLD_Business.People.IspersonExist(personCard1.PersonID))
@@ -61,6 +74,9 @@ namespace DVLD.People.Controls
             addNewEditPeople.ShowDialog();
         }
 
-        
+        private void personCard1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

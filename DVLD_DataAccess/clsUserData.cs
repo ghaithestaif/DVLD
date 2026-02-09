@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
 using DVLD_General;
+using System.Diagnostics;
 public class clsUserData
 {
 
@@ -98,7 +99,7 @@ public class clsUserData
     {
         SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
         SqlCommand command = new SqlCommand(
-            @"INSERT INTO Users (PersonID, UserName, Password,PasswordSalt, IsActive)
+            @"INSERT INTO Users (PersonID, UserName, Password, IsActive)
               VALUES (@PersonID, @UserName, @Password, @IsActive);
               SELECT SCOPE_IDENTITY();",
             connection);
@@ -374,6 +375,32 @@ public class clsUserData
 
                 return dataTable;
             }
+        }
+    }
+
+    public static bool IsPersonLinkedToUser(int personID)
+    {
+        SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+
+        string query = $@"SELECT   People.PersonID
+                  FROM         People INNER JOIN
+                         Users ON People.PersonID = Users.PersonID
+						 where People.PersonID=@personID;";
+        SqlCommand command = new SqlCommand( query,  connection);
+        command.Parameters.AddWithValue("@PersonID", personID);
+        try
+        {
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            return reader.HasRows;
+        }
+        catch
+        {
+            return false;
+        }
+        finally
+        {
+            connection.Close();
         }
     }
 

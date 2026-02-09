@@ -135,6 +135,11 @@ namespace DVLD.People
         {
 
         }
+
+        private void pbPersonImage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

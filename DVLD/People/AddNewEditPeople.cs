@@ -301,7 +301,7 @@ namespace DVLD.People
             {
                 e.Cancel = true;
                 txtFirstName.Focus();
-                errorProvider1.SetError(txtFirstName, "Phone cannot be empty.");
+                errorProvider1.SetError(txtFirstName, "FirstName cannot be empty.");
 
 
             }
@@ -314,7 +314,7 @@ namespace DVLD.People
             {
                 e.Cancel = true;
                 txtSecondName.Focus();
-                errorProvider1.SetError(txtSecondName, "Phone cannot be empty.");
+                errorProvider1.SetError(txtSecondName, "Second Name cannot be empty.");
 
 
             }
@@ -327,7 +327,7 @@ namespace DVLD.People
             {
                 e.Cancel = true;
                 txtLastName.Focus();
-                errorProvider1.SetError(txtLastName, "Phone cannot be empty.");
+                errorProvider1.SetError(txtLastName, "Last Name cannot be empty.");
 
 
             }
@@ -355,7 +355,7 @@ namespace DVLD.People
             {
                 e.Cancel = true;
                 txtAddress.Focus();
-                errorProvider1.SetError(txtAddress, "Phone cannot be empty.");
+                errorProvider1.SetError(txtAddress, "Address cannot be empty.");
 
 
             }
@@ -417,5 +417,7 @@ namespace DVLD.People
 
             
         }
+
+        
     }
 }

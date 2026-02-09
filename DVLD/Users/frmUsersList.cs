@@ -17,6 +17,11 @@ namespace DVLD.Users
         {
             InitializeComponent();
         }
+        void _ReloadUsers()
+        {
+            DataTable dt = clsUser.GetAllUsers();
+            _RefreshgridView(dt);
+        }
         void _RefreshgridView(DataTable dt)
         {
             UsersGridView.DataSource = dt;
@@ -113,7 +118,8 @@ namespace DVLD.Users
 
         private void btnAddNewUserButton_Click(object sender, EventArgs e)
         {
-            AddEditUser AddNewUser=new AddEditUser();   
+            AddEditUser AddNewUser=new AddEditUser(-1);
+            AddNewUser.UserSaved += _ReloadUsers;
             AddNewUser.ShowDialog();
         }
 
@@ -133,5 +139,7 @@ namespace DVLD.Users
             }
              txtNumberOfRecords.Text = (UsersGridView.Rows.Count - 1).ToString();
         }
+
+        
     }
 }

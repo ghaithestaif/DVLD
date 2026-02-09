@@ -148,9 +148,10 @@ public class clsUser
 
         if (_Mode==enMode.Addnew)
         {
-           int Person= _AddNew();
+           int UserID= _AddNew();
+            this.UserID = UserID;
             _Mode = enMode.Update;
-            return Person > 0;
+            return UserID > 0;
         }
         else
         {
@@ -165,5 +166,9 @@ public class clsUser
     public static DataTable GetUsersByFilter(Common.UsersFilter filter, string FilterExpression)
     {
         return clsUserData.FilterUsers(filter, FilterExpression);
+    }
+    public static bool IsPersonLinkedToUser(int PersonID)
+    {
+        return clsUserData.IsPersonLinkedToUser(PersonID);
     }
 }

@@ -109,6 +109,18 @@
     <Compile Include="Users\AddEditUser.Designer.cs">
       <DependentUpon>AddEditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\Controls\crtUserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\Controls\crtUserCard.Designer.cs">
+      <DependentUpon>crtUserCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUserCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUserCard.Designer.cs">
+      <DependentUpon>frmUserCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmUsersList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,12 @@
     </Compile>
     <EmbeddedResource Include="Users\AddEditUser.resx">
       <DependentUpon>AddEditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Controls\crtUserCard.resx">
+      <DependentUpon>crtUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUserCard.resx">
+      <DependentUpon>frmUserCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmUsersList.resx">
       <DependentUpon>frmUsersList.cs</DependentUpon>
@@ -313,6 +331,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Person 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Password 321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

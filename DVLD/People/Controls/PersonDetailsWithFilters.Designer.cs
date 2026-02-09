@@ -119,6 +119,7 @@
             this.personCard1.Name = "personCard1";
             this.personCard1.Size = new System.Drawing.Size(1033, 308);
             this.personCard1.TabIndex = 21;
+            this.personCard1.Load += new System.EventHandler(this.personCard1_Load);
             // 
             // PersonDetailsWithFilters
             // 
