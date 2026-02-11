@@ -13,14 +13,17 @@ using System.Windows.Forms;
 
 namespace DVLD.People
 {
+    
+
     public partial class AddNewEditPeople : Form
     {
         private DVLD_Business.People _AddEditPerson = new DVLD_Business.People();
         public int PersonID;
 
         public DVLD_Business.People.enMode mode = DVLD_Business.People.enMode.enAddnew;
-        public event Action DataBack;
-        // Create a protected method to raise the event with a parameter
+        public event Action<int> DataBack;
+        public event Action RefreshData;
+
         
         public AddNewEditPeople(int PersonID)
         {
@@ -61,8 +64,7 @@ namespace DVLD.People
 
         private void AddNewEditPeople_Load(object sender, EventArgs e)
         {
-            LoadFormTitle();
-            
+            LoadFormTitle();   
 
         }
         private void _LoadImage(string Path)
@@ -128,6 +130,7 @@ namespace DVLD.People
         }  
         private void rbtnMan_CheckedChanged(object sender, EventArgs e)
         {
+             
             if (rbtnMan.Checked)
             {
                 pPicture.Image = Resources.Male_512;
@@ -217,7 +220,7 @@ namespace DVLD.People
 
             if (_AddEditPerson.Save())
             {
-                DataBack?.Invoke();
+                DataBack?.Invoke(_AddEditPerson.PersonID);
 
                 if (mode == DVLD_Business.People.enMode.enAddnew)
                 {

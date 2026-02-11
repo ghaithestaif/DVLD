@@ -12,30 +12,31 @@ namespace DVLD.Users
 {
     public partial class AddEditUser : Form
     {
-        public event Action<int> UserSaved;
+       public event Action UserSaved;
 
         enum enMode { Addnew,Update}
         enMode _mode;
         
-
-        public AddEditUser(int PersonID)
+        int _UserID;
+        clsUser _User=new clsUser();
+        public int UserID { get { return _UserID; } }
+        clsUser User { get { return _User; } }  
+        public AddEditUser(int UserID)
         {
-            if (PersonID == -1) 
-            {
-                _mode = enMode.Addnew;
-            } 
-            else
-            {
-                _mode= enMode.Update;
-                personDetailsWithFilters1.loadPersonInfo(PersonID);
-            }
-                InitializeComponent();
+            InitializeComponent();
+            _UserID = UserID;
         }
         
 
         private void btnNext_Click(object sender, EventArgs e)
 
         {
+            if (_mode == enMode.Update)
+            {
+                tabControl1.SelectedTab = tabPage2;
+                return;
+            }
+
             if (!(DVLD_Business.People.IspersonExist(personDetailsWithFilters1.PersonID)))
             {
                 MessageBox.Show("Please select a person to continue.", "No Person Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -48,9 +49,32 @@ namespace DVLD.Users
             }
             tabControl1.SelectedTab = tabPage2;
         }
+        void _LoadLogInInfo()
+        {
+            //this is only called when it is in update mode so the passwords are not going to be displayed
+           llUserID.Text= _User.UserID.ToString();  
+            txtConfirmPassword.Enabled= false;
+            txtPassword.Enabled= false;
+            txtUserName.Text= _User.UserName.ToString();
+            rbIsActive.Checked=_User.IsActive;  
+        }
 
         private void AddEditUser_Load(object sender, EventArgs e)
         {
+            if (_UserID == -1)
+            {
+                _mode = enMode.Addnew;
+            }
+            else
+            {
+                _mode = enMode.Update;
+                _User = clsUser.Find(UserID);
+                _LoadLogInInfo();
+                personDetailsWithFilters1.loadPersonInfo(_User.Person.PersonID);
+                personDetailsWithFilters1.FilterEnabled = false;
+                lFormTitle.Text = "Update User";
+            }
+
 
         }
 
@@ -66,6 +90,7 @@ namespace DVLD.Users
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
+            
             if (string.IsNullOrEmpty(txtPassword.Text))
             {
                 e.Cancel = true;
@@ -76,6 +101,7 @@ namespace DVLD.Users
 
         private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
         {
+            
             if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
             {
                 e.Cancel = true;
@@ -112,10 +138,7 @@ namespace DVLD.Users
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         private bool _ValidateInputs()
         {
             errorProvider1.Clear();
@@ -126,13 +149,13 @@ namespace DVLD.Users
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) && _mode != enMode.Update)
             {
                 errorProvider1.SetError(txtPassword, "Password is required");
                 return false;
             }
 
-            if (txtPassword.Text != txtConfirmPassword.Text)
+            if (txtPassword.Text != txtConfirmPassword.Text && _mode != enMode.Update)
             {
                 errorProvider1.SetError(txtConfirmPassword, "Passwords do not match");
                 return false;
@@ -141,18 +164,20 @@ namespace DVLD.Users
             return true;
         }
 
-        private clsUser _FillObject()
+        private void _FillObject()
         {
             // first validate the form
-            _ValidateInputs();
+            if (_mode == enMode.Update) {
+                _User.UserName = txtUserName.Text;
+                _User.IsActive = rbIsActive.Checked;
+                return;
+            }
 
-
-            clsUser user = new clsUser();
-            user.Person = DVLD_Business.People.Find(personDetailsWithFilters1.PersonID);
-            user.UserName = txtUserName.Text;
-            user.Password = Util.Utill.HashPassword(txtPassword.Text);
-            user.IsActive = rbIsActive.Checked;
-            return user;
+            _User.Person = DVLD_Business.People.Find(personDetailsWithFilters1.PersonID);
+            _User.UserName = txtUserName.Text;
+            _User.Password = Util.Utill.HashPassword(txtPassword.Text);
+            _User.IsActive = rbIsActive.Checked;
+            
         }
         void ChangeFormTitle()
         {
@@ -160,22 +185,28 @@ namespace DVLD.Users
             {
                 _mode = enMode.Update;
                 lFormTitle.Text = "Update User";
-
+                personDetailsWithFilters1.FilterEnabled = false;
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            clsUser user = _FillObject();
-            if (user != null)
+            if (!_ValidateInputs())
             {
-                if (user.Save())
+                return;
+            }
+
+            _FillObject();
+            if (_User != null)
+            {
+                if (_User.Save())
                 {
+                    
                     MessageBox.Show("User saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UserID.Text = user.UserID.ToString();
+                    llUserID.Text = _User.UserID.ToString();
                     ChangeFormTitle();
-                    UserSaved?.Invoke(user.UserID);
+                    personDetailsWithFilters1.FilterEnabled = false;
+                    UserSaved?.Invoke();
 
                 }
                 else
@@ -184,6 +215,16 @@ namespace DVLD.Users
                 }
             }
             
+
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void rbIsActive_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

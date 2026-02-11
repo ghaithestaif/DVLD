@@ -15,8 +15,12 @@ namespace DVLD.People.Controls
 
         
 
-       public  DVLD_Business.People SelectedPerson { get { return personCard1.SelectedPersonInfo; } }
 
+        public bool FilterEnabled
+        {
+            get { return gbFilters.Enabled; }
+            set { gbFilters.Enabled = value; }
+        }
 
         public int PersonID { get { return personCard1.PersonID; } }
         public PersonDetailsWithFilters()
@@ -71,7 +75,7 @@ namespace DVLD.People.Controls
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             AddNewEditPeople addNewEditPeople = new AddNewEditPeople(-1);
-            addNewEditPeople.DataBack += () => loadPersonInfo(personCard1.PersonID);
+            addNewEditPeople.DataBack += loadPersonInfo;
             addNewEditPeople.ShowDialog();
         }
 
@@ -79,5 +83,7 @@ namespace DVLD.People.Controls
         {
 
         }
+
+        
     }
 }

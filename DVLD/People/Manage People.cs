@@ -102,14 +102,14 @@ namespace DVLD.People
         private void btnAddNewPersonButton_Click(object sender, EventArgs e)
         {
             AddNewEditPeople addPerson = new AddNewEditPeople(-1);
-            addPerson.DataBack += _RefreshGrid;
+            addPerson.RefreshData += _RefreshGrid;
             addPerson.ShowDialog();
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddNewEditPeople editPeople = new AddNewEditPeople((int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value);
             editPeople.mode = DVLD_Business.People.enMode.enUpdate;
-            editPeople.DataBack += _RefreshGrid;
+            editPeople.RefreshData += _RefreshGrid;
             editPeople.ShowDialog();
 
         }

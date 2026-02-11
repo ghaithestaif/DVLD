@@ -16,19 +16,7 @@ namespace DVLD.Util
     internal class Utill
     {
 
-        static string GenerateSaltString()
-        {
-            byte[] salt = new byte[16]; // 16 bytes = good random salt
-
-            // Fill with cryptographically secure random bytes
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-
-            // Convert to Base64 string to store safely in DB
-            return Convert.ToBase64String(salt);
-        }
+        
         public static string HashPassword(string password)
         {
             // Convert password string to bytes

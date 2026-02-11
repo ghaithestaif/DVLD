@@ -17,7 +17,7 @@ namespace DVLD.Users
         {
             InitializeComponent();
         }
-        void _ReloadUsers(int ID)
+        void _ReloadUsers()
         {
             DataTable dt = clsUser.GetAllUsers();
             _RefreshgridView(dt);
@@ -149,9 +149,31 @@ namespace DVLD.Users
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int ID = (int)UsersGridView.SelectedRows[0].Cells[0].Value;
-            frmChangePassword form =new frmChangePassword(ID);
+            int UserID = (int)UsersGridView.SelectedRows[0].Cells[0].Value;
+            frmChangePassword form =new frmChangePassword(UserID);
             form.ShowDialog();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int UserID = (int)UsersGridView.SelectedRows[0].Cells[0].Value;
+            AddEditUser UpdateUser = new AddEditUser(UserID);
+            UpdateUser.UserSaved += _ReloadUsers;
+            UpdateUser.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int UserID = (int)UsersGridView.SelectedRows[0].Cells[0].Value;
+            clsUser.Delete(UserID);
+            _ReloadUsers();
+        }
+
+        private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEditUser AddNewUser = new AddEditUser(-1);
+            AddNewUser.UserSaved -= _ReloadUsers;
+            AddNewUser.ShowDialog();
         }
     }
 }

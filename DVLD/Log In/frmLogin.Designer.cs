@@ -36,7 +36,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnLogIn = new System.Windows.Forms.Button();
-            this.rbRememberMe = new System.Windows.Forms.RadioButton();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -45,6 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.rbRememberMe = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -122,8 +122,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.btnLogIn);
             this.panel2.Controls.Add(this.rbRememberMe);
+            this.panel2.Controls.Add(this.btnLogIn);
             this.panel2.Controls.Add(this.txtPassword);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.pictureBox2);
@@ -150,18 +150,6 @@
             this.btnLogIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
-            // 
-            // rbRememberMe
-            // 
-            this.rbRememberMe.AutoSize = true;
-            this.rbRememberMe.Checked = true;
-            this.rbRememberMe.Location = new System.Drawing.Point(185, 315);
-            this.rbRememberMe.Name = "rbRememberMe";
-            this.rbRememberMe.Size = new System.Drawing.Size(118, 20);
-            this.rbRememberMe.TabIndex = 3;
-            this.rbRememberMe.TabStop = true;
-            this.rbRememberMe.Text = "Remember Me";
-            this.rbRememberMe.UseVisualStyleBackColor = true;
             // 
             // txtPassword
             // 
@@ -245,6 +233,16 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // rbRememberMe
+            // 
+            this.rbRememberMe.AutoSize = true;
+            this.rbRememberMe.Location = new System.Drawing.Point(185, 318);
+            this.rbRememberMe.Name = "rbRememberMe";
+            this.rbRememberMe.Size = new System.Drawing.Size(119, 20);
+            this.rbRememberMe.TabIndex = 8;
+            this.rbRememberMe.Text = "Remember Me";
+            this.rbRememberMe.UseVisualStyleBackColor = true;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -286,6 +284,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogIn;
-        private System.Windows.Forms.RadioButton rbRememberMe;
+        private System.Windows.Forms.CheckBox rbRememberMe;
     }
 }

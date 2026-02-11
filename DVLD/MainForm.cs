@@ -52,7 +52,14 @@ namespace DVLD
 
         private void changPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmChangePassword form = new frmChangePassword();
+           frmChangePassword form = new frmChangePassword(Global_Classes.General.CurrentUser.UserID);
+            form.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserCard form = new frmUserCard(Global_Classes.General.CurrentUser.UserID);
+            form.ShowDialog();
         }
     }
 }

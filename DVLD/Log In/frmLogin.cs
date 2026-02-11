@@ -8,34 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics.Eventing.Reader;
 namespace DVLD
 {
     public partial class frmLogin : Form
     {
         clsUser _LogInUser= new clsUser();
-        void FillUserData()
-        {
-            string directoryPath = System.IO.Directory.GetCurrentDirectory();
-            string FileName = "Data.txt";
-            string FileDestination = directoryPath + "\\" + FileName;
-
-            if (!File.Exists(FileDestination)) {
-                return;
-            }
-            string[] lines = System.IO.File.ReadAllLines(FileDestination);
-
-            for (int i = 0;i < lines.Length; i++) { 
-                string item = lines[i].Trim();
-                if (i==0)
-                {
-                    txtUserName.Text = item;
-                }
-                else
-                {
-                    txtPassword.Text = item;
-                }
-            }
-        }
+        
         public frmLogin()
         {
             InitializeComponent();
@@ -44,7 +23,23 @@ namespace DVLD
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            FillUserData();
+            string Pass = "",
+                UserName = "";
+
+            if (Global_Classes.General.GetStoredInfo(ref Pass, ref UserName))
+            {
+
+                txtPassword.Text =Pass;
+                txtUserName.Text =UserName;
+                rbRememberMe.Checked = true;
+
+            }
+            else
+            {
+                rbRememberMe.Checked = false; 
+            }
+            
+            
         }
 
 
@@ -63,7 +58,7 @@ namespace DVLD
 
             string HashedPassword = Util.Utill.HashPassword(enteredPassword);
 
-            _LogInUser=clsUser.FindByUsernameAndPassword(UserName, HashedPassword);
+            _LogInUser = clsUser.FindByUsernameAndPassword(UserName, HashedPassword);
             if (_LogInUser != null)
             {
                 if(_LogInUser.IsActive == false)
@@ -79,18 +74,18 @@ namespace DVLD
                 {
                     Global_Classes.General.RemeberUser("","");
                 }
-
+                Global_Classes.General.CurrentUser = _LogInUser;
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
 
-                this.Hide();
+               this.Hide();
             } 
             else
             {
                 MessageBox.Show("Invalid username or password.");
             }
 
-
+            
 
         }
     }
