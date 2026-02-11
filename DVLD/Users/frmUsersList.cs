@@ -17,7 +17,7 @@ namespace DVLD.Users
         {
             InitializeComponent();
         }
-        void _ReloadUsers()
+        void _ReloadUsers(int ID)
         {
             DataTable dt = clsUser.GetAllUsers();
             _RefreshgridView(dt);
@@ -140,6 +140,18 @@ namespace DVLD.Users
              txtNumberOfRecords.Text = (UsersGridView.Rows.Count - 1).ToString();
         }
 
-        
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ID = (int)UsersGridView.SelectedRows[0].Cells[0].Value;
+            frmUserCard UserCard=new frmUserCard(ID);
+            UserCard.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ID = (int)UsersGridView.SelectedRows[0].Cells[0].Value;
+            frmChangePassword form =new frmChangePassword(ID);
+            form.ShowDialog();
+        }
     }
 }

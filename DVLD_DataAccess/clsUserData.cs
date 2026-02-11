@@ -46,7 +46,7 @@ public class clsUserData
                 outUserName = (string)reader["UserName"];
                 outPassword = (string)reader["Password"];
                 outIsActive = (bool)reader["IsActive"];
-                int personID = (int)reader["PersonID"];                
+                PersonID = (int)reader["PersonID"];                
 
                 return true;
             }

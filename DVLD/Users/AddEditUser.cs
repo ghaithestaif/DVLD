@@ -12,7 +12,7 @@ namespace DVLD.Users
 {
     public partial class AddEditUser : Form
     {
-        public event Action UserSaved;
+        public event Action<int> UserSaved;
 
         enum enMode { Addnew,Update}
         enMode _mode;
@@ -163,8 +163,10 @@ namespace DVLD.Users
 
             }
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             clsUser user = _FillObject();
             if (user != null)
             {
@@ -173,7 +175,7 @@ namespace DVLD.Users
                     MessageBox.Show("User saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UserID.Text = user.UserID.ToString();
                     ChangeFormTitle();
-                    UserSaved?.Invoke();
+                    UserSaved?.Invoke(user.UserID);
 
                 }
                 else

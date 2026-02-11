@@ -127,7 +127,7 @@ namespace DVLD.People
         private void llEditPersonInfo_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AddNewEditPeople frm = new AddNewEditPeople(_PersonID);
-            frm.PersonSaved += () => LoadPersonInfo(_PersonID);
+            frm.DataBack += () => LoadPersonInfo(_PersonID);
             frm.ShowDialog();
         }
 

@@ -28,20 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.crtUserCard1 = new DVLD.Users.Controls.crtUserCard();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
+            // 
+            // crtUserCard1
+            // 
+            this.crtUserCard1.Location = new System.Drawing.Point(12, 100);
+            this.crtUserCard1.Name = "crtUserCard1";
+            this.crtUserCard1.Size = new System.Drawing.Size(774, 346);
+            this.crtUserCard1.TabIndex = 0;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(263, 41);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(220, 33);
+            this.guna2HtmlLabel1.TabIndex = 2;
+            this.guna2HtmlLabel1.Text = "User Information";
             // 
             // frmUserCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 458);
+            this.Controls.Add(this.guna2HtmlLabel1);
+            this.Controls.Add(this.crtUserCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmUserCard";
             this.Text = "frmUserCard";
+            this.Load += new System.EventHandler(this.frmUserCard_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private Controls.crtUserCard crtUserCard1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }

@@ -49,5 +49,10 @@ namespace DVLD
             frmUsersList frmUsersList=new frmUsersList();
             frmUsersList.ShowDialog();
         }
+
+        private void changPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmChangePassword form = new frmChangePassword();
+        }
     }
 }

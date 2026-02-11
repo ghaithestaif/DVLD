@@ -71,6 +71,7 @@ namespace DVLD.People.Controls
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
             AddNewEditPeople addNewEditPeople = new AddNewEditPeople(-1);
+            addNewEditPeople.DataBack += () => loadPersonInfo(personCard1.PersonID);
             addNewEditPeople.ShowDialog();
         }
 

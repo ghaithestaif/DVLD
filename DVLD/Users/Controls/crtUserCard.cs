@@ -22,7 +22,7 @@ namespace DVLD.Users.Controls
         {
             InitializeComponent();
         }
-        void _loadUserInformation(int UserID)
+       public void loadUserInformation(int UserID)
         {
             _User = clsUser.Find(UserID);
             _UserID=_User.UserID;

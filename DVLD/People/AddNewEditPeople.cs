@@ -17,9 +17,11 @@ namespace DVLD.People
     {
         private DVLD_Business.People _AddEditPerson = new DVLD_Business.People();
         public int PersonID;
-        public event Action PersonSaved;
-        public DVLD_Business.People.enMode mode = DVLD_Business.People.enMode.enAddnew;
 
+        public DVLD_Business.People.enMode mode = DVLD_Business.People.enMode.enAddnew;
+        public event Action DataBack;
+        // Create a protected method to raise the event with a parameter
+        
         public AddNewEditPeople(int PersonID)
         {
 
@@ -123,11 +125,7 @@ namespace DVLD.People
             else { rbtnFemale.Checked = true; }
 
 
-        }
-
-        
-        
-
+        }  
         private void rbtnMan_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnMan.Checked)
@@ -141,12 +139,6 @@ namespace DVLD.People
             }
 
         }
-
-
-
-
-
-
         private bool _HandleImage()
         {
             if(_AddEditPerson.ImagePath!=pPicture.ImageLocation)
@@ -200,13 +192,7 @@ namespace DVLD.People
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            //if (!this.ValidateChildren())
-            //{
-            //    //Here we dont continue becuase the form is not valid
-            //    MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-
-            //}
+          
             if (!_HandleImage())
             {
                 return;
@@ -220,7 +206,6 @@ namespace DVLD.People
             _AddEditPerson.Phone = txtPhone.Text;
             _AddEditPerson.Address = txtAddress.Text;
             _AddEditPerson.Email = txtEmail.Text;
-          //  _AddEditPerson.ImagePath = ImageFilePath;
 
             _AddEditPerson.NationalityCountryID = (int)cbCountry.SelectedValue;
             if (rbtnFemale.Checked)
@@ -230,15 +215,9 @@ namespace DVLD.People
             else { _AddEditPerson.Gendor = 0; }
 
 
-
-
-
-
-
-
             if (_AddEditPerson.Save())
             {
-                PersonSaved?.Invoke();
+                DataBack?.Invoke();
 
                 if (mode == DVLD_Business.People.enMode.enAddnew)
                 {
