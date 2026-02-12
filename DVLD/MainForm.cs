@@ -1,4 +1,5 @@
-﻿using DVLD.People;
+﻿using DVLD.ApplicationTypes;
+using DVLD.People;
 using DVLD.Users;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,17 @@ namespace DVLD
         {
             frmUserCard form = new frmUserCard(Global_Classes.General.CurrentUser.UserID);
             form.ShowDialog();
+        }
+
+        private void drivingLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void manageApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmApplicationTypeList frmApplicationTypeList=new frmApplicationTypeList();
+            frmApplicationTypeList.ShowDialog();
         }
     }
 }
