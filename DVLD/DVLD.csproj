@@ -115,6 +115,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global Classes\Utill.cs" />
     <Compile Include="Global Classes\Validating.cs" />
+    <Compile Include="TestTypes\frmEditTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTypes\frmEditTestType.Designer.cs">
+      <DependentUpon>frmEditTestType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestTypes\frmTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTypes\frmTestType.Designer.cs">
+      <DependentUpon>frmTestType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\AddEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +194,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TestTypes\frmEditTestType.resx">
+      <DependentUpon>frmEditTestType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestTypes\frmTestType.resx">
+      <DependentUpon>frmTestType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\AddEditUser.resx">
       <DependentUpon>AddEditUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -385,6 +403,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\money 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Schedule Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Schedule Test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TestType 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit 322.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

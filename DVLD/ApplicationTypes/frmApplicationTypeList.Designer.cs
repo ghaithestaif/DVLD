@@ -48,7 +48,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(159, 191);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(259, 191);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(419, 38);
             this.guna2HtmlLabel1.TabIndex = 1;
@@ -92,7 +92,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLD.Properties.Resources.Application_Types_5123;
-            this.pictureBox1.Location = new System.Drawing.Point(248, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(348, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(220, 173);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -111,7 +111,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(753, 269);
+            this.dataGridView1.Size = new System.Drawing.Size(924, 269);
             this.dataGridView1.TabIndex = 10;
             // 
             // btnClose
@@ -130,7 +130,7 @@
             this.btnClose.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(613, 525);
+            this.btnClose.Location = new System.Drawing.Point(785, 525);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(131, 34);
@@ -142,7 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 563);
+            this.ClientSize = new System.Drawing.Size(928, 558);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lRecordsNumber);

@@ -20,9 +20,9 @@ namespace DVLD.ApplicationTypes
         {
             DataTable dt = DVLD_Business.clsApplicationType.GetAll();
             dataGridView1.DataSource = dt;
-            dataGridView1.Columns[0].Width = 130;
-            dataGridView1.Columns[1].Width = 250;
-            dataGridView1.Columns[2].Width = 130;
+            dataGridView1.Columns[0].Width = 175;
+            dataGridView1.Columns[1].Width = 290;
+            dataGridView1.Columns[2].Width = 175;
             lRecordsNumber.Text = (dt.Rows.Count).ToString();
 
         }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="clsApplicationTypeData.cs" />
+    <Compile Include="clsTestTypeData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="People.cs" />
