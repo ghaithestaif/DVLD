@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="clsApplicationData.cs" />
     <Compile Include="clsApplicationTypeData.cs" />
+    <Compile Include="clsLicenseClassData.cs" />
     <Compile Include="clsTestTypeData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Countries.cs" />
