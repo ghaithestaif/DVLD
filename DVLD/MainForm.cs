@@ -1,4 +1,5 @@
-﻿using DVLD.ApplicationTypes;
+﻿using DVLD.Application;
+using DVLD.ApplicationTypes;
 using DVLD.People;
 using DVLD.TestTypes;
 using DVLD.Users;
@@ -79,6 +80,17 @@ namespace DVLD
         {
             frmTestType frmTestTypeList =new frmTestType();  
            frmTestTypeList.ShowDialog();
+        }
+
+        private void addNewLocalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditLocalDrivingLicenseApplication frmAddEditLocalDrivingLicenseApplication = new frmAddEditLocalDrivingLicenseApplication(-1);
+            frmAddEditLocalDrivingLicenseApplication.ShowDialog();
         }
     }
 }
