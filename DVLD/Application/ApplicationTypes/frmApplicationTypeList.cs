@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Buisness;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,7 @@ namespace DVLD.ApplicationTypes
         }
         void _ReloadDatagrid()
         {
-            DataTable dt = DVLD_Business.clsApplicationType.GetAll();
+            DataTable dt = clsApplicationType.GetAllApplicationTypes();
             dataGridView1.DataSource = dt;
             dataGridView1.Columns[0].Width = 175;
             dataGridView1.Columns[1].Width = 290;

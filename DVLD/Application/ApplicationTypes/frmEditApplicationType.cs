@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD_Buisness;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,9 +29,9 @@ namespace DVLD.ApplicationTypes
         }
         public void _LoadApplicationTypeInfo()
         {
-            lUserID.Text = _ApplicationType.ApplicationTypeID.ToString();
-            txtFees.Text=_ApplicationType.ApplicationFees.ToString();
-            txtTitle.Text=_ApplicationType.ApplicationTypeTitle.ToString();
+            lUserID.Text = _ApplicationType.ID.ToString();
+            txtFees.Text=_ApplicationType.Fees.ToString();
+            txtTitle.Text=_ApplicationType.Title.ToString();
 
         }
 
@@ -76,10 +77,10 @@ namespace DVLD.ApplicationTypes
                 return;
             }
             //filling the object
-            _ApplicationType.ApplicationFees = Convert.ToDecimal(txtFees.Text);
-            _ApplicationType.ApplicationTypeTitle = txtTitle.Text;
+            _ApplicationType.Fees = Convert.ToDecimal(txtFees.Text);
+            _ApplicationType.Title = txtTitle.Text;
 
-            if (!_ApplicationType.Update())
+            if (!_ApplicationType.Save())
             {
                 MessageBox.Show("the Application type was not updated");
             }

@@ -1,59 +1,99 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.Eventing.Reader;
 using DVLD_DataAccess;
-namespace DVLD_Business
+
+namespace DVLD_Buisness
 {
     public class clsApplicationType
     {
 
-        public int ApplicationTypeID { get; set; }
-        public string ApplicationTypeTitle { get; set; }
-        public decimal ApplicationFees { get; set; }
+        public enum enMode { AddNew = 0, Update = 1 };
+        public enMode Mode = enMode.AddNew;
 
-        public clsApplicationType() { }
 
-        private clsApplicationType(int id, string title, decimal fees)
+        public int ID { set; get; }
+        public string Title { set; get; }
+        public decimal Fees { set; get; }
+
+        public clsApplicationType()
+
         {
-            ApplicationTypeID = id;
-            ApplicationTypeTitle = title;
-            ApplicationFees = fees;
+            this.ID = -1;
+            this.Title = "";
+            this.Fees = 0;
+            Mode = enMode.AddNew;
+
         }
 
-        public static clsApplicationType Find(int applicationTypeID)
-        {
-            string title = "";
-            decimal fees = 0;
+        public clsApplicationType(int ID, string ApplicationTypeTitel, decimal ApplicationTypeFees)
 
-            if (clsApplicationTypeData.Find(applicationTypeID, ref title, ref fees))
-            {
-                return new clsApplicationType(applicationTypeID, title, fees);
-            }
+        {
+            this.ID = ID;
+            this.Title = ApplicationTypeTitel;
+            this.Fees = ApplicationTypeFees;
+            Mode = enMode.Update;
+        }
+
+        private bool _AddNewApplicationType()
+        {
+            //call DataAccess Layer 
+
+            this.ID = clsApplicationTypeData.AddNewApplicationType(this.Title, this.Fees);
+
+
+            return (this.ID != -1);
+        }
+
+        private bool _UpdateApplicationType()
+        {
+            //call DataAccess Layer 
+
+            return clsApplicationTypeData.UpdateApplicationType(this.ID, this.Title, this.Fees);
+        }
+
+        public static clsApplicationType Find(int ID)
+        {
+            string Title = ""; decimal Fees = 0;
+
+            if (clsApplicationTypeData.GetApplicationTypeInfoByID((int)ID, ref Title, ref Fees))
+
+                return new clsApplicationType(ID, Title, Fees);
             else
-            {
                 return null;
-            }
+
         }
 
-
-        public  bool Update()
-        {
-
-            
-            return clsApplicationTypeData.UpdateApplicationType(
-                this.ApplicationTypeID,
-                this.ApplicationTypeTitle,
-                this.ApplicationFees);
-        }
-        public static DataTable GetAll()
+        public static DataTable GetAllApplicationTypes()
         {
             return clsApplicationTypeData.GetAllApplicationTypes();
+
         }
 
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewApplicationType())
+                    {
 
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateApplicationType();
+
+            }
+
+            return false;
+        }
 
     }
 }

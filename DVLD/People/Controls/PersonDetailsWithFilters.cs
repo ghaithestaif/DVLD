@@ -34,7 +34,7 @@ namespace DVLD.People.Controls
 
         private void PersonDetailsWithFilters_Load(object sender, EventArgs e)
         {
-
+            cbFilterBy.SelectedIndex = 0;
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -84,6 +84,9 @@ namespace DVLD.People.Controls
 
         }
 
-        
+        private void gbFilters_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

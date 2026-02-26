@@ -1,9 +1,11 @@
-﻿using System;
+﻿using DVLD_Buisness;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DVLD_Business.clsApplication;
 
 namespace DVLD_Business
 {
@@ -11,12 +13,38 @@ namespace DVLD_Business
     {
         public enum enMode { enUpdate, enAddnew }
         private enMode _Mode;
-
+ 
         public int ApplicationID { get; set; }
         public DVLD_Business.People ApplicantPerson{ get; set; }
         public DateTime ApplicationDate { get; set; }
+        public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
+
+
         public clsApplicationType ApplicationType { get; set; }
-        public byte ApplicationStatus { get; set; }
+
+        public enApplicationStatus ApplicationStatus { set; get; }
+        public string StatusText
+        {
+            get {
+                switch (ApplicationStatus)
+                {
+                    case enApplicationStatus.New:
+                        return "New";
+                        
+                    case enApplicationStatus.Cancelled:
+                        return "Cancelled";
+                        
+                    case enApplicationStatus.Completed:
+                        return "Completed";
+                    default:
+                        return "Unknown";
+                }
+
+
+
+            }
+        }
+
         public DateTime LastStatusDate { get; set; }
         public decimal PaidFees { get; set; }
         public   clsUser CreatedByUser{ get; set; }
@@ -41,7 +69,7 @@ namespace DVLD_Business
              ApplicantPerson= People.Find(applicantPersonID);
             ApplicationDate = applicationDate;
             ApplicationType = clsApplicationType.Find(applicationTypeID);
-            ApplicationStatus = applicationStatus;
+            ApplicationStatus = (enApplicationStatus)applicationStatus;
             LastStatusDate = lastStatusDate;
             PaidFees = paidFees;
             CreatedByUser = clsUser.Find(createdByUserID);
@@ -54,8 +82,8 @@ namespace DVLD_Business
             return DVLD_DataAccess.clsApplicationData.AddNewApplication(
                 ApplicantPerson.PersonID,
                 ApplicationDate,
-                ApplicationType.ApplicationTypeID,
-                ApplicationStatus,
+                ApplicationType.ID,
+                ((byte)ApplicationStatus),
                 LastStatusDate,
                 PaidFees,
                 CreatedByUser.UserID
@@ -68,8 +96,8 @@ namespace DVLD_Business
                 ApplicationID,
                 ApplicantPerson.PersonID,
                 ApplicationDate,
-                ApplicationType.ApplicationTypeID,
-                ApplicationStatus,
+                ApplicationType.ID,
+               (byte) ApplicationStatus,
                 LastStatusDate,
                 PaidFees,
                 CreatedByUser.UserID

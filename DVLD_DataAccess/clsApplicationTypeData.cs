@@ -1,45 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Security.Policy;
 
 namespace DVLD_DataAccess
 {
     public class clsApplicationTypeData
     {
-        public static bool Find(
-    int applicationTypeID,
-    ref string applicationTypeTitle,
-    ref decimal applicationFees)
+
+        public static bool GetApplicationTypeInfoByID(int ApplicationTypeID,
+            ref string ApplicationTypeTitle, ref decimal ApplicationFees)
         {
             bool isFound = false;
 
-            using (SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString))
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+
+            string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
             {
-                string query = @"SELECT ApplicationTypeTitle, ApplicationFees
-                         FROM ApplicationTypes
-                         WHERE ApplicationTypeID = @ID";
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                if (reader.Read())
                 {
-                    command.Parameters.AddWithValue("@ID", applicationTypeID);
 
-                    connection.Open();
+                    // The record was found
+                    isFound = true;
 
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            applicationTypeTitle = (string)reader["ApplicationTypeTitle"];
-                            applicationFees = (decimal)reader["ApplicationFees"];
+                    ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
+                    ApplicationFees = Convert.ToDecimal(reader["ApplicationFees"]);
 
-                            isFound = true;
-                        }
-                    }
+
+
+
+
                 }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
             }
 
             return isFound;
@@ -47,56 +70,124 @@ namespace DVLD_DataAccess
 
         public static DataTable GetAllApplicationTypes()
         {
+
             DataTable dt = new DataTable();
-            
-            using (SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString))
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+
+            string query = "SELECT * FROM ApplicationTypes order by ApplicationTypeTitle";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
             {
-                string query = "SELECT ApplicationTypeID, ApplicationTypeTitle, ApplicationFees FROM ApplicationTypes";
+                connection.Open();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
                 {
-                    connection.Open();
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                            dt.Load(reader);
-                    }
+                    dt.Load(reader);
                 }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                // Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
 
             return dt;
+
         }
-        public static bool UpdateApplicationType(
-                 int applicationTypeID,
-                 string applicationTypeTitle,
-                 decimal applicationFees)
+
+        public static int AddNewApplicationType(string Title, decimal Fees)
         {
-            int rowsAffected = 0;
+            int ApplicationTypeID = -1;
 
-            using (SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString))
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+
+            string query = @"Insert Into ApplicationTypes (ApplicationTypeTitle,ApplicationFees)
+                            Values (@Title,@Fees)
+                            
+                            SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeTitle", Title);
+            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+
+            try
             {
-                string query = @"UPDATE ApplicationTypes
-                         SET ApplicationTypeTitle = @Title,
-                             ApplicationFees = @Fees
-                         WHERE ApplicationTypeID = @ID";
+                connection.Open();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
-                    command.Parameters.AddWithValue("@ID", applicationTypeID);
-                    command.Parameters.AddWithValue("@Title", applicationTypeTitle);
-                    command.Parameters.AddWithValue("@Fees", applicationFees);
-
-                    connection.Open();
-                    rowsAffected = command.ExecuteNonQuery();
+                    ApplicationTypeID = insertedID;
                 }
             }
 
-            return rowsAffected > 0;
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return ApplicationTypeID;
+
+        }
+
+        public static bool UpdateApplicationType(int ApplicationTypeID, string Title, decimal Fees)
+        {
+
+            int rowsAffected = 0;
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+
+            string query = @"Update  ApplicationTypes  
+                            set ApplicationTypeTitle = @Title,
+                                ApplicationFees = @Fees
+                                where ApplicationTypeID = @ApplicationTypeID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@Title", Title);
+            command.Parameters.AddWithValue("@Fees", Fees);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return (rowsAffected > 0);
         }
 
     }
-
-
 }
-
