@@ -17,8 +17,7 @@ namespace DVLD.People
         public Manage_People()
         {
             InitializeComponent();
-            cbFilter.DataSource = Enum.GetValues(typeof(Common.PeopleFilter));
-            cbFilter.SelectedItem = Common.PeopleFilter.none;
+            
         }
 
 
@@ -39,7 +38,8 @@ namespace DVLD.People
         private void Manage_People_Load(object sender, EventArgs e)
         {
             _RefreshGrid();
-
+            cbFilter.DataSource = Enum.GetValues(typeof(Common.PeopleFilter));
+            cbFilter.SelectedItem = Common.PeopleFilter.none;
 
 
 

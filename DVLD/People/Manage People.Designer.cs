@@ -58,7 +58,7 @@
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(447, 205);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(159, 27);
             this.guna2HtmlLabel1.TabIndex = 2;
@@ -70,7 +70,7 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(9, 234);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(54, 18);
             this.guna2HtmlLabel2.TabIndex = 4;
@@ -89,7 +89,7 @@
             this.cbFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbFilter.ItemHeight = 20;
             this.cbFilter.Location = new System.Drawing.Point(68, 231);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(137, 26);
             this.cbFilter.TabIndex = 7;
@@ -100,7 +100,7 @@
             this.PeopleGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PeopleGridView.ContextMenuStrip = this.guna2ContextMenuStrip1;
             this.PeopleGridView.Location = new System.Drawing.Point(9, 265);
-            this.PeopleGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PeopleGridView.Margin = new System.Windows.Forms.Padding(2);
             this.PeopleGridView.MultiSelect = false;
             this.PeopleGridView.Name = "PeopleGridView";
             this.PeopleGridView.ReadOnly = true;
@@ -197,7 +197,7 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(9, 519);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(68, 18);
             this.guna2HtmlLabel3.TabIndex = 9;
@@ -236,7 +236,7 @@
             this.txtNumberOfRecords.BackColor = System.Drawing.Color.Transparent;
             this.txtNumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumberOfRecords.Location = new System.Drawing.Point(81, 519);
-            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumberOfRecords.Name = "txtNumberOfRecords";
             this.txtNumberOfRecords.Size = new System.Drawing.Size(72, 18);
             this.txtNumberOfRecords.TabIndex = 12;
@@ -258,7 +258,7 @@
             this.btnAddNewPersonButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddNewPersonButton.ForeColor = System.Drawing.Color.White;
             this.btnAddNewPersonButton.Location = new System.Drawing.Point(1011, 205);
-            this.btnAddNewPersonButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddNewPersonButton.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewPersonButton.Name = "btnAddNewPersonButton";
             this.btnAddNewPersonButton.Size = new System.Drawing.Size(61, 47);
             this.btnAddNewPersonButton.TabIndex = 3;
@@ -269,7 +269,7 @@
             this.guna2PictureBox1.Image = global::DVLD.Properties.Resources.People_4001;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(427, 31);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(202, 169);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -293,8 +293,9 @@
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.guna2PictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Manage_People";
+            this.ShowInTaskbar = false;
             this.Text = "Manage_People";
             this.Load += new System.EventHandler(this.Manage_People_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PeopleGridView)).EndInit();

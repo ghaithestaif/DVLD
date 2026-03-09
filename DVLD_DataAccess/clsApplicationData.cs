@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_DataAccess
 {
@@ -198,23 +199,28 @@ namespace DVLD_DataAccess
             }
         }
 
-        public static DataTable GetAllApplications()
+        static public bool UpdateStatus(int ApplicationID,int ApplicationStatus)
         {
-            SqlConnection conn = null;
+            SqlConnection conn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            DateTime LastStatusDate= DateTime.Now;
             try
             {
-                conn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
-                var sql = "SELECT ApplicationID, ApplicantPersonID, ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID FROM Applications";
+                var sql = @"UPDATE Applications SET
+                                ApplicationStatus = @ApplicationStatus,
+                                LastStatusDate = @LastStatusDate
+                            WHERE ApplicationID = @ApplicationID";
                 using (var cmd = new SqlCommand(sql, conn))
                 {
-                    using (var da = new SqlDataAdapter(cmd))
-                    {
-                        var dt = new DataTable();
-                        da.Fill(dt);
-                        return dt;
-                    }
+                    cmd.Parameters.Add("@ApplicationStatus", SqlDbType.TinyInt).Value = ApplicationStatus;
+                    cmd.Parameters.Add("@ApplicationID", SqlDbType.Int).Value = ApplicationID;
+                    cmd.Parameters.Add("@LastStatusDate", SqlDbType.DateTime).Value = LastStatusDate;
+
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
+        
             catch (Exception)
             {
                 // Log or rethrow as needed
@@ -230,9 +236,20 @@ namespace DVLD_DataAccess
                 }
             }
         }
+
+
     }
 
 
 
 
-}
+
+
+
+        
+    }
+
+
+
+
+

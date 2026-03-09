@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
+            this.personDetailsWithFilters1 = new DVLD.People.Controls.PersonDetailsWithFilters();
             this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,7 +51,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lFormTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.personDetailsWithFilters1 = new DVLD.People.Controls.PersonDetailsWithFilters();
             this.tabControl1.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -96,6 +96,16 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // personDetailsWithFilters1
+            // 
+            this.personDetailsWithFilters1.FilterEnabled = true;
+            this.personDetailsWithFilters1.Location = new System.Drawing.Point(5, 9);
+            this.personDetailsWithFilters1.Margin = new System.Windows.Forms.Padding(5);
+            this.personDetailsWithFilters1.Name = "personDetailsWithFilters1";
+            this.personDetailsWithFilters1.Size = new System.Drawing.Size(1059, 427);
+            this.personDetailsWithFilters1.TabIndex = 9;
+            this.personDetailsWithFilters1.OnPersonSelected += new System.Action<int>(this.personDetailsWithFilters1_OnPersonSelected);
             // 
             // tpApplicationInfo
             // 
@@ -314,15 +324,6 @@
             this.lFormTitle.Size = new System.Drawing.Size(650, 42);
             this.lFormTitle.TabIndex = 8;
             this.lFormTitle.Text = "New Local Driving License Application";
-            // 
-            // personDetailsWithFilters1
-            // 
-            this.personDetailsWithFilters1.FilterEnabled = true;
-            this.personDetailsWithFilters1.Location = new System.Drawing.Point(4, 7);
-            this.personDetailsWithFilters1.Margin = new System.Windows.Forms.Padding(5);
-            this.personDetailsWithFilters1.Name = "personDetailsWithFilters1";
-            this.personDetailsWithFilters1.Size = new System.Drawing.Size(1059, 427);
-            this.personDetailsWithFilters1.TabIndex = 9;
             // 
             // frmAddEditLocalDrivingLicenseApplication
             // 

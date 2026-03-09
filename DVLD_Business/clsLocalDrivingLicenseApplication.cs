@@ -6,13 +6,13 @@ namespace DVLD_Business
 {
     // Enum placed in business layer so UI and Data layers can reference the semantic values.
     
-    public class clsLocalDrivingLicenseApplication
+    public class clsLocalDrivingLicenseApplication : clsApplication
     {
         public enum enMode { enUpdate, enAddnew }
         private enMode _Mode;
 
         public int LocalDrivingLicenseApplicationID { get; set; }
-        public clsApplication Application { get; set; }
+      //  public clsApplication Application { get; set; }
         
 
         public clsLicenseClass LicenseClass { get; set; } // numeric ID stored in DB
@@ -28,11 +28,20 @@ namespace DVLD_Business
 
         private clsLocalDrivingLicenseApplication(
             int localDrivingLicenseApplicationID,
-            int applicationID,
+            int applicationID, 
             int licenseClassID)
         {
             LocalDrivingLicenseApplicationID = localDrivingLicenseApplicationID;
-            Application =clsApplication.Find(applicationID);
+            clsApplication App =clsApplication.Find(applicationID);
+            
+            base.PaidFees = App.PaidFees;
+            base.LastStatusDate = App.LastStatusDate;
+            base.ApplicantPerson = App.ApplicantPerson;
+            base.ApplicationDate = App.ApplicationDate;
+            base.ApplicationID = App.ApplicationID;
+            base.ApplicationStatus=App.ApplicationStatus;
+            base.ApplicationType=App.ApplicationType;
+            base.CreatedByUser=App.CreatedByUser;
             LicenseClass = clsLicenseClass.Find(licenseClassID);
             _Mode = enMode.enUpdate;
         }
@@ -40,7 +49,7 @@ namespace DVLD_Business
         private int _AddNew()
         {
             return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(
-                Application.ApplicationID,
+                ApplicationID,
                 LicenseClass.LicenseClassID
             );
         }
@@ -49,13 +58,25 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.UpdateLocalDrivingLicenseApplication(
                 LocalDrivingLicenseApplicationID,
-                Application.ApplicationID,
+                ApplicationID,
                 LicenseClass.LicenseClassID
             );
         }
 
         public bool Save()
         {
+            //save the the objects first to ensure we have valid IDs for the application and license class
+            base.Mode= _Mode == enMode.enAddnew ? clsApplication.enMode.enAddnew : clsApplication.enMode.enUpdate;
+            if (!base.Save())
+                {
+                    return false;
+                }
+    
+                if (!LicenseClass.Save())
+                {
+                    return false;
+                }
+
             if (_Mode == enMode.enAddnew)
             {
                 LocalDrivingLicenseApplicationID = _AddNew();
@@ -95,11 +116,16 @@ namespace DVLD_Business
 
         public static DataTable GetAll()
         {
-            return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplications();
+            return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.GetAllApplications();
         }
         public static bool Delete(int ID)
         {
             return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplication(ID);
+        }
+
+        public static bool DoesPersonHaveClassApplication(int PersonID, int ApplicationClassID,int ApplicationType)
+        {
+            return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.DoesPersonHaveAnActiveApplication(PersonID, ApplicationClassID, ApplicationType);
         }
     }
 }

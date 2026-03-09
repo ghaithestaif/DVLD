@@ -14,7 +14,7 @@ namespace DVLD.People.Controls
     {
 
         
-
+        public event Action<int> OnPersonSelected;
 
         public bool FilterEnabled
         {
@@ -53,7 +53,7 @@ namespace DVLD.People.Controls
                 {
                     MessageBox.Show("No person found with this National Number", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
+                }
                 else
                 {
                 if (txtFilterValue.Text == "")
@@ -69,6 +69,8 @@ namespace DVLD.People.Controls
                 }
                 
                 }
+
+            OnPersonSelected?.Invoke(personCard1.PersonID);
         }
         
 

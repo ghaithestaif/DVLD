@@ -68,11 +68,17 @@
     <Compile Include="Application\ApplicationTypes\frmEditApplicationType.Designer.cs">
       <DependentUpon>frmEditApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Application\frmAddEditLocalDrivingLicenseApplication.cs">
+    <Compile Include="Application\Local Driving License Application\frmAddEditLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Application\frmAddEditLocalDrivingLicenseApplication.Designer.cs">
+    <Compile Include="Application\Local Driving License Application\frmAddEditLocalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmAddEditLocalDrivingLicenseApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Local Driving License Application\frmLocalDrivingLicenseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\Local Driving License Application\frmLocalDrivingLicenseList.Designer.cs">
+      <DependentUpon>frmLocalDrivingLicenseList.cs</DependentUpon>
     </Compile>
     <Compile Include="Log In\frmLogin.cs">
       <SubType>Form</SubType>
@@ -169,8 +175,11 @@
     <EmbeddedResource Include="Application\ApplicationTypes\frmEditApplicationType.resx">
       <DependentUpon>frmEditApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Application\frmAddEditLocalDrivingLicenseApplication.resx">
+    <EmbeddedResource Include="Application\Local Driving License Application\frmAddEditLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddEditLocalDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application\Local Driving License Application\frmLocalDrivingLicenseList.resx">
+      <DependentUpon>frmLocalDrivingLicenseList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log In\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -448,6 +457,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\User 32 -2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New Application 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Manage Applications 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Local 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LocalDriving License.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\International 321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

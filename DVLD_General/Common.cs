@@ -8,6 +8,14 @@ namespace DVLD_General
 {
     public class Common
     {
+        public enum LocalDrivingLicenseApplicationFilter
+        {
+            None,
+            ID,
+            NationalNo,
+            FullName,
+            status
+        }
         public enum PeopleFilter
         {
             none,

@@ -12,7 +12,7 @@ namespace DVLD_Business
     public class clsApplication
     {
         public enum enMode { enUpdate, enAddnew }
-        private enMode _Mode;
+        public enMode Mode;
  
         public int ApplicationID { get; set; }
         public DVLD_Business.People ApplicantPerson{ get; set; }
@@ -51,7 +51,7 @@ namespace DVLD_Business
 
         public clsApplication()
         {
-            _Mode = enMode.enAddnew;
+            Mode = enMode.enAddnew;
             ApplicationID = -1;
         }
 
@@ -73,7 +73,7 @@ namespace DVLD_Business
             LastStatusDate = lastStatusDate;
             PaidFees = paidFees;
             CreatedByUser = clsUser.Find(createdByUserID);
-            _Mode = enMode.enUpdate;
+            Mode = enMode.enUpdate;
         }
 
         // Business operations
@@ -106,13 +106,13 @@ namespace DVLD_Business
 
         public bool Save()
         {
-            if (_Mode == enMode.enAddnew)
+            if (Mode == enMode.enAddnew)
             {
                 ApplicationID = _AddNew();
-                _Mode = enMode.enUpdate;
+                Mode = enMode.enUpdate;
                 return ApplicationID > 0;
             }
-            else if (_Mode == enMode.enUpdate)
+            else if (Mode == enMode.enUpdate)
             {
                 return _Update();
             }
@@ -157,10 +157,15 @@ namespace DVLD_Business
                 createdByUserID
             );
         }
-
-        public static DataTable GetAll()
+        public bool Cancel()
         {
-            return DVLD_DataAccess.clsApplicationData.GetAllApplications();
+            return DVLD_DataAccess.clsApplicationData.UpdateStatus(this.ApplicationID, (byte)enApplicationStatus.Cancelled);
         }
+
+        public bool SetComplete()
+        {
+            return DVLD_DataAccess.clsApplicationData.UpdateStatus(this.ApplicationID, (byte)enApplicationStatus.Completed);
+        }
+
     }
 }
