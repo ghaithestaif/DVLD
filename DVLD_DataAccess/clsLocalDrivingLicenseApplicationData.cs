@@ -209,34 +209,6 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
                 }
             }
         }
-
-        static public bool DoesPersonHaveAnActiveApplication(int ApplicantPersonID, int ApplicationClassID,int ApplicationTypeID)
-        {
-            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
-            string Query = $@"SELECT ActiveApplicationID = Applications.ApplicationID
-                         FROM Applications
-                         INNER JOIN LocalDrivingLicenseApplications 
-                             ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
-                         WHERE ApplicantPersonID = @ApplicantPersonID
-                         AND ApplicationTypeID = @ApplicationTypeID
-                         AND LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID
-                         AND ApplicationStatus = 1; ";
-
-            using (SqlCommand cmd = new SqlCommand(Query, cnn))
-            {
-                cmd.Parameters.Add("@ApplicantPersonID", SqlDbType.Int).Value = ApplicantPersonID;
-                cmd.Parameters.Add("@LicenseClassID", SqlDbType.Int).Value = ApplicationClassID;
-                cmd.Parameters.Add("@ApplicationTypeID", SqlDbType.Int).Value = ApplicationTypeID;
-
-                cnn.Open();
-                object result = cmd.ExecuteScalar();
-
-                return (result == null) ? false : true;
-            }
-
-        }
-
-
         public static DataTable GetAllApplications()
         {
             SqlConnection conn = null;
@@ -271,6 +243,85 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
                 }
             }
         }
+
+
+
+        static public bool DoesPersonHaveAnActiveApplication(int ApplicantPersonID, int ApplicationClassID,int ApplicationTypeID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"SELECT 1
+                      FROM Applications
+                      INNER JOIN LocalDrivingLicenseApplications 
+                      ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+                      WHERE ApplicantPersonID = @ApplicantPersonID
+                      AND ApplicationTypeID = @ApplicationTypeID
+                      AND LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID
+                      AND ApplicationStatus = 1; ";
+
+            using (SqlCommand cmd = new SqlCommand(Query, cnn))
+            {
+                cmd.Parameters.Add("@ApplicantPersonID", SqlDbType.Int).Value = ApplicantPersonID;
+                cmd.Parameters.Add("@LicenseClassID", SqlDbType.Int).Value = ApplicationClassID;
+                cmd.Parameters.Add("@ApplicationTypeID", SqlDbType.Int).Value = ApplicationTypeID;
+
+                cnn.Open();
+                object result = cmd.ExecuteScalar();
+
+                return (result == null) ? false : true;
+            }
+
+        }
+
+
+
+
+        public static bool DoesPersonHasAnActiveTest(int LocalDrivingLicenseApplicationID,int TestTypeID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"SELECT top 1 Found=1
+                    FROM     LocalDrivingLicenseApplications INNER JOIN
+                  TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID		
+				  WHERE LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID 
+				  and TestAppointments.IsLocked=0 and TestTypeID=@TestTypeID";
+
+            using (SqlCommand cmd = new SqlCommand(Query, cnn))
+            {
+                cmd.Parameters.Add("@LocalDrivingLicenseApplicationID", SqlDbType.Int).Value = LocalDrivingLicenseApplicationID;
+                cmd.Parameters.Add("@TestTypeID", SqlDbType.Int).Value = TestTypeID;
+
+                cnn.Open();
+                object result = cmd.ExecuteScalar();
+
+                return (result == null) ? false : true;
+            }
+
+        }
+
+        public static bool DoesPersonPassedTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"SELECT top 1 Found =1
+                     FROM     LocalDrivingLicenseApplications INNER JOIN
+                  TestAppointments ON LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = TestAppointments.LocalDrivingLicenseApplicationID INNER JOIN
+                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+				  where Tests.TestResult=1 and 
+				  TestAppointments.TestTypeID=@TestTypeID and
+				  LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID= @LocalDrivingLicenseApplicationID;";
+
+            using (SqlCommand cmd = new SqlCommand(Query, cnn))
+            {
+                cmd.Parameters.Add("@LocalDrivingLicenseApplicationID", SqlDbType.Int).Value = LocalDrivingLicenseApplicationID;
+                cmd.Parameters.Add("@TestTypeID", SqlDbType.Int).Value = TestTypeID;
+
+                cnn.Open();
+                object result = cmd.ExecuteScalar();
+
+                return (result == null) ? false : true;
+            }
+        }
+
+
+
 
 
 

@@ -64,6 +64,7 @@ namespace DVLD.People
 
         private void AddNewEditPeople_Load(object sender, EventArgs e)
         {
+            
             LoadFormTitle();   
 
         }

@@ -32,7 +32,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
+            this.personDetailsWithFilters1 = new DVLD.People.Controls.PersonDetailsWithFilters();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rbIsActive = new System.Windows.Forms.CheckBox();
             this.llUserID = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
@@ -49,8 +51,6 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.personDetailsWithFilters1 = new DVLD.People.Controls.PersonDetailsWithFilters();
-            this.rbIsActive = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -97,6 +97,15 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // personDetailsWithFilters1
+            // 
+            this.personDetailsWithFilters1.FilterEnabled = true;
+            this.personDetailsWithFilters1.Location = new System.Drawing.Point(0, 0);
+            this.personDetailsWithFilters1.Margin = new System.Windows.Forms.Padding(5);
+            this.personDetailsWithFilters1.Name = "personDetailsWithFilters1";
+            this.personDetailsWithFilters1.Size = new System.Drawing.Size(1057, 433);
+            this.personDetailsWithFilters1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.rbIsActive);
@@ -120,6 +129,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log in info";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // rbIsActive
+            // 
+            this.rbIsActive.AutoSize = true;
+            this.rbIsActive.Location = new System.Drawing.Point(341, 306);
+            this.rbIsActive.Name = "rbIsActive";
+            this.rbIsActive.Size = new System.Drawing.Size(79, 20);
+            this.rbIsActive.TabIndex = 55588;
+            this.rbIsActive.Text = "Is Active";
+            this.rbIsActive.UseVisualStyleBackColor = true;
+            this.rbIsActive.CheckedChanged += new System.EventHandler(this.rbIsActive_CheckedChanged);
             // 
             // llUserID
             // 
@@ -314,26 +334,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
-            // personDetailsWithFilters1
-            // 
-            this.personDetailsWithFilters1.FilterEnabled = true;
-            this.personDetailsWithFilters1.Location = new System.Drawing.Point(0, 0);
-            this.personDetailsWithFilters1.Margin = new System.Windows.Forms.Padding(5);
-            this.personDetailsWithFilters1.Name = "personDetailsWithFilters1";
-            this.personDetailsWithFilters1.Size = new System.Drawing.Size(1057, 433);
-            this.personDetailsWithFilters1.TabIndex = 0;
-            // 
-            // rbIsActive
-            // 
-            this.rbIsActive.AutoSize = true;
-            this.rbIsActive.Location = new System.Drawing.Point(341, 306);
-            this.rbIsActive.Name = "rbIsActive";
-            this.rbIsActive.Size = new System.Drawing.Size(79, 20);
-            this.rbIsActive.TabIndex = 55588;
-            this.rbIsActive.Text = "Is Active";
-            this.rbIsActive.UseVisualStyleBackColor = true;
-            this.rbIsActive.CheckedChanged += new System.EventHandler(this.rbIsActive_CheckedChanged);
-            // 
             // AddEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -346,6 +346,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddEditUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditUser";
             this.Load += new System.EventHandler(this.AddEditUser_Load);
             this.tabControl1.ResumeLayout(false);

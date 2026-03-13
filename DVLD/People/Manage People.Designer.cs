@@ -57,10 +57,10 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(447, 205);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(596, 252);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(159, 27);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(212, 33);
             this.guna2HtmlLabel1.TabIndex = 2;
             this.guna2HtmlLabel1.Text = "Manage People";
             // 
@@ -69,10 +69,10 @@
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(9, 234);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(12, 288);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(54, 18);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(72, 22);
             this.guna2HtmlLabel2.TabIndex = 4;
             this.guna2HtmlLabel2.Text = "FilterBy:";
             // 
@@ -88,10 +88,10 @@
             this.cbFilter.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbFilter.ItemHeight = 20;
-            this.cbFilter.Location = new System.Drawing.Point(68, 231);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilter.Location = new System.Drawing.Point(91, 284);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(137, 26);
+            this.cbFilter.Size = new System.Drawing.Size(181, 26);
             this.cbFilter.TabIndex = 7;
             this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
@@ -99,15 +99,15 @@
             // 
             this.PeopleGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PeopleGridView.ContextMenuStrip = this.guna2ContextMenuStrip1;
-            this.PeopleGridView.Location = new System.Drawing.Point(9, 265);
-            this.PeopleGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.PeopleGridView.Location = new System.Drawing.Point(12, 326);
+            this.PeopleGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PeopleGridView.MultiSelect = false;
             this.PeopleGridView.Name = "PeopleGridView";
             this.PeopleGridView.ReadOnly = true;
             this.PeopleGridView.RowHeadersWidth = 51;
             this.PeopleGridView.RowTemplate.Height = 24;
             this.PeopleGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PeopleGridView.Size = new System.Drawing.Size(1063, 242);
+            this.PeopleGridView.Size = new System.Drawing.Size(1417, 298);
             this.PeopleGridView.TabIndex = 8;
             // 
             // guna2ContextMenuStrip1
@@ -133,26 +133,26 @@
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(175, 232);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(201, 232);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Image = global::DVLD.Properties.Resources.PersonDetails_32;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(174, 36);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(171, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.edit_32;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(174, 36);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -160,7 +160,7 @@
             // 
             this.deleteToolStripMenuItem.Image = global::DVLD.Properties.Resources.Delete_32;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(174, 36);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -168,27 +168,27 @@
             // 
             this.addNewPersonToolStripMenuItem.Image = global::DVLD.Properties.Resources.Add_Person_40;
             this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(174, 36);
+            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
             this.addNewPersonToolStripMenuItem.Text = "Add new person";
             this.addNewPersonToolStripMenuItem.Click += new System.EventHandler(this.addNewPersonToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(171, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
             // 
             // sendEmailToolStripMenuItem
             // 
             this.sendEmailToolStripMenuItem.Image = global::DVLD.Properties.Resources.send_email_32;
             this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(174, 36);
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
             this.sendEmailToolStripMenuItem.Text = "Send Email";
             // 
             // phoneToolStripMenuItem
             // 
             this.phoneToolStripMenuItem.Image = global::DVLD.Properties.Resources.Phone_32;
             this.phoneToolStripMenuItem.Name = "phoneToolStripMenuItem";
-            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(174, 36);
+            this.phoneToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
             this.phoneToolStripMenuItem.Text = "Phone";
             // 
             // guna2HtmlLabel3
@@ -196,10 +196,10 @@
             this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(9, 519);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(12, 639);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(68, 18);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(91, 22);
             this.guna2HtmlLabel3.TabIndex = 9;
             this.guna2HtmlLabel3.Text = "Records:";
             // 
@@ -220,12 +220,12 @@
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFilter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtFilter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilter.Location = new System.Drawing.Point(208, 231);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtFilter.Location = new System.Drawing.Point(277, 284);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.PlaceholderText = "";
             this.txtFilter.SelectedText = "";
-            this.txtFilter.Size = new System.Drawing.Size(105, 27);
+            this.txtFilter.Size = new System.Drawing.Size(140, 33);
             this.txtFilter.TabIndex = 10;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
@@ -235,10 +235,10 @@
             this.txtNumberOfRecords.AutoSize = false;
             this.txtNumberOfRecords.BackColor = System.Drawing.Color.Transparent;
             this.txtNumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfRecords.Location = new System.Drawing.Point(81, 519);
-            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNumberOfRecords.Location = new System.Drawing.Point(108, 639);
+            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumberOfRecords.Name = "txtNumberOfRecords";
-            this.txtNumberOfRecords.Size = new System.Drawing.Size(72, 18);
+            this.txtNumberOfRecords.Size = new System.Drawing.Size(96, 22);
             this.txtNumberOfRecords.TabIndex = 12;
             this.txtNumberOfRecords.TabStop = false;
             this.txtNumberOfRecords.Text = null;
@@ -257,10 +257,10 @@
             this.btnAddNewPersonButton.FillColor = System.Drawing.Color.Transparent;
             this.btnAddNewPersonButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddNewPersonButton.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewPersonButton.Location = new System.Drawing.Point(1011, 205);
-            this.btnAddNewPersonButton.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNewPersonButton.Location = new System.Drawing.Point(1348, 252);
+            this.btnAddNewPersonButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddNewPersonButton.Name = "btnAddNewPersonButton";
-            this.btnAddNewPersonButton.Size = new System.Drawing.Size(61, 47);
+            this.btnAddNewPersonButton.Size = new System.Drawing.Size(81, 58);
             this.btnAddNewPersonButton.TabIndex = 3;
             this.btnAddNewPersonButton.Click += new System.EventHandler(this.btnAddNewPersonButton_Click);
             // 
@@ -268,21 +268,21 @@
             // 
             this.guna2PictureBox1.Image = global::DVLD.Properties.Resources.People_4001;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(427, 31);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(569, 38);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(202, 169);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(269, 208);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 1;
             this.guna2PictureBox1.TabStop = false;
             // 
             // Manage_People
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1081, 544);
+            this.ClientSize = new System.Drawing.Size(1441, 670);
             this.Controls.Add(this.txtNumberOfRecords);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.guna2HtmlLabel3);
@@ -293,9 +293,10 @@
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.guna2PictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Manage_People";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manage_People";
             this.Load += new System.EventHandler(this.Manage_People_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PeopleGridView)).EndInit();

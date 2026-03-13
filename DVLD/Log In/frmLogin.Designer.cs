@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.rbRememberMe = new System.Windows.Forms.CheckBox();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -44,7 +45,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.rbRememberMe = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -136,6 +136,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(438, 505);
             this.panel2.TabIndex = 1;
+            // 
+            // rbRememberMe
+            // 
+            this.rbRememberMe.AutoSize = true;
+            this.rbRememberMe.Location = new System.Drawing.Point(185, 318);
+            this.rbRememberMe.Name = "rbRememberMe";
+            this.rbRememberMe.Size = new System.Drawing.Size(119, 20);
+            this.rbRememberMe.TabIndex = 8;
+            this.rbRememberMe.Text = "Remember Me";
+            this.rbRememberMe.UseVisualStyleBackColor = true;
             // 
             // btnLogIn
             // 
@@ -233,16 +243,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // rbRememberMe
-            // 
-            this.rbRememberMe.AutoSize = true;
-            this.rbRememberMe.Location = new System.Drawing.Point(185, 318);
-            this.rbRememberMe.Name = "rbRememberMe";
-            this.rbRememberMe.Size = new System.Drawing.Size(119, 20);
-            this.rbRememberMe.TabIndex = 8;
-            this.rbRememberMe.Text = "Remember Me";
-            this.rbRememberMe.UseVisualStyleBackColor = true;
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,6 +253,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);

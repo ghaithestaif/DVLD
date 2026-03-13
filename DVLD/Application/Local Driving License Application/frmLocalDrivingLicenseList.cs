@@ -188,5 +188,45 @@ namespace DVLD.Application
             }
 
         }
+
+        private void cmsApplications_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            int ID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
+            clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.Find(ID);
+
+            //for now the following items are going to be disabled
+            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
+            showLicenseToolStripMenuItem.Enabled = false;
+
+
+
+
+
+
+
+            // here I check the tests and set the visibility of menu items accordingly
+            bool visionTest = selectedApp.DoesPersonPassedTest(1);
+            bool WrittenTest = selectedApp.DoesPersonPassedTest(2);
+            bool StreetTest = selectedApp.DoesPersonPassedTest(3);
+
+            ScheduleTestsMenue.Enabled = (visionTest&&WrittenTest&&StreetTest)? false : true;
+
+            if (!visionTest)
+            {
+                scheduleStreetTestToolStripMenuItem.Enabled = false;
+                scheduleWrittenTestToolStripMenuItem.Enabled = false;
+            }
+            else if(!WrittenTest)
+            {
+                scheduleVisionTestToolStripMenuItem.Enabled = false;
+                scheduleStreetTestToolStripMenuItem.Enabled = false;
+            }
+            else if(!StreetTest)
+            {
+                scheduleVisionTestToolStripMenuItem.Enabled = false;
+                scheduleWrittenTestToolStripMenuItem.Enabled = false;
+            }
+
+        }
     }
 }

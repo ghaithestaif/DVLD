@@ -44,31 +44,35 @@
             // 
             // crtUserCard1
             // 
-            this.crtUserCard1.Location = new System.Drawing.Point(2, 2);
+            this.crtUserCard1.Location = new System.Drawing.Point(3, 2);
+            this.crtUserCard1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.crtUserCard1.Name = "crtUserCard1";
-            this.crtUserCard1.Size = new System.Drawing.Size(774, 346);
+            this.crtUserCard1.Size = new System.Drawing.Size(1032, 426);
             this.crtUserCard1.TabIndex = 0;
             // 
             // txtOldPassword
             // 
-            this.txtOldPassword.Location = new System.Drawing.Point(259, 363);
+            this.txtOldPassword.Location = new System.Drawing.Point(345, 447);
+            this.txtOldPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOldPassword.Name = "txtOldPassword";
-            this.txtOldPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtOldPassword.Size = new System.Drawing.Size(132, 22);
             this.txtOldPassword.TabIndex = 0;
             this.txtOldPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtOldPassword_Validating);
             // 
             // txtNewPassword
             // 
-            this.txtNewPassword.Location = new System.Drawing.Point(259, 394);
+            this.txtNewPassword.Location = new System.Drawing.Point(345, 485);
+            this.txtNewPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNewPassword.Name = "txtNewPassword";
-            this.txtNewPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtNewPassword.Size = new System.Drawing.Size(132, 22);
             this.txtNewPassword.TabIndex = 1;
             // 
             // txtConfirmPassword
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(259, 425);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(345, 523);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(132, 22);
             this.txtConfirmPassword.TabIndex = 2;
             this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
@@ -76,9 +80,10 @@
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(115, 363);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(153, 447);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(117, 22);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(144, 27);
             this.guna2HtmlLabel3.TabIndex = 5;
             this.guna2HtmlLabel3.Text = "Old Password:";
             // 
@@ -86,9 +91,10 @@
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(108, 394);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(144, 485);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(124, 22);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(152, 27);
             this.guna2HtmlLabel4.TabIndex = 6;
             this.guna2HtmlLabel4.Text = "New Password:";
             // 
@@ -96,9 +102,10 @@
             // 
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(80, 425);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(107, 523);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(152, 22);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(185, 27);
             this.guna2HtmlLabel6.TabIndex = 8;
             this.guna2HtmlLabel6.Text = "Confirm Password:";
             // 
@@ -118,10 +125,10 @@
             this.btnClose.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(540, 436);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Location = new System.Drawing.Point(720, 537);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(98, 28);
+            this.btnClose.Size = new System.Drawing.Size(131, 34);
             this.btnClose.TabIndex = 55593;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -142,10 +149,10 @@
             this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSave.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSave.Location = new System.Drawing.Point(655, 436);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Location = new System.Drawing.Point(873, 537);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(98, 28);
+            this.btnSave.Size = new System.Drawing.Size(131, 34);
             this.btnSave.TabIndex = 55592;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -156,9 +163,9 @@
             // 
             // frmChangePassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 475);
+            this.ClientSize = new System.Drawing.Size(1035, 585);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.guna2HtmlLabel6);
@@ -169,7 +176,9 @@
             this.Controls.Add(this.txtOldPassword);
             this.Controls.Add(this.crtUserCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmChangePassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmChangePassword";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

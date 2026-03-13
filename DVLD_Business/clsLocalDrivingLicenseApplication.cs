@@ -127,5 +127,27 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.DoesPersonHaveAnActiveApplication(PersonID, ApplicationClassID, ApplicationType);
         }
+
+
+        public static bool DoesPersonHasAnActiveTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.DoesPersonHasAnActiveTest(LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+        public bool DoesPersonHasAnActiveTest( int TestTypeID)
+        {
+            return DoesPersonHasAnActiveTest(this.LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+        public static bool DoesPersonPassedTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.DoesPersonPassedTest(LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+        public bool DoesPersonPassedTest( int TestTypeID)
+        {
+           return DoesPersonPassedTest(this.LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
     }
 }

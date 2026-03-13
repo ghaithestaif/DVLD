@@ -88,6 +88,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPersonDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmPersonDetails";
             this.Load += new System.EventHandler(this.frmPersonDetails_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPersonDetails_KeyDown);

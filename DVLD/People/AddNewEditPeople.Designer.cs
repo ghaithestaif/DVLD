@@ -755,6 +755,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddNewEditPeople";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddNewEditPeople";
             this.Load += new System.EventHandler(this.AddNewEditPeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

@@ -151,6 +151,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmApplicationTypeList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmApplicationTypeList";
             this.Load += new System.EventHandler(this.frmApplicationTypeList_Load);
             this.contextMenuStrip1.ResumeLayout(false);

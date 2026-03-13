@@ -337,6 +337,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddEditLocalDrivingLicenseApplication";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Local Driving License Application";
             this.Load += new System.EventHandler(this.frmAddEditLocalDrivingLicenseApplication_Load);
             this.tabControl1.ResumeLayout(false);
