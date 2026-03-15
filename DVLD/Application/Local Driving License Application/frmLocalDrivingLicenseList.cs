@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.Tests;
+using DVLD_Business;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -121,7 +122,7 @@ namespace DVLD.Application
         {
             // Get selected application ID
             int ID= Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
-            clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.Find(ID);
+            clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(ID);
             if (selectedApp != null) {
 
                 //check if it's already cancelled or completed
@@ -192,7 +193,7 @@ namespace DVLD.Application
         private void cmsApplications_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             int ID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
-            clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.Find(ID);
+            clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(ID);
 
             //for now the following items are going to be disabled
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
@@ -202,7 +203,10 @@ namespace DVLD.Application
 
 
 
-
+            // reset the items
+            scheduleVisionTestToolStripMenuItem.Enabled = true;
+            scheduleWrittenTestToolStripMenuItem.Enabled = true;
+            scheduleStreetTestToolStripMenuItem.Enabled = true;
 
             // here I check the tests and set the visibility of menu items accordingly
             bool visionTest = selectedApp.DoesPersonPassedTest(1);
@@ -227,6 +231,13 @@ namespace DVLD.Application
                 scheduleWrittenTestToolStripMenuItem.Enabled = false;
             }
 
+        }
+
+        private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
+            frmVisionTests frm = new frmVisionTests(LocalDrivingLicenseApplicationID);
+            frm.ShowDialog();
         }
     }
 }

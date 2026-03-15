@@ -13,14 +13,18 @@ namespace DVLD_Business
     {
         public enum enMode { enUpdate, enAddnew }
         public enMode Mode;
- 
+        public enum enApplicationType
+        {
+            NewDrivingLicense = 1, RenewDrivingLicense = 2, ReplaceLostDrivingLicense = 3,
+            ReplaceDamagedDrivingLicense = 4, ReleaseDetainedDrivingLicsense = 5, NewInternationalLicense = 6, RetakeTest = 7
+        };
         public int ApplicationID { get; set; }
         public DVLD_Business.People ApplicantPerson{ get; set; }
         public DateTime ApplicationDate { get; set; }
         public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
 
 
-        public clsApplicationType ApplicationType { get; set; }
+        public int ApplicationTypeID { get; set; }
 
         public enApplicationStatus ApplicationStatus { set; get; }
         public string StatusText
@@ -68,7 +72,7 @@ namespace DVLD_Business
             ApplicationID = applicationID;
              ApplicantPerson= People.Find(applicantPersonID);
             ApplicationDate = applicationDate;
-            ApplicationType = clsApplicationType.Find(applicationTypeID);
+            ApplicationTypeID = applicationTypeID;
             ApplicationStatus = (enApplicationStatus)applicationStatus;
             LastStatusDate = lastStatusDate;
             PaidFees = paidFees;
@@ -82,7 +86,7 @@ namespace DVLD_Business
             return DVLD_DataAccess.clsApplicationData.AddNewApplication(
                 ApplicantPerson.PersonID,
                 ApplicationDate,
-                ApplicationType.ID,
+                ApplicationTypeID,
                 ((byte)ApplicationStatus),
                 LastStatusDate,
                 PaidFees,
@@ -96,7 +100,7 @@ namespace DVLD_Business
                 ApplicationID,
                 ApplicantPerson.PersonID,
                 ApplicationDate,
-                ApplicationType.ID,
+                ApplicationTypeID,
                (byte) ApplicationStatus,
                 LastStatusDate,
                 PaidFees,

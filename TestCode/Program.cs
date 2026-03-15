@@ -22,7 +22,7 @@ namespace TestCode
             {
                 ApplicantPerson = People.Find(1), // Assume person with ID 1 exists
                 ApplicationDate = DateTime.Now,
-                ApplicationType = clsApplicationType.Find(1), // Assume type ID 1 exists
+                ApplicationTypeID = clsApplicationType.Find(1), // Assume type ID 1 exists
                 ApplicationStatus = 1, // Example status
                 LastStatusDate = DateTime.Now,
                 PaidFees = 100.50m,
@@ -59,7 +59,7 @@ namespace TestCode
                 Console.WriteLine("Found application:");
                 Console.WriteLine($"ID: {foundApp.ApplicationID}");
                 Console.WriteLine($"Applicant Person ID: {foundApp.ApplicantPerson.PersonID}");
-                Console.WriteLine($"Type ID: {foundApp.ApplicationType.ApplicationTypeID}");
+                Console.WriteLine($"Type ID: {foundApp.ApplicationTypeID.ApplicationTypeID}");
                 Console.WriteLine($"Status: {foundApp.ApplicationStatus}");
                 Console.WriteLine($"Paid Fees: {foundApp.PaidFees}");
             }
@@ -69,15 +69,7 @@ namespace TestCode
             }
 
             // 5. Display all applications
-            DataTable allApps = clsApplication.GetAll();
-            Console.WriteLine("\nAll Applications:");
-            foreach (DataRow row in allApps.Rows)
-            {
-                Console.WriteLine($"ID: {row["ApplicationID"]}, Status: {row["ApplicationStatus"]}, Paid Fees: {row["PaidFees"]}");
-            }
-
-            Console.WriteLine("\nTest finished. Press any key to exit...");
-            Console.ReadKey();
+         //
 
         }
     }

@@ -10,16 +10,6 @@ namespace DVLD_DataAccess
 {
     public static class clsLocalDrivingLicenseApplicationData
     {
-        //making a dictionary for the enum to string mapping for the filter options
-        private static readonly Dictionary<DVLD_General.Common.LocalDrivingLicenseApplicationFilter, string> _ColumnMap
-             = new Dictionary<DVLD_General.Common.LocalDrivingLicenseApplicationFilter, string>()
-         {
-            { DVLD_General.Common.LocalDrivingLicenseApplicationFilter.FullName, "FullName" },
-            { DVLD_General.Common.LocalDrivingLicenseApplicationFilter.ID, "LocalDrivingLicenseApplicationID" },
-            { DVLD_General.Common.LocalDrivingLicenseApplicationFilter.NationalNo, "NationalNo" },
-            { DVLD_General.Common.LocalDrivingLicenseApplicationFilter.status, "Status" },
-
-         };
         public static int AddNewLocalDrivingLicenseApplication(
             int ApplicationID,
             int LicenseClassID)
@@ -177,6 +167,53 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
             }
         }
 
+        public static bool FindByApplicationID(
+            int ApplicationID,
+            ref int LocalDrivingLicenseApplicationID,
+            ref int LicenseClassID)
+        {
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+                var sql = @"
+                      SELECT LocalDrivingLicenseApplicationID, LicenseClassID
+                      FROM LocalDrivingLicenseApplications
+                      WHERE ApplicationID = @ApplicationID";
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add("@ApplicationID", SqlDbType.Int).Value = ApplicationID;
+                    conn.Open();
+                    using (var rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            LocalDrivingLicenseApplicationID = rdr.GetInt32(rdr.GetOrdinal("LocalDrivingLicenseApplicationID"));
+                            LicenseClassID = rdr.GetInt32(rdr.GetOrdinal("LicenseClassID"));
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                // Consider logging the exception here
+                throw;
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                    conn.Dispose();
+                }
+            }
+        }
+
+
+
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
             SqlConnection conn = null;
@@ -319,8 +356,92 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
                 return (result == null) ? false : true;
             }
         }
+        public static byte PassedTestsBylocalDrivingApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"SELECT PassedTest=Count(*)
+                 FROM     TestAppointments INNER JOIN
+                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID
+				  where Tests.TestResult=1 and LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID";
+            using (SqlCommand cmd = new SqlCommand(Query, cnn))
+            {
+                cmd.Parameters.Add("@LocalDrivingLicenseApplicationID", SqlDbType.Int).Value = LocalDrivingLicenseApplicationID;
+                cnn.Open();
+                object result = cmd.ExecuteScalar();
+                return (result == null) ? (byte)0 : Convert.ToByte(result);
+            }
+
+        }
 
 
+        public static byte PassedTestsApplicationID(int ApplicationID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"SELECT COUNT(*) AS PassedTest
+                FROM     TestAppointments INNER JOIN
+                  Tests ON TestAppointments.TestAppointmentID = Tests.TestAppointmentID INNER JOIN
+                  LocalDrivingLicenseApplications ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+				  where Tests.TestResult=1 and LocalDrivingLicenseApplications.ApplicationID =@ApplicationID";
+            using (SqlCommand cmd = new SqlCommand(Query, cnn))
+            {
+                cmd.Parameters.Add("@ApplicationID", SqlDbType.Int).Value = ApplicationID;
+                cnn.Open();
+                object result = cmd.ExecuteScalar();
+                return (result == null) ? (byte)0 : Convert.ToByte(result);
+            }
+
+        }
+        public static DataTable GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+
+            string query = $@"
+              SELECT TestAppointmentID,AppointmentDate,PaidFees,IsLocked FROM TestAppointments 
+                               where LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                    dt.Load(reader);
+
+                reader.Close();
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
+        public static byte numberOfTestsTrials(int LocalDrivingLicenseApplicationID, int TestTypeID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"SELECT     numberOfTrials=count(*)
+                      FROM        TestAppointments INNER JOIN
+                  LocalDrivingLicenseApplications ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+				  where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID  and TestTypeID=@TestTypeID";
+
+            using (SqlCommand cmd = new SqlCommand(Query, cnn))
+            {
+                cmd.Parameters.Add("@LocalDrivingLicenseApplicationID", SqlDbType.Int).Value = LocalDrivingLicenseApplicationID;
+                cmd.Parameters.Add("@TestTypeID", SqlDbType.Int).Value = TestTypeID;
+                cnn.Open();
+                object result = cmd.ExecuteScalar();
+                return (result == null) ? (byte)0 : Convert.ToByte(result);
+            }
+           
+        }
+
+        
 
 
 

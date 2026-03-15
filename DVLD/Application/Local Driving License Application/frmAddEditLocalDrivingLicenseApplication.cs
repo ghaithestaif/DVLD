@@ -63,7 +63,7 @@ namespace DVLD.Application
         }
         void FillFormFieldsWithObject()
         {
-            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.Find(_LocalDrivingLicenseApplicationID);
+            _LocalDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(_LocalDrivingLicenseApplicationID);
             personDetailsWithFilters1.loadPersonInfo(_LocalDrivingLicenseApplication.ApplicantPerson.PersonID);
             lblApplicationDate.Text = _LocalDrivingLicenseApplication.ApplicationDate.ToShortDateString();
             lblCreatedByUser.Text = _LocalDrivingLicenseApplication.CreatedByUser.UserName;
@@ -125,7 +125,7 @@ namespace DVLD.Application
             _LocalDrivingLicenseApplication.CreatedByUser = Global_Classes.General.CurrentUser;
             _LocalDrivingLicenseApplication.PaidFees = 15;
             _LocalDrivingLicenseApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
-            _LocalDrivingLicenseApplication.ApplicationType = clsApplicationType.Find(1);
+            _LocalDrivingLicenseApplication.ApplicationTypeID = (int)clsApplicationType.enApplicationType.NewDrivingLicense;
             _LocalDrivingLicenseApplication.LastStatusDate=DateTime.Now;
             _LocalDrivingLicenseApplication.LicenseClass = clsLicenseClass.Find(comboBox1.SelectedIndex+1);
 

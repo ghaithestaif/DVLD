@@ -15,7 +15,9 @@ public class  clsTestType
         public string TestTypeTitle { get; set; }
         public string TestTypeDescription { get; set; }
         public decimal TestTypeFees { get; set; }
+        public enum enTestType { VisionTest = 1, WrittenTest = 2, StreetTest = 3 };
 
+        
         public clsTestType() { }
 
         public clsTestType(int id, string title, string description, decimal fees)

@@ -110,15 +110,6 @@ namespace DVLD.People
 
         }
 
-        private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            AddNewEditPeople frm = new AddNewEditPeople(_PersonID);
-            frm.ShowDialog();
-
-            //refresh
-            LoadPersonInfo(_PersonID);
-        }
-
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -127,7 +118,6 @@ namespace DVLD.People
         private void llEditPersonInfo_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AddNewEditPeople frm = new AddNewEditPeople(_PersonID);
-         //   frm.DataBack += () => LoadPersonInfo(_PersonID);
             frm.DataBack += LoadPersonInfo;
 
             frm.ShowDialog();
