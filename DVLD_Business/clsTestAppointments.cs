@@ -19,7 +19,7 @@ namespace DVLD_Business
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; set; }
-        public int? RetakeTestApplicationID { get; set; }
+        public int RetakeTestApplicationID { get; set; }
 
 
         public clsTestAppointments()
@@ -36,7 +36,7 @@ namespace DVLD_Business
             decimal PaidFees,
             int CreatedByUserID,
             bool IsLocked,
-            int? RetakeTestApplicationID)
+            int RetakeTestApplicationID)
         {
 
             this.TestAppointmentID = TestAppointmentID;

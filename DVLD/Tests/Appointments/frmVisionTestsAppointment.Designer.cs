@@ -34,10 +34,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(381, 720);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Location = new System.Drawing.Point(286, 585);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(147, 35);
+            this.btnClose.Size = new System.Drawing.Size(110, 28);
             this.btnClose.TabIndex = 55612;
             this.btnClose.Text = "close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -45,21 +45,21 @@
             // 
             // ctrlScheduleTest1
             // 
-            this.ctrlScheduleTest1.Location = new System.Drawing.Point(3, 1);
+            this.ctrlScheduleTest1.Location = new System.Drawing.Point(2, 1);
+            this.ctrlScheduleTest1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ctrlScheduleTest1.Name = "ctrlScheduleTest1";
-            this.ctrlScheduleTest1.Size = new System.Drawing.Size(534, 714);
+            this.ctrlScheduleTest1.Size = new System.Drawing.Size(400, 580);
             this.ctrlScheduleTest1.TabIndex = 55613;
             this.ctrlScheduleTest1.TestTypeID = DVLD_Business.clsTestType.enTestType.VisionTest;
             // 
             // frmVisionTestsAppointment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 759);
+            this.ClientSize = new System.Drawing.Size(412, 617);
             this.Controls.Add(this.ctrlScheduleTest1);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmVisionTestsAppointment";
             this.Text = "frmVisionTestsAppointment";
             this.Load += new System.EventHandler(this.frmVisionTestsAppointment_Load);
@@ -69,6 +69,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnClose;
-        private ctrlScheduleTest ctrlScheduleTest1;
+        public ctrlScheduleTest ctrlScheduleTest1;
     }
 }

@@ -15,6 +15,7 @@ namespace DVLD.Tests.Appointments
     {
         int _LocalDrivingLicenseApplicationID;
         int _ApppointmentID;
+        
 
         public frmVisionTestsAppointment(int LocalDrivingLicenseApplicationID,int ApppointmentID=-1)
         {

@@ -22,10 +22,6 @@ namespace DVLD.Tests
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             InitializeComponent();
         }
-        void gridviewFormat()
-        {
-
-        }
         private void frmVisionTests_Load(object sender, EventArgs e)
         {
             _App = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(_LocalDrivingLicenseApplicationID);
@@ -34,20 +30,37 @@ namespace DVLD.Tests
             AppointmentGridView.DataSource = _dtVisionTestAppointments;
         }
 
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnAddNewUserButton_Click(object sender, EventArgs e)
         {
             frmVisionTestsAppointment frm = new frmVisionTestsAppointment(_LocalDrivingLicenseApplicationID);
+
             frm.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close  ();
+        }
+        void RefreshGrid()
+        {
+            _dtVisionTestAppointments = _App.GetAllTestAppointments();
+            AppointmentGridView.DataSource = _dtVisionTestAppointments;
+        }
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVisionTestsAppointment frm = new frmVisionTestsAppointment(_LocalDrivingLicenseApplicationID, Convert.ToInt32(AppointmentGridView.CurrentRow.Cells["TestAppointmentID"].Value));
+            frm.ctrlScheduleTest1.OnAppointmentSaved += RefreshGrid;
+
+
+            frm.ShowDialog();
+        }
+
+        private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTakeVisionTest frm = new frmTakeVisionTest(_LocalDrivingLicenseApplicationID, Convert.ToInt32(AppointmentGridView.CurrentRow.Cells["TestAppointmentID"].Value));
+            frm.ShowDialog();
         }
     }
 }

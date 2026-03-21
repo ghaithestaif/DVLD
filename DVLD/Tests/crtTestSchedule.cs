@@ -21,7 +21,9 @@ namespace DVLD.Tests
     {
 
         public enum enMode { AddNew = 0, Update = 1 };
+
         private enMode _Mode = enMode.AddNew;
+        public event Action OnAppointmentSaved;
         public enum enCreationMode { FirstTimeSchedule = 0, RetakeTestSchedule = 1 };
         private enCreationMode _CreationMode = enCreationMode.FirstTimeSchedule;
 
@@ -189,17 +191,17 @@ namespace DVLD.Tests
 
             dtpTestDate.Value = _TestAppointment.AppointmentDate;
 
-            if (_TestAppointment.RetakeTestAppInfo.ApplicationID == -1)
+            if (_TestAppointment.RetakeTestApplicationID == -1)
             {
                 lblRetakeAppFees.Text = "0";
                 lblRetakeTestAppID.Text = "N/A";
             }
             else
             {
-                lblRetakeAppFees.Text = _TestAppointment.RetakeTestAppInfo.PaidFees.ToString();
+                lblRetakeAppFees.Text = clsApplication.Find(_TestAppointment.RetakeTestApplicationID).PaidFees.ToString();
                 gbRetakeTestInfo.Enabled = true;
                 lblTitle.Text = "Schedule Retake Test";
-                lblRetakeTestAppID.Text = _TestAppointment.RetakeTestAppInfo.ToString();
+                lblRetakeTestAppID.Text = _TestAppointment.RetakeTestApplicationID.ToString();
 
             }
             return true;
@@ -287,6 +289,8 @@ namespace DVLD.Tests
         {
             //this will decide to create a seperate application for retake test or not.
             // and will create it if needed , then it will linkit to the appoinment.
+
+
             if (_Mode == enMode.AddNew && _CreationMode == enCreationMode.RetakeTestSchedule)
             {
                 //incase the mode is add new and creation mode is retake test we should create a seperate application for it.
@@ -305,15 +309,19 @@ namespace DVLD.Tests
 
                 if (!Application.Save())
                 {
-                    _TestAppointment.RetakeTestAppInfo.ApplicationID = -1;
+                    _TestAppointment.RetakeTestApplicationID = -1;
                     MessageBox.Show("Faild to Create application", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
-                _TestAppointment.RetakeTestAppInfo = Application;
+                _TestAppointment.RetakeTestApplicationID = Application.ApplicationID;
 
             }
-            return true;
+            else
+            {
+                _TestAppointment.RetakeTestApplicationID = -1;
+            }
+                return true;
         }
 
         public ctrlScheduleTest()
@@ -326,14 +334,16 @@ namespace DVLD.Tests
             if (!_HandleRetakeApplication())
                 return;
 
-            _TestAppointment.TestTypeID = (int)_TestTypeID;
+            _TestAppointment.TestType.TestTypeID = (int)_TestTypeID;
             _TestAppointment.LocalDrivingLicenseApplicationID = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID;
             _TestAppointment.AppointmentDate = dtpTestDate.Value;
             _TestAppointment.PaidFees = Convert.ToDecimal(lblFees.Text);
             _TestAppointment.CreatedByUserID = Global_Classes.General.CurrentUser.UserID;
-            _TestAppointment.RetakeTestAppInfo= _TestAppointment.RetakeTestAppInfo==null?  new clsApplication() : _TestAppointment.RetakeTestAppInfo;
+            
+           
             if (_TestAppointment.Save())
             {
+                OnAppointmentSaved?.Invoke();
                 _Mode = enMode.Update;
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -346,5 +356,12 @@ namespace DVLD.Tests
         {
 
         }
+
+        private void ctrlScheduleTest_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
