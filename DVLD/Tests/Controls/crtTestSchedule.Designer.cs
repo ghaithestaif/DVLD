@@ -50,6 +50,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblLocalDrivingLicenseAppID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblFullName = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.gbRetakeTestInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -205,9 +205,9 @@
             this.lblUserMessage.Location = new System.Drawing.Point(40, 220);
             this.lblUserMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserMessage.Name = "lblUserMessage";
-            this.lblUserMessage.Size = new System.Drawing.Size(432, 20);
+            this.lblUserMessage.Size = new System.Drawing.Size(137, 20);
             this.lblUserMessage.TabIndex = 188;
-            this.lblUserMessage.Text = "Cannot Sechule, Vision Test Should be Passed First.";
+            this.lblUserMessage.Text = "Cannot Sechule";
             this.lblUserMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDrivingClass
@@ -323,6 +323,21 @@
             this.label8.Size = new System.Drawing.Size(103, 20);
             this.label8.TabIndex = 167;
             this.label8.Text = "D.L.App.ID:";
+            // 
+            // btnSave
+            // 
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(281, 534);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(103, 29);
+            this.btnSave.TabIndex = 166;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblFullName
             // 
@@ -467,21 +482,6 @@
             this.lblTitle.TabIndex = 153;
             this.lblTitle.Text = "Schedule Test";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnSave
-            // 
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(281, 534);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(103, 29);
-            this.btnSave.TabIndex = 166;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ctrlScheduleTest
             // 

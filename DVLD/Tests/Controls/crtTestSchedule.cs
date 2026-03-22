@@ -28,23 +28,23 @@ namespace DVLD.Tests
         private enCreationMode _CreationMode = enCreationMode.FirstTimeSchedule;
 
 
-        private clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
+        private clsTestType.enTestType _TestType = clsTestType.enTestType.VisionTest;
         private clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication;
         private int _LocalDrivingLicenseApplicationID = -1;
         private clsTestAppointments _TestAppointment;
         private int _TestAppointmentID = -1;
 
-        public clsTestType.enTestType TestTypeID
+        public clsTestType.enTestType TestType
         {
             get
             {
-                return _TestTypeID;
+                return _TestType;
             }
             set
             {
-                _TestTypeID = value;
+                _TestType = value;
 
-                switch (_TestTypeID)
+                switch (_TestType)
                 {
 
                     case clsTestType.enTestType.VisionTest:
@@ -74,6 +74,9 @@ namespace DVLD.Tests
 
         public void LoadInfo(int LocalDrivingLicenseApplicationID, int AppointmentID = -1)
         {
+            
+
+
             //if no appointment id this means AddNew mode otherwise it's update mode.
             if (AppointmentID == -1)
                 _Mode = enMode.AddNew;
@@ -92,8 +95,20 @@ namespace DVLD.Tests
                 return;
             }
 
+            //check if person Passed this test
+            if (_LocalDrivingLicenseApplication.DoesPersonPassedTest((int)_TestType))
+            {
+                MessageBox.Show("This perons Has already Passed this test",
+                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSave.Enabled = false;
+                return;
+
+            }
+
+
+
             //decide if the createion mode is retake test or not based if the person attended this test before
-            if (_LocalDrivingLicenseApplication.DoesPersonAttendedTest((int)_TestTypeID))
+            if (_LocalDrivingLicenseApplication.DoesPersonAttendedTest((int)_TestType))
 
                 _CreationMode = enCreationMode.RetakeTestSchedule;
             else
@@ -122,12 +137,12 @@ namespace DVLD.Tests
             lblFullName.Text = _LocalDrivingLicenseApplication.ApplicantPerson.FullName;
 
             //this will show the trials for this test before  
-            lblTrial.Text = _LocalDrivingLicenseApplication.NumberOfTestsTrials((int)_TestTypeID).ToString();
+            lblTrial.Text = _LocalDrivingLicenseApplication.NumberOfTestsTrials((int)_TestType).ToString();
 
 
             if (_Mode == enMode.AddNew)
             {
-                lblFees.Text = clsTestType.Find((int)_TestTypeID).TestTypeFees.ToString();
+                lblFees.Text = clsTestType.Find((int)_TestType).TestTypeFees.ToString();
                 dtpTestDate.MinDate = DateTime.Now;
                 lblRetakeTestAppID.Text = "N/A";
 
@@ -159,7 +174,7 @@ namespace DVLD.Tests
         }
         private bool _HandleActiveTestAppointmentConstraint()
         {
-            if (_Mode == enMode.AddNew && clsLocalDrivingLicenseApplication.DoesPersonHasAnActiveTest(_LocalDrivingLicenseApplicationID, (int)_TestTypeID))
+            if (_Mode == enMode.AddNew && clsLocalDrivingLicenseApplication.DoesPersonHasAnActiveTest(_LocalDrivingLicenseApplicationID, (int)_TestType))
             {
                 lblUserMessage.Text = "Person Already have an active appointment for this test";
                 btnSave.Enabled = false;
@@ -230,7 +245,7 @@ namespace DVLD.Tests
             //person cannno apply for written test unless s/he passes the vision test.
             //person cannot apply for street test unless s/he passes the written test.
 
-            switch (TestTypeID)
+            switch (TestType)
             {
                 case clsTestType.enTestType.VisionTest:
                     //in this case no required prvious test to pass.
@@ -334,7 +349,7 @@ namespace DVLD.Tests
             if (!_HandleRetakeApplication())
                 return;
 
-            _TestAppointment.TestType.TestTypeID = (int)_TestTypeID;
+            _TestAppointment.TestType.TestTypeID = (int)_TestType;
             _TestAppointment.LocalDrivingLicenseApplicationID = _LocalDrivingLicenseApplication.LocalDrivingLicenseApplicationID;
             _TestAppointment.AppointmentDate = dtpTestDate.Value;
             _TestAppointment.PaidFees = Convert.ToDecimal(lblFees.Text);

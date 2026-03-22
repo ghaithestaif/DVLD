@@ -391,7 +391,7 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
             }
 
         }
-        public static DataTable GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        public static DataTable GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID,int TestTypeID)
         {
             DataTable dt = new DataTable();
 
@@ -399,10 +399,11 @@ WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             string query = $@"
               SELECT TestAppointmentID,AppointmentDate,PaidFees,IsLocked FROM TestAppointments 
-                               where LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID";
+                               where LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID and TestTypeID=@TestTypeID";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
             try
             {
                 connection.Open();

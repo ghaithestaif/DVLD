@@ -185,9 +185,9 @@ namespace DVLD_Business
             return DVLD_DataAccess.clsLocalDrivingLicenseApplicationData.PassedTestsApplicationID(ApplicationID);
 
         }
-        public static DataTable GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        public static DataTable GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID,int TestTypeID)
         {
-            return clsLocalDrivingLicenseApplicationData.GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
+            return clsLocalDrivingLicenseApplicationData.GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID, TestTypeID);
         }
         public static byte numberOfTestsTrials(int LocalDrivingLicenseApplicationID, int TestTypeID)
         {
@@ -208,9 +208,9 @@ namespace DVLD_Business
                 return DoesPersonAttendedTest(this.LocalDrivingLicenseApplicationID, TestTypeID);
         }
 
-        public DataTable GetAllTestAppointments()
+        public DataTable GetAllTestAppointments(int TestTypeID)
         {
-            return GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(this.LocalDrivingLicenseApplicationID);
+            return GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(this.LocalDrivingLicenseApplicationID, TestTypeID);
         }
     }
 }

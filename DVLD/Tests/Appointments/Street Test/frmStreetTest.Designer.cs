@@ -1,6 +1,6 @@
-﻿namespace DVLD.Tests
+﻿namespace DVLD.Tests.Appointments.Street_Test
 {
-    partial class frmVisionTests
+    partial class frmStreetTest
     {
         /// <summary>
         /// Required designer variable.
@@ -29,39 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.AppointmentGridView = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.takeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crtApplicationInfo2 = new DVLD.Application.Controls.crtApplicationInfo();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.txtNumberOfRecords = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnAddNewUserButton = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.crtApplicationInfo2 = new DVLD.Application.Controls.crtApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentGridView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.AutoSize = false;
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(246, 106);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(287, 31);
-            this.guna2HtmlLabel1.TabIndex = 1;
-            this.guna2HtmlLabel1.Text = "Vision Test Appointment";
-            // 
             // AppointmentGridView
             // 
             this.AppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AppointmentGridView.ContextMenuStrip = this.contextMenuStrip1;
-            this.AppointmentGridView.Location = new System.Drawing.Point(9, 574);
+            this.AppointmentGridView.Location = new System.Drawing.Point(1, 570);
             this.AppointmentGridView.Margin = new System.Windows.Forms.Padding(2);
             this.AppointmentGridView.MultiSelect = false;
             this.AppointmentGridView.Name = "AppointmentGridView";
@@ -70,7 +58,7 @@
             this.AppointmentGridView.RowTemplate.Height = 24;
             this.AppointmentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AppointmentGridView.Size = new System.Drawing.Size(729, 108);
-            this.AppointmentGridView.TabIndex = 23;
+            this.AppointmentGridView.TabIndex = 39;
             // 
             // contextMenuStrip1
             // 
@@ -97,16 +85,47 @@
             this.takeTestToolStripMenuItem.Text = "Take Test";
             this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
             // 
+            // crtApplicationInfo2
+            // 
+            this.crtApplicationInfo2.Location = new System.Drawing.Point(1, 131);
+            this.crtApplicationInfo2.Margin = new System.Windows.Forms.Padding(2);
+            this.crtApplicationInfo2.Name = "crtApplicationInfo2";
+            this.crtApplicationInfo2.Size = new System.Drawing.Size(707, 388);
+            this.crtApplicationInfo2.TabIndex = 43;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.AutoSize = false;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(211, 103);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(319, 31);
+            this.guna2HtmlLabel1.TabIndex = 36;
+            this.guna2HtmlLabel1.Text = "Written Test Appointment";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(595, 683);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(123, 36);
+            this.btnClose.TabIndex = 42;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // txtNumberOfRecords
             // 
             this.txtNumberOfRecords.AutoSize = false;
             this.txtNumberOfRecords.BackColor = System.Drawing.Color.Transparent;
             this.txtNumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfRecords.Location = new System.Drawing.Point(89, 700);
+            this.txtNumberOfRecords.Location = new System.Drawing.Point(81, 696);
             this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumberOfRecords.Name = "txtNumberOfRecords";
             this.txtNumberOfRecords.Size = new System.Drawing.Size(72, 19);
-            this.txtNumberOfRecords.TabIndex = 25;
+            this.txtNumberOfRecords.TabIndex = 41;
             this.txtNumberOfRecords.TabStop = false;
             this.txtNumberOfRecords.Text = null;
             // 
@@ -115,23 +134,12 @@
             this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(9, 700);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(1, 696);
             this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(68, 19);
-            this.guna2HtmlLabel3.TabIndex = 24;
+            this.guna2HtmlLabel3.TabIndex = 40;
             this.guna2HtmlLabel3.Text = "Records:";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(603, 687);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(123, 36);
-            this.btnClose.TabIndex = 26;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAddNewUserButton
             // 
@@ -147,51 +155,41 @@
             this.btnAddNewUserButton.FillColor = System.Drawing.Color.Transparent;
             this.btnAddNewUserButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddNewUserButton.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUserButton.Location = new System.Drawing.Point(668, 523);
+            this.btnAddNewUserButton.Location = new System.Drawing.Point(660, 519);
             this.btnAddNewUserButton.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewUserButton.Name = "btnAddNewUserButton";
             this.btnAddNewUserButton.Size = new System.Drawing.Size(61, 47);
-            this.btnAddNewUserButton.TabIndex = 22;
+            this.btnAddNewUserButton.TabIndex = 38;
             this.btnAddNewUserButton.Click += new System.EventHandler(this.btnAddNewUserButton_Click);
             // 
             // guna2PictureBox1
             // 
-            this.guna2PictureBox1.Image = global::DVLD.Properties.Resources.Vision_512;
+            this.guna2PictureBox1.Image = global::DVLD.Properties.Resources.Written_Test_5121;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(281, 9);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(273, 5);
             this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(139, 93);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 16;
+            this.guna2PictureBox1.TabIndex = 37;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // crtApplicationInfo2
-            // 
-            this.crtApplicationInfo2.Location = new System.Drawing.Point(9, 135);
-            this.crtApplicationInfo2.Margin = new System.Windows.Forms.Padding(2);
-            this.crtApplicationInfo2.Name = "crtApplicationInfo2";
-            this.crtApplicationInfo2.Size = new System.Drawing.Size(707, 388);
-            this.crtApplicationInfo2.TabIndex = 27;
-            // 
-            // frmVisionTests
+            // frmStreetTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 725);
+            this.Controls.Add(this.AppointmentGridView);
             this.Controls.Add(this.crtApplicationInfo2);
+            this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtNumberOfRecords);
             this.Controls.Add(this.guna2HtmlLabel3);
-            this.Controls.Add(this.AppointmentGridView);
             this.Controls.Add(this.btnAddNewUserButton);
             this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.guna2HtmlLabel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmVisionTests";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Vision Tests";
-            this.Load += new System.EventHandler(this.frmVisionTests_Load);
+            this.Name = "frmStreetTest";
+            this.Text = "frmStreetTest";
+            this.Load += new System.EventHandler(this.frmStreetTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentGridView)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
@@ -201,17 +199,16 @@
 
         #endregion
 
-        private Application.Controls.crtApplicationInfo crtApplicationInfo1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button btnAddNewUserButton;
         private System.Windows.Forms.DataGridView AppointmentGridView;
-        private Guna.UI2.WinForms.Guna2HtmlLabel txtNumberOfRecords;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private System.Windows.Forms.Button btnClose;
-        private Application.Controls.crtApplicationInfo crtApplicationInfo2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem takeTestToolStripMenuItem;
+        private Application.Controls.crtApplicationInfo crtApplicationInfo2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private System.Windows.Forms.Button btnClose;
+        private Guna.UI2.WinForms.Guna2HtmlLabel txtNumberOfRecords;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2Button btnAddNewUserButton;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

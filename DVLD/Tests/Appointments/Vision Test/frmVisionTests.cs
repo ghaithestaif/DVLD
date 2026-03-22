@@ -26,7 +26,7 @@ namespace DVLD.Tests
         {
             _App = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(_LocalDrivingLicenseApplicationID);
             crtApplicationInfo2.loadInfoByLocalDrivingLicenseAppplication(_LocalDrivingLicenseApplicationID);
-            _dtVisionTestAppointments= _App.GetAllTestAppointments();
+            _dtVisionTestAppointments= _App.GetAllTestAppointments((int)clsTestType.enTestType.VisionTest);
             AppointmentGridView.DataSource = _dtVisionTestAppointments;
         }
 
@@ -45,7 +45,7 @@ namespace DVLD.Tests
         }
         void RefreshGrid()
         {
-            _dtVisionTestAppointments = _App.GetAllTestAppointments();
+            _dtVisionTestAppointments = _App.GetAllTestAppointments((int)clsTestType.enTestType.VisionTest);
             AppointmentGridView.DataSource = _dtVisionTestAppointments;
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

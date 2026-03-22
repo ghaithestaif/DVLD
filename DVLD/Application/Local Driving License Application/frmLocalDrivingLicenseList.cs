@@ -1,4 +1,6 @@
 ﻿using DVLD.Tests;
+using DVLD.Tests.Appointments.Street_Test;
+using DVLD.Tests.Appointments.Written_Test;
 using DVLD_Business;
 using System;
 using System.Data;
@@ -195,7 +197,22 @@ namespace DVLD.Application
             int ID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
             clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(ID);
 
-            //for now the following items are going to be disabled
+            //check if the application is cancelled or completed, if so disable all options except show license
+
+            if( selectedApp.ApplicationStatus == enApplicationStatus.Cancelled)
+            {
+                CancelApplicaitonToolStripMenuItem.Enabled = false;
+                editToolStripMenuItem.Enabled = false;
+                DeleteApplicationToolStripMenuItem.Enabled = false;
+                ScheduleTestsMenue.Enabled = false;
+                issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
+                showLicenseToolStripMenuItem.Enabled = false;
+                return;
+            }
+
+
+
+            //for now the following items are going to be disabled4 until we implement the license issuing process
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
             showLicenseToolStripMenuItem.Enabled = false;
 
@@ -237,6 +254,24 @@ namespace DVLD.Application
         {
             int LocalDrivingLicenseApplicationID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
             frmVisionTests frm = new frmVisionTests(LocalDrivingLicenseApplicationID);
+            frm.ShowDialog();
+        }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWrittenTest frm = new frmWrittenTest(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
+
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStreetTest frm = new frmStreetTest(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
         }
     }
