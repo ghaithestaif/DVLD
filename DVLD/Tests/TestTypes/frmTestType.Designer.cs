@@ -46,15 +46,15 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 245);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 199);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(925, 269);
+            this.dataGridView1.Size = new System.Drawing.Size(694, 219);
             this.dataGridView1.TabIndex = 55599;
             // 
             // contextMenuStrip1
@@ -63,22 +63,23 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editTestTypeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 30);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(151, 30);
             // 
             // editTestTypeToolStripMenuItem
             // 
             this.editTestTypeToolStripMenuItem.Image = global::DVLD.Properties.Resources.edit_322;
             this.editTestTypeToolStripMenuItem.Name = "editTestTypeToolStripMenuItem";
-            this.editTestTypeToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.editTestTypeToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.editTestTypeToolStripMenuItem.Text = "Edit Test Type";
             this.editTestTypeToolStripMenuItem.Click += new System.EventHandler(this.editTestTypeToolStripMenuItem_Click);
             // 
             // lRecordsNumber
             // 
             this.lRecordsNumber.BackColor = System.Drawing.Color.Transparent;
-            this.lRecordsNumber.Location = new System.Drawing.Point(88, 528);
+            this.lRecordsNumber.Location = new System.Drawing.Point(66, 429);
+            this.lRecordsNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lRecordsNumber.Name = "lRecordsNumber";
-            this.lRecordsNumber.Size = new System.Drawing.Size(17, 18);
+            this.lRecordsNumber.Size = new System.Drawing.Size(15, 15);
             this.lRecordsNumber.TabIndex = 55598;
             this.lRecordsNumber.Text = "??";
             // 
@@ -86,9 +87,10 @@
             // 
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(12, 528);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(9, 429);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(58, 18);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(44, 15);
             this.guna2HtmlLabel2.TabIndex = 55597;
             this.guna2HtmlLabel2.Text = "Records:";
             // 
@@ -98,9 +100,10 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(282, 184);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(212, 150);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(419, 38);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(314, 31);
             this.guna2HtmlLabel1.TabIndex = 55596;
             this.guna2HtmlLabel1.Text = "Manage Test Types";
             this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
@@ -121,10 +124,10 @@
             this.btnClose.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(785, 518);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Location = new System.Drawing.Point(589, 421);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(131, 34);
+            this.btnClose.Size = new System.Drawing.Size(98, 28);
             this.btnClose.TabIndex = 55600;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -132,18 +135,19 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLD.Properties.Resources.TestType_512;
-            this.pictureBox1.Location = new System.Drawing.Point(318, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(238, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(220, 173);
+            this.pictureBox1.Size = new System.Drawing.Size(165, 141);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 55595;
             this.pictureBox1.TabStop = false;
             // 
             // frmTestType
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 558);
+            this.ClientSize = new System.Drawing.Size(696, 453);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lRecordsNumber);
@@ -151,6 +155,7 @@
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmTestType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmTestType";

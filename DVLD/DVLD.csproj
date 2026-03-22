@@ -145,23 +145,29 @@
     <Compile Include="Tests\Appointments\frmVisionTestsAppointment.Designer.cs">
       <DependentUpon>frmVisionTestsAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests\Appointments\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tests\Appointments\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tests\crtTestSchedule.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Tests\crtTestSchedule.Designer.cs">
       <DependentUpon>crtTestSchedule.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tests\frmTakeVisionTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tests\frmTakeVisionTest.Designer.cs">
-      <DependentUpon>frmTakeVisionTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tests\TestTypes\crtTakeTest.cs">
+    <Compile Include="Tests\crtTakeTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tests\TestTypes\crtTakeTest.Designer.cs">
+    <Compile Include="Tests\crtTakeTest.Designer.cs">
       <DependentUpon>crtTakeTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmTakeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmTakeTest.Designer.cs">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Tests\TestTypes\frmEditTestType.cs">
       <SubType>Form</SubType>
@@ -260,11 +266,11 @@
     <EmbeddedResource Include="Tests\crtTestSchedule.resx">
       <DependentUpon>crtTestSchedule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tests\frmTakeVisionTest.resx">
-      <DependentUpon>frmTakeVisionTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tests\TestTypes\crtTakeTest.resx">
+    <EmbeddedResource Include="Tests\crtTakeTest.resx">
       <DependentUpon>crtTakeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmTakeTest.resx">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\TestTypes\frmEditTestType.resx">
       <DependentUpon>frmEditTestType.cs</DependentUpon>

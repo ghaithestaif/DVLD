@@ -59,8 +59,6 @@ namespace DVLD.Tests
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTakeVisionTest frm = new frmTakeVisionTest(_LocalDrivingLicenseApplicationID, Convert.ToInt32(AppointmentGridView.CurrentRow.Cells["TestAppointmentID"].Value));
-            frm.ShowDialog();
         }
     }
 }

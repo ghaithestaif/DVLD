@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DVLD.Tests
+namespace DVLD.Tests.Appointments
 {
-    public partial class frmTakeVisionTest : Form
+    public partial class UserControl1 : UserControl
     {
-        public frmTakeVisionTest(int ID,int TestAppointmentID)
+        public UserControl1()
         {
             InitializeComponent();
         }
