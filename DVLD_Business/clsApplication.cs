@@ -22,8 +22,6 @@ namespace DVLD_Business
         public DVLD_Business.People ApplicantPerson{ get; set; }
         public DateTime ApplicationDate { get; set; }
         public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
-
-
         public int ApplicationTypeID { get; set; }
 
         public enApplicationStatus ApplicationStatus { set; get; }

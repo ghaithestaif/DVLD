@@ -35,7 +35,7 @@ namespace DVLD.Tests
         private void btnAddNewUserButton_Click(object sender, EventArgs e)
         {
             frmVisionTestsAppointment frm = new frmVisionTestsAppointment(_LocalDrivingLicenseApplicationID);
-
+            frm.ctrlScheduleTest1.OnAppointmentSaved += RefreshGrid;
             frm.ShowDialog();
         }
 
@@ -59,6 +59,27 @@ namespace DVLD.Tests
 
         private void takeTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmTakeTest frm = new frmTakeTest( Convert.ToInt32(AppointmentGridView.CurrentRow.Cells["TestAppointmentID"].Value), clsTestType.enTestType.VisionTest);
+            frm.OnTestTaken += RefreshGrid;
+            frm.ShowDialog();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            //get the ID of the appointment
+            int appointmentID = Convert.ToInt32(AppointmentGridView.CurrentRow.Cells["TestAppointmentID"].Value);
+            if (clsTestAppointments.Find(appointmentID).IsLocked)
+            {
+                editToolStripMenuItem.Enabled = false;
+                takeTestToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                editToolStripMenuItem.Enabled = true;
+                takeTestToolStripMenuItem.Enabled = true;
+
+            }
+
         }
     }
 }

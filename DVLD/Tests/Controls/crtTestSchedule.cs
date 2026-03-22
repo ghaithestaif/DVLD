@@ -299,14 +299,14 @@ namespace DVLD.Tests
                 //First Create Applicaiton 
                 clsApplication Application = new clsApplication();
 
-                Application.ApplicationID = _LocalDrivingLicenseApplication.ApplicantPerson.PersonID;
+                Application.ApplicantPerson = _LocalDrivingLicenseApplication.ApplicantPerson;
                 Application.ApplicationDate = DateTime.Now;
                 Application.ApplicationTypeID = (int)clsApplication.enApplicationType.RetakeTest;
                 Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
                 Application.LastStatusDate = DateTime.Now;
                 Application.PaidFees = clsApplicationType.Find((int)clsApplication.enApplicationType.RetakeTest).Fees;
                 Application.CreatedByUser = Global_Classes.General.CurrentUser;
-
+                
                 if (!Application.Save())
                 {
                     _TestAppointment.RetakeTestApplicationID = -1;

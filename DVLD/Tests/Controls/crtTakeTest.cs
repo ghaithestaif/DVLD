@@ -17,6 +17,20 @@ namespace DVLD.Tests.TestTypes
     {
         clsLocalDrivingLicenseApplication _LocalDrivingLicenseApplication = new clsLocalDrivingLicenseApplication();
         clsTestAppointments _TestAppointments = new clsTestAppointments();
+        public clsTestAppointments TestAppointments { 
+        
+        
+            get
+            {
+                return _TestAppointments;
+            }
+            private set
+            {
+                _TestAppointments = value;
+            }
+
+
+        }
         public crtTakeTest()
         {
             InitializeComponent();
@@ -31,11 +45,10 @@ namespace DVLD.Tests.TestTypes
             }
             set
             {
-                _TestType = value;
+                _TestType = value; // VERY IMPORTANT
 
-                switch (_TestType)
+                switch (value)
                 {
-
                     case clsTestType.enTestType.VisionTest:
                         {
                             lblTitle.Text = "Vision Test";
@@ -49,13 +62,12 @@ namespace DVLD.Tests.TestTypes
                             pbTestTypeImage.Image = Resources.Written_Test_512;
                             break;
                         }
+
                     case clsTestType.enTestType.StreetTest:
                         {
                             lblTitle.Text = "Street Test";
                             pbTestTypeImage.Image = Resources.driving_test_512;
                             break;
-
-
                         }
                 }
             }
@@ -64,13 +76,15 @@ namespace DVLD.Tests.TestTypes
         {
 
         }
-        void LoadData(int LocalDrivingLicenseApplicationID,int AppointmentID, clsTestType.enTestType TestType)
+       public  void LoadData(int AppointmentID, clsTestType.enTestType TestType)
         {
             _TestAppointments=clsTestAppointments.Find(AppointmentID);
-            _LocalDrivingLicenseApplication= clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
+            
+            _LocalDrivingLicenseApplication= clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(_TestAppointments.LocalDrivingLicenseApplicationID);
             _TestType = TestType;
+            
             //check if the data is loaded successfully
-            if (_LocalDrivingLicenseApplication != null || _TestAppointments != null)
+            if (_LocalDrivingLicenseApplication == null || _TestAppointments == null)
             {
                 return;
             }
