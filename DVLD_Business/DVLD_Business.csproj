@@ -43,14 +43,16 @@
   <ItemGroup>
     <Compile Include="clsApplication.cs" />
     <Compile Include="clsApplicationType.cs" />
+    <Compile Include="clsDriver.cs" />
     <Compile Include="clslicenseClass.cs" />
+    <Compile Include="clsLicenses.cs" />
     <Compile Include="clsLocalDrivingLicenseApplication.cs" />
     <Compile Include="clsTestAppointments.cs" />
     <Compile Include="clsTests.cs" />
     <Compile Include="clsTestType.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="Countries.cs" />
-    <Compile Include="People.cs" />
+    <Compile Include="clsPeople_1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,10 +17,10 @@ namespace DVLD.People
 
     public partial class AddNewEditPeople : Form
     {
-        private DVLD_Business.People _AddEditPerson = new DVLD_Business.People();
+        private DVLD_Business.clsPeople _AddEditPerson = new DVLD_Business.clsPeople();
         public int PersonID;
 
-        public DVLD_Business.People.enMode mode = DVLD_Business.People.enMode.enAddnew;
+        public DVLD_Business.clsPeople.enMode mode = DVLD_Business.clsPeople.enMode.enAddnew;
         public event Action<int> DataBack;
         public event Action RefreshData;
 
@@ -34,26 +34,26 @@ namespace DVLD.People
             {
                 this.PersonID = PersonID;
 
-                _AddEditPerson = DVLD_Business.People.Find(PersonID);
-                mode = DVLD_Business.People.enMode.enUpdate;
+                _AddEditPerson = DVLD_Business.clsPeople.Find(PersonID);
+                mode = DVLD_Business.clsPeople.enMode.enUpdate;
                 LoadPerson();
             }
             else
             {
-                  mode = DVLD_Business.People.enMode.enAddnew;
+                  mode = DVLD_Business.clsPeople.enMode.enAddnew;
 
             }
             
         }
        public void LoadFormTitle()
        {
-            if (mode == DVLD_Business.People.enMode.enAddnew)
+            if (mode == DVLD_Business.clsPeople.enMode.enAddnew)
             {
                 this.Text = "Add New Person";
                 txtAddNewEditPerson.Text = "Add New Person";
 
             }
-            else if (mode == DVLD_Business.People.enMode.enUpdate)
+            else if (mode == DVLD_Business.clsPeople.enMode.enUpdate)
             {
                 this.Text = "Edit Person";
                 txtAddNewEditPerson.Text = "Edit Person";
@@ -223,9 +223,9 @@ namespace DVLD.People
             {
                 DataBack?.Invoke(_AddEditPerson.PersonID);
 
-                if (mode == DVLD_Business.People.enMode.enAddnew)
+                if (mode == DVLD_Business.clsPeople.enMode.enAddnew)
                 {
-                    mode = DVLD_Business.People.enMode.enUpdate;
+                    mode = DVLD_Business.clsPeople.enMode.enUpdate;
                     MessageBox.Show("Person added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadFormTitle();
 
@@ -245,7 +245,7 @@ namespace DVLD.People
         {
             string nationalNo = txtNationalNo.Text;
 
-            if (DVLD_Business.People.IspersonExist(nationalNo))
+            if (DVLD_Business.clsPeople.IspersonExist(nationalNo))
             {
                 e.Cancel = true;
                 txtNationalNo.Focus();

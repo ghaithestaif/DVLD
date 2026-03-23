@@ -36,13 +36,11 @@
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.SetImageLink = new System.Windows.Forms.LinkLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pPicture = new System.Windows.Forms.PictureBox();
             this.rbtnMan = new System.Windows.Forms.RadioButton();
             this.cbCountry = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
             this.rbtnFemale = new System.Windows.Forms.RadioButton();
             this.pGendor = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -73,12 +71,12 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pPicture = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPicture)).BeginInit();
             this.pGendor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -86,6 +84,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,18 +149,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // pPicture
-            // 
-            this.errorProvider1.SetIconAlignment(this.pPicture, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.pPicture.Image = global::DVLD.Properties.Resources.Female_512;
-            this.pPicture.Location = new System.Drawing.Point(833, 180);
-            this.pPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pPicture.Name = "pPicture";
-            this.pPicture.Size = new System.Drawing.Size(144, 158);
-            this.pPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pPicture.TabIndex = 55582;
-            this.pPicture.TabStop = false;
             // 
             // rbtnMan
             // 
@@ -237,17 +225,6 @@
             this.pGendor.Name = "pGendor";
             this.pGendor.Size = new System.Drawing.Size(199, 43);
             this.pGendor.TabIndex = 55571;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::DVLD.Properties.Resources.Woman_32;
-            this.pictureBox4.Location = new System.Drawing.Point(60, 2);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(29, 26);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 38;
-            this.pictureBox4.TabStop = false;
             // 
             // txtPhone
             // 
@@ -584,7 +561,6 @@
             this.btnClose.FillColor = System.Drawing.SystemColors.Control;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
             this.btnClose.Location = new System.Drawing.Point(519, 432);
@@ -671,6 +647,29 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 55583;
             this.pictureBox1.TabStop = false;
+            // 
+            // pPicture
+            // 
+            this.errorProvider1.SetIconAlignment(this.pPicture, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.pPicture.Image = global::DVLD.Properties.Resources.Female_512;
+            this.pPicture.Location = new System.Drawing.Point(833, 180);
+            this.pPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pPicture.Name = "pPicture";
+            this.pPicture.Size = new System.Drawing.Size(144, 158);
+            this.pPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pPicture.TabIndex = 55582;
+            this.pPicture.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::DVLD.Properties.Resources.Woman_32;
+            this.pictureBox4.Location = new System.Drawing.Point(60, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox4.TabIndex = 38;
+            this.pictureBox4.TabStop = false;
             // 
             // btnSave
             // 
@@ -759,10 +758,8 @@
             this.Text = "AddNewEditPeople";
             this.Load += new System.EventHandler(this.AddNewEditPeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pPicture)).EndInit();
             this.pGendor.ResumeLayout(false);
             this.pGendor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -770,6 +767,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

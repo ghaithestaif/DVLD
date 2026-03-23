@@ -38,7 +38,7 @@ namespace DVLD.Users
                 return;
             }
 
-            if (!(DVLD_Business.People.IspersonExist(personDetailsWithFilters1.PersonID)))
+            if (!(DVLD_Business.clsPeople.IspersonExist(personDetailsWithFilters1.PersonID)))
             {
                 MessageBox.Show("Please select a person to continue.", "No Person Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -127,7 +127,7 @@ namespace DVLD.Users
             }
             else
             {
-                if (!DVLD_Business.People.IspersonExist(personDetailsWithFilters1.PersonID))
+                if (!DVLD_Business.clsPeople.IspersonExist(personDetailsWithFilters1.PersonID))
                 {
                     MessageBox.Show("Please choose an existant person", "error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     tabControl1.SelectedIndex = 0;
@@ -174,7 +174,7 @@ namespace DVLD.Users
                 return;
             }
 
-            _User.Person = DVLD_Business.People.Find(personDetailsWithFilters1.PersonID);
+            _User.Person = DVLD_Business.clsPeople.Find(personDetailsWithFilters1.PersonID);
             _User.UserName = txtUserName.Text;
             _User.Password = Util.Utill.HashPassword(txtPassword.Text);
             _User.IsActive = rbIsActive.Checked;

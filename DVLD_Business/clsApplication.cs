@@ -19,7 +19,7 @@ namespace DVLD_Business
             ReplaceDamagedDrivingLicense = 4, ReleaseDetainedDrivingLicsense = 5, NewInternationalLicense = 6, RetakeTest = 7
         };
         public int ApplicationID { get; set; }
-        public DVLD_Business.People ApplicantPerson{ get; set; }
+        public DVLD_Business.clsPeople ApplicantPerson{ get; set; }
         public DateTime ApplicationDate { get; set; }
         public enum enApplicationStatus { New = 1, Cancelled = 2, Completed = 3 };
         public int ApplicationTypeID { get; set; }
@@ -68,7 +68,7 @@ namespace DVLD_Business
             int createdByUserID)
         {
             ApplicationID = applicationID;
-             ApplicantPerson= People.Find(applicantPersonID);
+             ApplicantPerson= clsPeople.Find(applicantPersonID);
             ApplicationDate = applicationDate;
             ApplicationTypeID = applicationTypeID;
             ApplicationStatus = (enApplicationStatus)applicationStatus;

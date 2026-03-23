@@ -16,7 +16,7 @@ namespace DVLD_Business
         public bool IsActive { get; set; }
 
         // This is what you asked for
-        public DVLD_Business.People Person { get; set; }
+        public DVLD_Business.clsPeople Person { get; set; }
         enum enMode { Addnew, Update }
         enMode _Mode;
         public clsUser()
@@ -25,7 +25,7 @@ namespace DVLD_Business
             UserName = "";
             Password = "";
             IsActive = false;
-            Person = new DVLD_Business.People();
+            Person = new DVLD_Business.clsPeople();
             _Mode = enMode.Addnew;
         }
 
@@ -38,7 +38,7 @@ namespace DVLD_Business
             this.UserName = UserName;
             this.Password = Password;
             this.IsActive = IsActive;
-            this.Person = DVLD_Business.People.Find(PersonID);
+            this.Person = DVLD_Business.clsPeople.Find(PersonID);
             _Mode = enMode.Update;
         }
         // ---------- FIND ----------

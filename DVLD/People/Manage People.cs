@@ -23,7 +23,7 @@ namespace DVLD.People
 
         private void  _RefreshGrid()
         {
-            DataTable dt = DVLD_Business.People.GetAll();
+            DataTable dt = DVLD_Business.clsPeople.GetAll();
             PeopleGridView.DataSource = dt;
             PeopleGridView.Columns["Address"].Visible = false;
             PeopleGridView.Columns["ImagePath"].Visible = false;
@@ -54,7 +54,7 @@ namespace DVLD.People
             if ((filter == Common.PeopleFilter.none))
             {
                 txtFilter.Enabled = false;
-                PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter);
+                PeopleGridView.DataSource = DVLD_Business.clsPeople.FilterPeople(filter);
                 txtFilter.Text = "";
             }
             txtFilter.Enabled = true;
@@ -71,7 +71,7 @@ namespace DVLD.People
             string txt = txtFilter.Text;
 
 
-            PeopleGridView.DataSource = DVLD_Business.People.FilterPeople(filter, txt);
+            PeopleGridView.DataSource = DVLD_Business.clsPeople.FilterPeople(filter, txt);
             txtNumberOfRecords.Text = (PeopleGridView.RowCount-1).ToString();
         }
 
@@ -108,7 +108,7 @@ namespace DVLD.People
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddNewEditPeople editPeople = new AddNewEditPeople((int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value);
-            editPeople.mode = DVLD_Business.People.enMode.enUpdate;
+            editPeople.mode = DVLD_Business.clsPeople.enMode.enUpdate;
             editPeople.RefreshData += _RefreshGrid;
             editPeople.ShowDialog();
 
@@ -117,7 +117,7 @@ namespace DVLD.People
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int PersonID = (int)PeopleGridView.SelectedRows[0].Cells["PersonID"].Value;
-            DVLD_Business.People.Delete(PersonID);
+            DVLD_Business.clsPeople.Delete(PersonID);
             _RefreshGrid();
 
         }

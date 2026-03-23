@@ -167,7 +167,7 @@ namespace DVLD.Application
         private void personDetailsWithFilters1_OnPersonSelected(int obj)
         {
              
-            _LocalDrivingLicenseApplication.ApplicantPerson = DVLD_Business.People.Find(obj);
+            _LocalDrivingLicenseApplication.ApplicantPerson = DVLD_Business.clsPeople.Find(obj);
         }
     }
 }

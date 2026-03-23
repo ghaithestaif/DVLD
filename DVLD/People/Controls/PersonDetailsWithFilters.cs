@@ -49,7 +49,7 @@ namespace DVLD.People.Controls
                 //search by national no
                 string NationalNO = txtFilterValue.Text;
                     personCard1.LoadPersonInfo(NationalNO);
-                if (!DVLD_Business.People.IspersonExist(personCard1.SelectedPersonInfo.NationalNo))
+                if (!DVLD_Business.clsPeople.IspersonExist(personCard1.SelectedPersonInfo.NationalNo))
                 {
                     MessageBox.Show("No person found with this National Number", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -63,7 +63,7 @@ namespace DVLD.People.Controls
                 }
                     int ID = Convert.ToInt32(txtFilterValue.Text);
                     personCard1.LoadPersonInfo(ID);
-                if (!DVLD_Business.People.IspersonExist(personCard1.PersonID))
+                if (!DVLD_Business.clsPeople.IspersonExist(personCard1.PersonID))
                 {
                     MessageBox.Show("No person found with this Person ID", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

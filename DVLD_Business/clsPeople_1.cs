@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DVLD_General;
-using static DVLD_DataAccess.People;
+using static DVLD_DataAccess.clsPeopleData;
 namespace DVLD_Business
 {
-    public class People
+    public class clsPeople
     {
        public enum enMode{enUpdate,enAddnew}
         enMode _Mode;
@@ -36,11 +36,11 @@ namespace DVLD_Business
 
 
         public Countries Countries { get; set; }
-        public People() { 
+        public clsPeople() { 
         _Mode = enMode.enAddnew;
         }
 
-        private People(
+        private clsPeople(
             int personID,
             string nationalNo,
             string firstName,
@@ -78,7 +78,7 @@ namespace DVLD_Business
 
         private int _AddNew()
         {
-         int PersonID=   DVLD_DataAccess.People.AddNewPerson(
+         int PersonID=   DVLD_DataAccess.clsPeopleData.AddNewPerson(
                 NationalNo,
                 FirstName,
                 SecondName,
@@ -98,7 +98,7 @@ namespace DVLD_Business
 
         private bool _Update()
         {
-            return DVLD_DataAccess.People.UpdatePerson(
+            return DVLD_DataAccess.clsPeopleData.UpdatePerson(
                 PersonID,
                 NationalNo,
                 FirstName,
@@ -135,10 +135,10 @@ namespace DVLD_Business
 
         public static bool Delete(int personID)
         {
-            return DVLD_DataAccess.People.DeletePerson(personID);
+            return DVLD_DataAccess.clsPeopleData.DeletePerson(personID);
         }
 
-        public static People Find(int personID)
+        public static clsPeople Find(int personID)
         {
             string NationalNo= "",
              FirstName = "",
@@ -153,13 +153,13 @@ namespace DVLD_Business
              int NationalityCountryID = 0; 
             DateTime DateOfBirth=DateTime.MinValue;
 
-            DVLD_DataAccess.People.FindPerson(personID, ref NationalNo, ref FirstName, ref SecondName,
+            DVLD_DataAccess.clsPeopleData.FindPerson(personID, ref NationalNo, ref FirstName, ref SecondName,
                 ref ThirdName, ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone,
                 ref Email, ref NationalityCountryID, ref ImagePath);
             
 
 
-            return new People(personID,
+            return new clsPeople(personID,
                 NationalNo,
                 FirstName,
                 SecondName,
@@ -176,7 +176,7 @@ namespace DVLD_Business
         }
 
 
-        public static People Find(string NationalNo)
+        public static clsPeople Find(string NationalNo)
         {
             int PersonID = -1;
             string FirstName = "",
@@ -191,13 +191,13 @@ namespace DVLD_Business
             int NationalityCountryID = 0;
             DateTime DateOfBirth = DateTime.MinValue;
 
-            DVLD_DataAccess.People.FindPerson(NationalNo, ref PersonID, ref FirstName, ref SecondName,
+            DVLD_DataAccess.clsPeopleData.FindPerson(NationalNo, ref PersonID, ref FirstName, ref SecondName,
                 ref ThirdName, ref LastName, ref DateOfBirth, ref Gender, ref Address, ref Phone,
                 ref Email, ref NationalityCountryID, ref ImagePath);
 
 
 
-            return new People(PersonID,
+            return new clsPeople(PersonID,
                 NationalNo,
                 FirstName,
                 SecondName,
@@ -214,23 +214,23 @@ namespace DVLD_Business
         }
         public static DataTable GetAll()
         {
-            return DVLD_DataAccess.People.GetAllPeople();
+            return DVLD_DataAccess.clsPeopleData.GetAllPeople();
         }
 
         static public bool IspersonExist(string NationalNo)
         {
-            return DVLD_DataAccess.People.IspersonExist(NationalNo);
+            return DVLD_DataAccess.clsPeopleData.IspersonExist(NationalNo);
         }
         static public bool IspersonExist(int ID)
         {
-            return DVLD_DataAccess.People.IspersonExist(ID);
+            return DVLD_DataAccess.clsPeopleData.IspersonExist(ID);
         }
         static public DataTable FilterPeople(DVLD_General.Common.PeopleFilter peopleFilter,string FilterExpression="")
         {
-            return DVLD_DataAccess.People.FilterPeople(peopleFilter, FilterExpression);
+            return DVLD_DataAccess.clsPeopleData.FilterPeople(peopleFilter, FilterExpression);
         }
 
-    
+        
 
 
 

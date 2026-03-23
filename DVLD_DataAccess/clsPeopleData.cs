@@ -13,7 +13,7 @@ using DVLD_General;
 
 namespace DVLD_DataAccess
 {
-    static public class People
+    static public class clsPeopleData
     {
         private static readonly Dictionary<DVLD_General.Common.PeopleFilter, string> _ColumnMap
              = new Dictionary<DVLD_General.Common.PeopleFilter, string>()
@@ -489,13 +489,13 @@ namespace DVLD_DataAccess
         }
 
 
+        
+
+
+
+        }
 
 
 
 
     }
-
-
-
-
-}

@@ -207,10 +207,88 @@ namespace DVLD_Business
             {
                 return DoesPersonAttendedTest(this.LocalDrivingLicenseApplicationID, TestTypeID);
         }
-
+       public bool HasPersonPassedAllTests()
+        {
+            return this.DoesPersonPassedTest(1)&& this.DoesPersonPassedTest(2)&&this.DoesPersonPassedTest(3);
+        } 
         public DataTable GetAllTestAppointments(int TestTypeID)
         {
             return GetAllTestAppointmentsByLocalDrivingLicenseApplicationID(this.LocalDrivingLicenseApplicationID, TestTypeID);
+        }
+
+
+
+
+        public bool IssueLicenseTheFirstTime(string Notes,int userID)
+        {
+
+            //check if the person already has this license 
+            //not implemented yet
+            if (clsLicense.DoesPersonHaveLicesne(this.ApplicantPerson.PersonID, this.LicenseClass.LicenseClassID))
+            {
+                return false;
+            }
+
+
+            // check if the person has passed all the tests
+            if (!this.HasPersonPassedAllTests())
+            {
+                return false;
+            }
+
+            //check if the application is cancelled 
+            if (!(this.ApplicationStatus == enApplicationStatus.New))
+            {
+                return false;
+            }
+
+            //this person is going to be a driver first
+            // so we are going to make this person a driver and then issue the license
+            //check if the person is already is a driver
+            int DriverID = -1;
+            if (!clsDriver.IsPersonADriver(this.ApplicantPerson.PersonID))
+            {
+                clsDriver NewDriver = new clsDriver();
+                NewDriver.PersonID = this.ApplicantPerson.PersonID;
+                NewDriver.CreatedDate = DateTime.Now;
+                NewDriver.CreatedByUserID = this.CreatedByUser.UserID;
+                if (!NewDriver.Save())
+                {
+                    return false;
+                }
+                DriverID = NewDriver.DriverID;
+            }
+            else
+            {
+                DriverID = clsDriver.FindByPersonID(this.ApplicantPerson.PersonID);
+            }
+
+            //now we create the License Record
+            clsLicense NewLicense=new clsLicense();
+
+            NewLicense.Notes = Notes;
+            NewLicense.ApplicationID = this.ApplicationID;
+            NewLicense.CreatedByUserID = userID;
+            NewLicense.IssueReason = (int)clsLicense.enIssueReason.FirstTime;
+            NewLicense.IsActive = true;
+            NewLicense.PaidFees =Convert.ToDecimal(this.LicenseClass.ClassFees);
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(this.LicenseClass.DefaultValidityLength);
+            NewLicense.LicenseClassID = this.LicenseClass.LicenseClassID;
+            NewLicense.DriverID = DriverID;
+
+            if(!NewLicense.Save()) { return false; }
+
+            return true;
+
+
+
+
+
+
+
+
+
         }
     }
 }

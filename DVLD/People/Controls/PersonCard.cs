@@ -14,7 +14,7 @@ namespace DVLD.People
 {
     public partial class PersonCard : UserControl
     {
-        private DVLD_Business.People _Person;
+        private DVLD_Business.clsPeople _Person;
 
         private int _PersonID = -1;
 
@@ -23,7 +23,7 @@ namespace DVLD.People
             get { return _PersonID; }
         }
 
-        public DVLD_Business.People SelectedPersonInfo
+        public DVLD_Business.clsPeople SelectedPersonInfo
         {
             get { return _Person; }
         }
@@ -35,7 +35,7 @@ namespace DVLD.People
 
         public void LoadPersonInfo(int PersonID)
         {
-            _Person = DVLD_Business.People.Find(PersonID);
+            _Person = DVLD_Business.clsPeople.Find(PersonID);
             if (_Person == null)
             {
                 ResetPersonInfo();
@@ -48,7 +48,7 @@ namespace DVLD.People
 
         public void LoadPersonInfo(string NationalNo)
         {
-            _Person = DVLD_Business.People.Find(NationalNo);
+            _Person = DVLD_Business.clsPeople.Find(NationalNo);
             if (_Person == null)
             {
                 ResetPersonInfo();
