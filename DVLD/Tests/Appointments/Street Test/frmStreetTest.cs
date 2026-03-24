@@ -17,9 +17,10 @@ namespace DVLD.Tests.Appointments.Street_Test
         int _LocalDrivingLicenseApplicationID;
         clsLocalDrivingLicenseApplication _App;
         DataTable _dtVisionTestAppointments;
+
         void RefreshGrid()
         {
-            _dtVisionTestAppointments = _App.GetAllTestAppointments((int)clsTestType.enTestType.WrittenTest);
+            _dtVisionTestAppointments = _App.GetAllTestAppointments((int)clsTestType.enTestType.StreetTest);
             AppointmentGridView.DataSource = _dtVisionTestAppointments;
         }
         public frmStreetTest(int LocalDrivingLicenseApplicationID)

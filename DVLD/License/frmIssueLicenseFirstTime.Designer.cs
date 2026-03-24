@@ -1,6 +1,6 @@
 ﻿namespace DVLD.License
 {
-    partial class frmLicenseRelease
+    partial class frmIssueLicenseFirstTime
     {
         /// <summary>
         /// Required designer variable.
@@ -87,6 +87,7 @@
             this.btnClose.Size = new System.Drawing.Size(132, 34);
             this.btnClose.TabIndex = 55594;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnIssue
             // 
@@ -120,7 +121,7 @@
             this.crtApplicationInfo1.Size = new System.Drawing.Size(943, 478);
             this.crtApplicationInfo1.TabIndex = 55595;
             // 
-            // frmLicenseRelease
+            // frmIssueLicenseFirstTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +132,7 @@
             this.Controls.Add(this.btnIssue);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmLicenseRelease";
+            this.Name = "frmIssueLicenseFirstTime";
             this.Text = "License Release";
             this.Load += new System.EventHandler(this.frmLicenseRelease_Load);
             this.ResumeLayout(false);

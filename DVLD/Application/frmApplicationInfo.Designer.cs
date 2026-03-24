@@ -1,6 +1,6 @@
-﻿namespace DVLD.License
+﻿namespace DVLD.Application
 {
-    partial class frmLicenseInfo
+    partial class frmApplicationInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crtShowLicenseInfo1 = new DVLD.License.crtShowLicenseInfo();
+            this.crtApplicationInfo1 = new DVLD.Application.Controls.crtApplicationInfo();
             this.SuspendLayout();
             // 
-            // crtShowLicenseInfo1
+            // crtApplicationInfo1
             // 
-            this.crtShowLicenseInfo1.Location = new System.Drawing.Point(0, 0);
-            this.crtShowLicenseInfo1.Name = "crtShowLicenseInfo1";
-            this.crtShowLicenseInfo1.Size = new System.Drawing.Size(865, 341);
-            this.crtShowLicenseInfo1.TabIndex = 0;
+            this.crtApplicationInfo1.Location = new System.Drawing.Point(12, 11);
+            this.crtApplicationInfo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.crtApplicationInfo1.Name = "crtApplicationInfo1";
+            this.crtApplicationInfo1.Size = new System.Drawing.Size(943, 478);
+            this.crtApplicationInfo1.TabIndex = 0;
             // 
-            // frmLicenseInfo
+            // frmApplicationInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 347);
-            this.Controls.Add(this.crtShowLicenseInfo1);
+            this.ClientSize = new System.Drawing.Size(953, 506);
+            this.Controls.Add(this.crtApplicationInfo1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmLicenseInfo";
-            this.Text = "License Info";
-            this.Load += new System.EventHandler(this.frmLicenseInfo_Load);
+            this.Name = "frmApplicationInfo";
+            this.Text = "frmApplicationInfo";
+            this.Load += new System.EventHandler(this.frmApplicationInfo_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private crtShowLicenseInfo crtShowLicenseInfo1;
+        private Controls.crtApplicationInfo crtApplicationInfo1;
     }
 }

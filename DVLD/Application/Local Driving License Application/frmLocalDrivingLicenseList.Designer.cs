@@ -69,7 +69,7 @@
             this.txtNumberOfRecords.BackColor = System.Drawing.Color.Transparent;
             this.txtNumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumberOfRecords.Location = new System.Drawing.Point(83, 516);
-            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNumberOfRecords.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumberOfRecords.Name = "txtNumberOfRecords";
             this.txtNumberOfRecords.Size = new System.Drawing.Size(72, 18);
             this.txtNumberOfRecords.TabIndex = 21;
@@ -108,7 +108,7 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(11, 516);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(68, 18);
             this.guna2HtmlLabel3.TabIndex = 19;
@@ -119,7 +119,7 @@
             this.LocalDrivingLicenseGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LocalDrivingLicenseGridView.ContextMenuStrip = this.cmsApplications;
             this.LocalDrivingLicenseGridView.Location = new System.Drawing.Point(11, 262);
-            this.LocalDrivingLicenseGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.LocalDrivingLicenseGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LocalDrivingLicenseGridView.MultiSelect = false;
             this.LocalDrivingLicenseGridView.Name = "LocalDrivingLicenseGridView";
             this.LocalDrivingLicenseGridView.ReadOnly = true;
@@ -253,6 +253,7 @@
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Name = "issueDrivingLicenseFirstTimeToolStripMenuItem";
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Size = new System.Drawing.Size(262, 38);
             this.issueDrivingLicenseFirstTimeToolStripMenuItem.Text = "&Issue Driving License (First Time)";
+            this.issueDrivingLicenseFirstTimeToolStripMenuItem.Click += new System.EventHandler(this.issueDrivingLicenseFirstTimeToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -280,6 +281,7 @@
             this.showPersonLicenseHistoryToolStripMenuItem.Name = "showPersonLicenseHistoryToolStripMenuItem";
             this.showPersonLicenseHistoryToolStripMenuItem.Size = new System.Drawing.Size(262, 38);
             this.showPersonLicenseHistoryToolStripMenuItem.Text = "Show Person License History";
+            this.showPersonLicenseHistoryToolStripMenuItem.Click += new System.EventHandler(this.showPersonLicenseHistoryToolStripMenuItem_Click);
             // 
             // cbFilter
             // 
@@ -294,7 +296,7 @@
             this.cbFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbFilter.ItemHeight = 20;
             this.cbFilter.Location = new System.Drawing.Point(70, 228);
-            this.cbFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(137, 26);
             this.cbFilter.TabIndex = 17;
@@ -306,7 +308,7 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(11, 231);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(54, 18);
             this.guna2HtmlLabel2.TabIndex = 16;
@@ -319,7 +321,7 @@
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(363, 201);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(362, 27);
             this.guna2HtmlLabel1.TabIndex = 14;
@@ -330,7 +332,7 @@
             this.guna2PictureBox2.Image = global::DVLD.Properties.Resources.Local_321;
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(594, 85);
-            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(50, 45);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -351,7 +353,7 @@
             this.btnAddNewPersonButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddNewPersonButton.ForeColor = System.Drawing.Color.White;
             this.btnAddNewPersonButton.Location = new System.Drawing.Point(1013, 202);
-            this.btnAddNewPersonButton.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNewPersonButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddNewPersonButton.Name = "btnAddNewPersonButton";
             this.btnAddNewPersonButton.Size = new System.Drawing.Size(61, 47);
             this.btnAddNewPersonButton.TabIndex = 15;
@@ -362,7 +364,7 @@
             this.guna2PictureBox1.Image = global::DVLD.Properties.Resources.Applications;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(429, 28);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(202, 169);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

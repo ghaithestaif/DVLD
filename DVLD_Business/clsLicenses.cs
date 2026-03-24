@@ -28,7 +28,10 @@ namespace DVLD_Business
         {
             get { return clsApplication.Find(ApplicationID); }
         }
-
+        public clsDriver DriverInfo
+        {
+            get { return clsDriver.Find(DriverID); }
+        }
         public clsLicenseClass LicenseClassInfo
         {
             get { return clsLicenseClass.Find(LicenseClassID); }
@@ -179,6 +182,14 @@ namespace DVLD_Business
             return  clsLicensesData.DoesPersonHaveLicesne(Person, LicenseClassID);
         }
 
+        public static int GetLicenseIDByApplicationID(int ApplicationID)
+        {
+            return clsLicensesData.GetLicenseIDByApplicationID(ApplicationID);
+        }
+        public static DataTable GetAllPersonLicenses(int PersonID)
+        {
+            return clsLicensesData.GetAllPersonLicenses(PersonID);
+        }
 
-    }
+}
 }

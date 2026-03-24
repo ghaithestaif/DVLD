@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -221,6 +222,38 @@ WHERE LicenseID = @LicenseID";
         }
 
 
+        public static int GetLicenseIDByApplicationID(int ApplicationID)
+        {
+            SqlConnection cnn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+            string Query = $@"
+        select Licenses.LicenseID
+
+ from Licenses
+
+ where ApplicationID = @ApplicationID";
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(Query, cnn))
+                {
+                    cmd.Parameters.Add("@ApplicationID", SqlDbType.Int).Value = ApplicationID;
+
+                    cnn.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    return (result == null) ? -1 : (int)result;
+                }
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Dispose();
+
+            }
+
+        }
+
+
+
 
         public static bool DoesPersonHaveLicesne(int Person, int LicenseClassID)
         {
@@ -250,6 +283,39 @@ WHERE LicenseID = @LicenseID";
             }
 
         }
+
+        public static DataTable GetAllPersonLicenses(int PersonID)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = null;
+
+            try
+            {
+                conn = new SqlConnection(AppSettings.ConnectionString);
+
+                string query = $@"SELECT Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName,Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
+FROM     Drivers INNER JOIN
+                  Licenses ON Drivers.DriverID = Licenses.DriverID INNER JOIN
+                  LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+WHERE  (Drivers.PersonID = @PersonID)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add("@PersonID", SqlDbType.Int).Value = PersonID;
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    dt.Load(reader);
+                }
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Dispose();
+            }
+
+            return dt;
+        }
+
 
 
 

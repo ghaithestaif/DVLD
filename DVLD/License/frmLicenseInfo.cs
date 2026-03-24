@@ -12,9 +12,19 @@ namespace DVLD.License
 {
     public partial class frmLicenseInfo : Form
     {
-        public frmLicenseInfo()
+        int _LicenseID;
+
+        public frmLicenseInfo(int LicenseID)
         {
+            _LicenseID=LicenseID;
             InitializeComponent();
+        }
+
+        private void frmLicenseInfo_Load(object sender, EventArgs e)
+        {
+
+            crtShowLicenseInfo1.LoadData(_LicenseID);
+
         }
     }
 }

@@ -217,29 +217,27 @@ namespace DVLD_Business
         }
 
 
-
-
-        public bool IssueLicenseTheFirstTime(string Notes,int userID)
+        public int IssueLicenseTheFirstTime(string Notes,int userID)
         {
 
             //check if the person already has this license 
             //not implemented yet
             if (clsLicense.DoesPersonHaveLicesne(this.ApplicantPerson.PersonID, this.LicenseClass.LicenseClassID))
             {
-                return false;
+                return -1;
             }
 
 
             // check if the person has passed all the tests
             if (!this.HasPersonPassedAllTests())
             {
-                return false;
+                return -1;
             }
 
             //check if the application is cancelled 
             if (!(this.ApplicationStatus == enApplicationStatus.New))
             {
-                return false;
+                return -1;
             }
 
             //this person is going to be a driver first
@@ -254,7 +252,7 @@ namespace DVLD_Business
                 NewDriver.CreatedByUserID = this.CreatedByUser.UserID;
                 if (!NewDriver.Save())
                 {
-                    return false;
+                    return -1;
                 }
                 DriverID = NewDriver.DriverID;
             }
@@ -277,9 +275,10 @@ namespace DVLD_Business
             NewLicense.LicenseClassID = this.LicenseClass.LicenseClassID;
             NewLicense.DriverID = DriverID;
 
-            if(!NewLicense.Save()) { return false; }
+            if(!NewLicense.Save()) { return -1; }
 
-            return true;
+            this.SetComplete();
+            return NewLicense.LicenseID;
 
 
 

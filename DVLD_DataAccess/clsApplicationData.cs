@@ -237,6 +237,71 @@ namespace DVLD_DataAccess
             }
         }
 
+        //static public int getAppplicationIDByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        //{
+        //    SqlConnection conn = null;
+        //    try
+        //    {
+        //        conn = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
+        //        var sql = @"
+        //              SELECT LocalDrivingLicenseApplications.ApplicationID
+        //            FROM     LocalDrivingLicenseApplications
+        //            where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID=1";
+        //        using (var cmd = new SqlCommand(sql, conn))
+        //        {
+        //            cmd.Parameters.Add("@LocalDrivingLicenseApplicationID", SqlDbType.Int).Value = LocalDrivingLicenseApplicationID;
+        //            conn.Open();
+        //            using (var rdr = cmd.ExecuteReader())
+        //            {
+        //                if (rdr.Read())
+        //                {
+        //                    LocalDrivingLicenseApplicationID = rdr.GetInt32(rdr.GetOrdinal("LocalDrivingLicenseApplicationID"));
+        //                    return true;
+        //                }
+        //            }
+        //        }
+        //        return false;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // Consider logging the exception here
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        if (conn != null)
+        //        {
+        //            if (conn.State != ConnectionState.Closed)
+        //                conn.Close();
+        //            conn.Dispose();
+        //        }
+        //    }
+        //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
 
     }
 

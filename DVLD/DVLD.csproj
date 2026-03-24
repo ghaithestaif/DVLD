@@ -74,6 +74,12 @@
     <Compile Include="Application\Controls\crtApplicationInfo.Designer.cs">
       <DependentUpon>crtApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\frmApplicationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\frmApplicationInfo.Designer.cs">
+      <DependentUpon>frmApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\Local Driving License Application\frmAddEditLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,17 +98,23 @@
     <Compile Include="License\crtShowLicenseInfo.Designer.cs">
       <DependentUpon>crtShowLicenseInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="License\frmDriverLicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License\frmDriverLicenseHistory.Designer.cs">
+      <DependentUpon>frmDriverLicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="License\frmLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="License\frmLicenseInfo.Designer.cs">
       <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="License\frmLicenseRelease.cs">
+    <Compile Include="License\frmIssueLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="License\frmLicenseRelease.Designer.cs">
-      <DependentUpon>frmLicenseRelease.cs</DependentUpon>
+    <Compile Include="License\frmIssueLicenseFirstTime.Designer.cs">
+      <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Log In\frmLogin.cs">
       <SubType>Form</SubType>
@@ -268,6 +280,9 @@
     <EmbeddedResource Include="Application\Controls\crtApplicationInfo.resx">
       <DependentUpon>crtApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Application\frmApplicationInfo.resx">
+      <DependentUpon>frmApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Application\Local Driving License Application\frmAddEditLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmAddEditLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,8 +292,14 @@
     <EmbeddedResource Include="License\crtShowLicenseInfo.resx">
       <DependentUpon>crtShowLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="License\frmLicenseRelease.resx">
-      <DependentUpon>frmLicenseRelease.cs</DependentUpon>
+    <EmbeddedResource Include="License\frmDriverLicenseHistory.resx">
+      <DependentUpon>frmDriverLicenseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\frmIssueLicenseFirstTime.resx">
+      <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\frmLicenseInfo.resx">
+      <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log In\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -691,6 +712,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IssueDrivingLicense 322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PersonLicenseHistory 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

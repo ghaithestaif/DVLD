@@ -577,6 +577,7 @@
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Driver License Info";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // crtShowLicenseInfo
             // 
@@ -585,6 +586,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "crtShowLicenseInfo";
             this.Size = new System.Drawing.Size(865, 341);
+            this.Load += new System.EventHandler(this.crtShowLicenseInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();

@@ -1,4 +1,5 @@
-﻿using DVLD.Tests;
+﻿using DVLD.License;
+using DVLD.Tests;
 using DVLD.Tests.Appointments.Street_Test;
 using DVLD.Tests.Appointments.Written_Test;
 using DVLD_Business;
@@ -17,6 +18,7 @@ namespace DVLD.Application
         }
 
         private DataTable _dtLocal; // private table (load once)
+        clsLocalDrivingLicenseApplication _selectedApp;
         private void _FormatGrid()
         {
             if (LocalDrivingLicenseGridView.Columns.Count == 0) return;
@@ -153,7 +155,12 @@ namespace DVLD.Application
 
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // MessageBox.Show("Failed to cancel application.");
+
+            int LicenseID = clsLicense.GetLicenseIDByApplicationID(_selectedApp.ApplicationID);
+            frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
+            frm.ShowDialog();
+
+
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,10 +203,14 @@ namespace DVLD.Application
         {
             int ID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
             clsLocalDrivingLicenseApplication selectedApp = clsLocalDrivingLicenseApplication.FindByLocalDrivingLicenseApplicationID(ID);
+            _selectedApp = selectedApp;
+            bool visionTest = selectedApp.DoesPersonPassedTest(1);
+            bool WrittenTest = selectedApp.DoesPersonPassedTest(2);
+            bool StreetTest = selectedApp.DoesPersonPassedTest(3);
 
             //check if the application is cancelled or completed, if so disable all options except show license
 
-            if( selectedApp.ApplicationStatus == enApplicationStatus.Cancelled)
+            if ( selectedApp.ApplicationStatus == enApplicationStatus.Cancelled)
             {
                 CancelApplicaitonToolStripMenuItem.Enabled = false;
                 editToolStripMenuItem.Enabled = false;
@@ -213,22 +224,42 @@ namespace DVLD.Application
 
 
             //for now the following items are going to be disabled4 until we implement the license issuing process
-            issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
-            showLicenseToolStripMenuItem.Enabled = false;
+            if(visionTest && WrittenTest && StreetTest)
+            {
+                issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = true; 
+            }
+            else
+            {
+                issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
+            }
+
+            //if this person has 
+            if (clsLicense.DoesPersonHaveLicesne(selectedApp.ApplicantPerson.PersonID, selectedApp.LicenseClass.LicenseClassID))
+            {
+                editToolStripMenuItem.Enabled = false;
+                CancelApplicaitonToolStripMenuItem.Enabled = false;
+                DeleteApplicationToolStripMenuItem.Enabled = false;
+                showDetailsToolStripMenuItem.Enabled = true;
+                showLicenseToolStripMenuItem.Enabled = true;
+                issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                showLicenseToolStripMenuItem.Enabled = false;
+
+            }
 
 
 
 
 
-            // reset the items
-            scheduleVisionTestToolStripMenuItem.Enabled = true;
+                // reset the items
+                scheduleVisionTestToolStripMenuItem.Enabled = true;
             scheduleWrittenTestToolStripMenuItem.Enabled = true;
             scheduleStreetTestToolStripMenuItem.Enabled = true;
 
             // here I check the tests and set the visibility of menu items accordingly
-            bool visionTest = selectedApp.DoesPersonPassedTest(1);
-            bool WrittenTest = selectedApp.DoesPersonPassedTest(2);
-            bool StreetTest = selectedApp.DoesPersonPassedTest(3);
+            
 
             ScheduleTestsMenue.Enabled = (visionTest&&WrittenTest&&StreetTest)? false : true;
 
@@ -266,12 +297,27 @@ namespace DVLD.Application
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmApplicationInfo frm = new frmApplicationInfo(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
+            frm.ShowDialog();
         }
 
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmStreetTest frm = new frmStreetTest(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
+
+            frm.ShowDialog();
+        }
+
+        private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIssueLicenseFirstTime frm = new frmIssueLicenseFirstTime(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value)); 
+            frm.ShowDialog();
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int PersonID=_selectedApp.ApplicantPerson.PersonID;
+            frmDriverLicenseHistory frm = new frmDriverLicenseHistory(PersonID);
             frm.ShowDialog();
         }
     }
