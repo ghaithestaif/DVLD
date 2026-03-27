@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DVLD_Business.clsTestType;
 
 namespace DVLD.Tests.Appointments
 {
@@ -15,10 +16,11 @@ namespace DVLD.Tests.Appointments
     {
         int _LocalDrivingLicenseApplicationID;
         int _ApppointmentID;
-        
+        clsTestType.enTestType TestType;
 
-        public frmVisionTestsAppointment(int LocalDrivingLicenseApplicationID,int ApppointmentID=-1)
+        public frmVisionTestsAppointment(int LocalDrivingLicenseApplicationID,clsTestType.enTestType testtype,int ApppointmentID= -1)
         {
+            TestType = testtype;
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
                 _ApppointmentID = ApppointmentID;
             InitializeComponent();
@@ -26,6 +28,7 @@ namespace DVLD.Tests.Appointments
         
         private void frmVisionTestsAppointment_Load(object sender, EventArgs e)
         {
+            ctrlScheduleTest1.TestType = TestType;
             ctrlScheduleTest1.LoadInfo(_LocalDrivingLicenseApplicationID,_ApppointmentID);
         }
 

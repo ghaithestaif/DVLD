@@ -259,7 +259,7 @@ WHERE DriverID = @DriverID";
             {
                 conn = new SqlConnection(AppSettings.ConnectionString);
 
-                string query = "SELECT * FROM Drivers";
+                string query = "select * from Drivers_View";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

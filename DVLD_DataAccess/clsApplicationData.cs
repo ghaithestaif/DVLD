@@ -37,6 +37,7 @@ namespace DVLD_DataAccess
                     cmd.Parameters.Add("@ApplicationTypeID", SqlDbType.Int).Value = ApplicationTypeID;
                     cmd.Parameters.Add("@ApplicationStatus", SqlDbType.TinyInt).Value = ApplicationStatus;
                     cmd.Parameters.Add("@LastStatusDate", SqlDbType.DateTime).Value = LastStatusDate;
+
                     cmd.Parameters.Add("@PaidFees", SqlDbType.SmallMoney).Value = PaidFees;
                     cmd.Parameters.Add("@CreatedByUserID", SqlDbType.Int).Value = CreatedByUserID;
 

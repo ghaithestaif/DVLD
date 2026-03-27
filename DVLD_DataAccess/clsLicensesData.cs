@@ -158,7 +158,8 @@ WHERE LicenseID = @LicenseID";
             {
                 conn = new SqlConnection(AppSettings.ConnectionString);
 
-                string query = "SELECT * FROM Licenses WHERE LicenseID = @LicenseID";
+                string query = "SELECT * FROM Licenses WHERE LicenseID = @LicenseID ";
+                
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -230,7 +231,7 @@ WHERE LicenseID = @LicenseID";
 
  from Licenses
 
- where ApplicationID = @ApplicationID";
+ where ApplicationID = @ApplicationID and IsActive =1";
             try
             {
                 using (SqlCommand cmd = new SqlCommand(Query, cnn))

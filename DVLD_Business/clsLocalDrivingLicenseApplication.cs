@@ -67,7 +67,7 @@ namespace DVLD_Business
         public bool Save()
         {
             //save the the objects first to ensure we have valid IDs for the application and license class
-            base.Mode = _Mode == enMode.enAddnew ? clsApplication.enMode.enAddnew : clsApplication.enMode.enUpdate;
+            base.Mode = _Mode == enMode.enAddnew ? clsApplication.enMode.Addnew : clsApplication.enMode.Update;
             if (!base.Save())
             {
                 return false;

@@ -1,7 +1,5 @@
 ﻿using DVLD.License;
 using DVLD.Tests;
-using DVLD.Tests.Appointments.Street_Test;
-using DVLD.Tests.Appointments.Written_Test;
 using DVLD_Business;
 using System;
 using System.Data;
@@ -116,6 +114,7 @@ namespace DVLD.Application
             };
 
             form.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
 
             // optional: reload data after add
             //_dtLocal = clsLocalDrivingLicenseApplication.GetAll();
@@ -148,6 +147,7 @@ namespace DVLD.Application
                     MessageBox.Show("Failed to cancel application.");
                 }
 
+                frmLocalDrivingLicenseList_Load(null, null);
 
 
             }
@@ -178,6 +178,7 @@ namespace DVLD.Application
             };
             
             form.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
         }
 
         private void DeleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,7 +196,10 @@ namespace DVLD.Application
             else
             {
                 MessageBox.Show("Failed to delete application.");
+
             }
+            frmLocalDrivingLicenseList_Load(null, null);
+
 
         }
 
@@ -284,14 +288,20 @@ namespace DVLD.Application
         private void scheduleVisionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int LocalDrivingLicenseApplicationID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
-            frmVisionTests frm = new frmVisionTests(LocalDrivingLicenseApplicationID);
+            frmVisionTests frm = new frmVisionTests(LocalDrivingLicenseApplicationID,clsTestType.enTestType.VisionTest);
             frm.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
+
         }
 
         private void scheduleWrittenTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmWrittenTest frm = new frmWrittenTest(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
+            frmVisionTests frm = new frmVisionTests(LocalDrivingLicenseApplicationID, clsTestType.enTestType.WrittenTest);
             frm.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
+
+
 
         }
 
@@ -299,19 +309,26 @@ namespace DVLD.Application
         {
             frmApplicationInfo frm = new frmApplicationInfo(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
             frm.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
+
         }
 
         private void scheduleStreetTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmStreetTest frm = new frmStreetTest(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value));
-
+            int LocalDrivingLicenseApplicationID = Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value);
+            frmVisionTests frm = new frmVisionTests(LocalDrivingLicenseApplicationID, clsTestType.enTestType.StreetTest);
             frm.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
+
+
         }
 
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmIssueLicenseFirstTime frm = new frmIssueLicenseFirstTime(Convert.ToInt32(LocalDrivingLicenseGridView.CurrentRow.Cells[0].Value)); 
             frm.ShowDialog();
+            frmLocalDrivingLicenseList_Load(null, null);
+
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)

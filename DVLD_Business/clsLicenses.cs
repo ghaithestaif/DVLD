@@ -10,7 +10,7 @@ namespace DVLD_Business
         public enum enMode { AddNew = 0, Update = 1 }
         public enMode Mode = enMode.AddNew;
         public enum enIssueReason { FirstTime = 1, Renew = 2, DamagedReplacement = 3, LostReplacement = 4 };
-
+        
         public int LicenseID { get; set; }
         public int ApplicationID { get; set; }
         public int DriverID { get; set; }
@@ -189,6 +189,54 @@ namespace DVLD_Business
         public static DataTable GetAllPersonLicenses(int PersonID)
         {
             return clsLicensesData.GetAllPersonLicenses(PersonID);
+        }
+        public int IssueInternationalLicense(int UserID)
+        {
+            //check if this person already has this License
+            if (clsInternationalLicense.DoesDriverHaveInternationalLicense(this.DriverID,this.LicenseClassID))
+            {
+                return -1; 
+            }
+            //check if the person's local driving license is active or not
+            if (this.IsActive==false) 
+            {
+                return -1;
+            }
+
+            //  create the object the application object
+            clsInternationalLicense internationalLicense = new clsInternationalLicense();
+            internationalLicense.DriverID = this.DriverID;
+            internationalLicense.ApplicantPerson = this.DriverInfo.PersonInfo;
+            internationalLicense.ApplicationDate=DateTime.Now;
+            internationalLicense.ApplicationStatus=clsApplication.enApplicationStatus.New;
+            internationalLicense.ApplicationTypeID = (int)clsApplication.enApplicationType.NewInternationalLicense;
+            internationalLicense.CreatedByUser = clsUser.Find(UserID);
+            internationalLicense.DriverInfo=clsDriver.Find(DriverID);
+            internationalLicense.IssueDate=DateTime.Now;
+            internationalLicense.IsActive = true;
+            internationalLicense.IssuedUsingLocalLicenseID = this.LicenseID;
+            internationalLicense.ExpirationDate = internationalLicense.IssueDate.AddYears(1);
+            internationalLicense.LastStatusDate = DateTime.Now;
+            internationalLicense.PaidFees = 51;
+
+
+            if (!internationalLicense.Save())
+            {
+                return -1;
+            }
+
+            return internationalLicense.InternationalLicenseID;
+
+
+
+
+
+
+
+
+
+
+
         }
 
 }

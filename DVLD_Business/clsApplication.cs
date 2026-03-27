@@ -11,8 +11,8 @@ namespace DVLD_Business
 {
     public class clsApplication
     {
-        public enum enMode { enUpdate, enAddnew }
-        public enMode Mode;
+        public enum enMode { Update, Addnew }
+     public   enMode Mode;
         public enum enApplicationType
         {
             NewDrivingLicense = 1, RenewDrivingLicense = 2, ReplaceLostDrivingLicense = 3,
@@ -53,7 +53,7 @@ namespace DVLD_Business
 
         public clsApplication()
         {
-            Mode = enMode.enAddnew;
+            Mode = enMode.Addnew;
             ApplicationID = -1;
         }
 
@@ -75,7 +75,7 @@ namespace DVLD_Business
             LastStatusDate = lastStatusDate;
             PaidFees = paidFees;
             CreatedByUser = clsUser.Find(createdByUserID);
-            Mode = enMode.enUpdate;
+            Mode = enMode.Update;
         }
 
         // Business operations
@@ -108,13 +108,13 @@ namespace DVLD_Business
 
         public bool Save()
         {
-            if (Mode == enMode.enAddnew)
+            if (Mode == enMode.Addnew)
             {
                 ApplicationID = _AddNew();
-                Mode = enMode.enUpdate;
+                Mode = enMode.Update;
                 return ApplicationID > 0;
             }
-            else if (Mode == enMode.enUpdate)
+            else if (Mode == enMode.Update)
             {
                 return _Update();
             }
