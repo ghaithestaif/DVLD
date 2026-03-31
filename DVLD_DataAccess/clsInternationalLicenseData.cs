@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -114,7 +116,6 @@ namespace DVLD_DataAccess
             return dt;
 
         }
-
         public static DataTable GetDriverInternationalLicenses(int DriverID)
         {
 
@@ -160,7 +161,7 @@ namespace DVLD_DataAccess
             return dt;
 
         }
-
+        
 
         public static int AddNewInternationalLicense(int ApplicationID,
              int DriverID, int IssuedUsingLocalLicenseID,

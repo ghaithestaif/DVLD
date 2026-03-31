@@ -227,17 +227,69 @@ namespace DVLD_Business
 
             return internationalLicense.InternationalLicenseID;
 
+        }
+
+
+        public bool IsLicenseExpired()
+        {
+            return (this.ExpirationDate < DateTime.Now) ? true : false;
+        }
 
 
 
+        public clsLicense RenewLicense(string Notes)
+        {
+            //check if the licsens is expired or not 
+            if (!IsLicenseExpired())
+                return null;
+
+            //create a new application 
+            clsApplication RenewApp=new clsApplication();
+            RenewApp.ApplicantPerson=this.ApplicationInfo.ApplicantPerson;
+            RenewApp.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            RenewApp.ApplicationDate = DateTime.Now;
+            RenewApp.ApplicationTypeID = (int)clsApplication.enApplicationType.RenewDrivingLicense;
+            RenewApp.CreatedByUser = clsUser.Find(this.CreatedByUserID);
+            RenewApp.LastStatusDate= DateTime.Now;
+            RenewApp.PaidFees = clsApplicationType.Find(RenewApp.ApplicationTypeID).Fees;
+
+            //save if
+            if (!RenewApp.Save())
+            {
+                return null;
+            }
+
+
+            //create a new License and deactivate the old license
+
+            this.IsActive = false;
+            if(!this.Save())
+                { return null; }
 
 
 
+            clsLicenseClass LicenseClass=clsLicenseClass.Find(this.LicenseClassID);
+            clsLicense NewLicense = new clsLicense();
+
+            NewLicense.IssueReason = (int)clsLicense.enIssueReason.Renew;
+            NewLicense.ApplicationID=RenewApp.ApplicationID;
+            NewLicense.CreatedByUserID = this.CreatedByUserID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClassID = this.LicenseClassID;
+            NewLicense.ExpirationDate= DateTime.Now.AddYears(LicenseClass.DefaultValidityLength);
+            NewLicense.Notes=Notes;
+            NewLicense.PaidFees =Convert.ToDecimal(LicenseClass.ClassFees);
+            NewLicense.IsActive=true;
+            NewLicense.IssueDate=DateTime.Now;
 
 
+            if (!NewLicense.Save())
+            {
+                return null;
+            }
+            return NewLicense;
 
 
         }
-
 }
 }

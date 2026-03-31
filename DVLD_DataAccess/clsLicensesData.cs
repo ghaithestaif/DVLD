@@ -285,7 +285,7 @@ WHERE LicenseID = @LicenseID";
 
         }
 
-        public static DataTable GetAllPersonLicenses(int PersonID)
+        public static DataTable GetAllPersonLicenses(int driverID)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = null;
@@ -295,14 +295,14 @@ WHERE LicenseID = @LicenseID";
                 conn = new SqlConnection(AppSettings.ConnectionString);
 
                 string query = $@"SELECT Licenses.LicenseID, Licenses.ApplicationID, LicenseClasses.ClassName,Licenses.IssueDate, Licenses.ExpirationDate, Licenses.IsActive
-FROM     Drivers INNER JOIN
+            FROM     Drivers INNER JOIN
                   Licenses ON Drivers.DriverID = Licenses.DriverID INNER JOIN
                   LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
-WHERE  (Drivers.PersonID = @PersonID)";
+           WHERE  (Drivers.DriverID = @driverID)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.Add("@PersonID", SqlDbType.Int).Value = PersonID;
+                    cmd.Parameters.Add("@driverID", SqlDbType.Int).Value = driverID;
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);
