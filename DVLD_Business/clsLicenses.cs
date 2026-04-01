@@ -168,10 +168,11 @@ namespace DVLD_Business
             return false;
         }
 
-        public static bool Delete(int LicenseID)
+        public bool Delete()
         {
-            return clsLicensesData.DeleteLicense(LicenseID);
+            return clsLicensesData.DeleteLicense(this.LicenseID);
         }
+
 
         public static DataTable GetAll()
         {
@@ -262,10 +263,7 @@ namespace DVLD_Business
 
             //create a new License and deactivate the old license
 
-            this.IsActive = false;
-            if(!this.Save())
-                { return null; }
-
+            
 
 
             clsLicenseClass LicenseClass=clsLicenseClass.Find(this.LicenseClassID);
@@ -285,11 +283,90 @@ namespace DVLD_Business
 
             if (!NewLicense.Save())
             {
+                RenewApp.Cancel(); 
                 return null;
             }
+            //deactivate the old license
+            this.IsActive = false;
+            if (!this.Save())
+            {
+                RenewApp.Cancel();
+                NewLicense.Delete();
+            }
+
             return NewLicense;
 
 
         }
-}
+
+
+        public clsLicense ReplaceLicense(string Notes, clsApplication.enApplicationType Type)
+        {
+
+            if (Type!= clsApplication.enApplicationType.ReplaceDamagedDrivingLicense && Type != clsApplication.enApplicationType.ReplaceLostDrivingLicense) 
+            {
+                return null;
+            }
+
+                //check if the licsens is expired or not 
+                if (this.IsLicenseExpired())
+                return null;
+            //create a new application 
+            clsApplication ReplaceApp = new clsApplication();
+            ReplaceApp.ApplicantPerson = this.ApplicationInfo.ApplicantPerson;
+            ReplaceApp.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            ReplaceApp.ApplicationDate = DateTime.Now;
+            ReplaceApp.ApplicationTypeID = (int)Type;
+            ReplaceApp.CreatedByUser = clsUser.Find(this.CreatedByUserID);
+            ReplaceApp.LastStatusDate = DateTime.Now;
+            ReplaceApp.PaidFees = clsApplicationType.Find(ReplaceApp.ApplicationTypeID).Fees;
+
+            //save if
+            if (!ReplaceApp.Save())
+            {
+                return null;
+            }
+
+
+            //create a new License and deactivate the old license
+            
+
+
+            clsLicense ReplaceLicense = new clsLicense();
+            
+            ReplaceLicense.IssueReason = (Type == clsApplication.enApplicationType.ReplaceDamagedDrivingLicense)? (byte)clsLicense.enIssueReason.DamagedReplacement : (byte)clsLicense.enIssueReason.LostReplacement;
+            ReplaceLicense.ApplicationID = ReplaceApp.ApplicationID;
+            ReplaceLicense.CreatedByUserID = this.CreatedByUserID;
+            ReplaceLicense.DriverID = this.DriverID;
+            ReplaceLicense.LicenseClassID = this.LicenseClassID;
+            ReplaceLicense.ExpirationDate = DateTime.Now.AddYears(clsLicenseClass.Find(this.LicenseClassID).DefaultValidityLength);
+            ReplaceLicense.Notes = Notes;
+            ReplaceLicense.PaidFees = Convert.ToDecimal(clsLicenseClass.Find(this.LicenseClassID).ClassFees);
+            ReplaceLicense.IsActive = true;
+            ReplaceLicense.IssueDate = DateTime.Now;
+            
+
+            if(!ReplaceLicense.Save())
+            {
+                
+                ReplaceApp.Cancel(); // if you have delete
+
+                return null;
+
+            }
+
+            this.IsActive = false;
+            if (!this.Save())
+            {
+                ReplaceApp.Cancel();
+                ReplaceLicense.Delete(); 
+                return null;
+
+            }
+            return ReplaceLicense;
+
+
+        }
+
+    }
 }

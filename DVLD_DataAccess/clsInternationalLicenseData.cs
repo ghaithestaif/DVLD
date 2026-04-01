@@ -116,21 +116,22 @@ namespace DVLD_DataAccess
             return dt;
 
         }
-        public static DataTable GetDriverInternationalLicenses(int DriverID)
+        public static DataTable GetDriverInternationalLicenses(int PersonID)
         {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(DVLD_DataAccess.AppSettings.ConnectionString);
 
             string query = @"
-            SELECT    InternationalLicenseID, ApplicationID,
-		                IssuedUsingLocalLicenseID , IssueDate, 
-                        ExpirationDate, IsActive
-		    from InternationalLicenses where DriverID=@DriverID
-                order by ExpirationDate desc";
+            SELECT   InternationalLicenses.InternationalLicenseID, InternationalLicenses.ApplicationID, InternationalLicenses.IssuedUsingLocalLicenseID, InternationalLicenses.IssueDate, 
+                         InternationalLicenses.ExpirationDate, InternationalLicenses.IsActive
+FROM         InternationalLicenses INNER JOIN
+                         Drivers ON InternationalLicenses.DriverID = Drivers.DriverID
+						 where PersonID=@PersonID
+";
 
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@DriverID", DriverID);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
 
             try
             {

@@ -104,6 +104,12 @@
     <Compile Include="Application\Renew Driving License\frmRenewDrivingLicese.Designer.cs">
       <DependentUpon>frmRenewDrivingLicese.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ReplacementForDamagedLostLicense\frmReplacementForDamagedLostLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application\ReplacementForDamagedLostLicense\frmReplacementForDamagedLostLicense.Designer.cs">
+      <DependentUpon>frmReplacementForDamagedLostLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="drivers\controls\crtShowLicenseInfoWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Application\Renew Driving License\frmRenewDrivingLicese.resx">
       <DependentUpon>frmRenewDrivingLicese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application\ReplacementForDamagedLostLicense\frmReplacementForDamagedLostLicense.resx">
+      <DependentUpon>frmReplacementForDamagedLostLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="drivers\controls\crtShowLicenseInfoWithFilter.resx">
       <DependentUpon>crtShowLicenseInfoWithFilter.cs</DependentUpon>

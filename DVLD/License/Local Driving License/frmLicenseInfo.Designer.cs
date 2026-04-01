@@ -77,6 +77,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLicenseInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "License Info";
             this.Load += new System.EventHandler(this.frmLicenseInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestTypeImage)).EndInit();

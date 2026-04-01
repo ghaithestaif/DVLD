@@ -35,6 +35,15 @@ namespace DVLD.License
 
 
 
+            if(dgvInternation.Columns.Count == 0) return;
+            dgvInternation. Columns[0].Width = 70;
+
+            dgvInternation.Columns[1].Width = 200;
+            dgvInternation.Columns[2].Width = 100;
+            dgvInternation.Columns[3].Width = 250;
+            dgvInternation.Columns[4].Width = 200;
+
+
 
 
         }
@@ -44,6 +53,8 @@ namespace DVLD.License
             personDetailsWithFilters1.FilterEnabled = false;
             _LocalDrivingLicense = clsLicense.GetAllPersonLicenses(_PersonID);
             dgvLocal.DataSource= _LocalDrivingLicense;
+            _InternationalDrivingLicense = clsInternationalLicense.GetDriverInternationalLicenses(_PersonID);
+            dgvInternation.DataSource = _InternationalDrivingLicense;
             _FormatGrid();
 
         }
