@@ -1,9 +1,10 @@
 ﻿using DVLD_DataAccess;
-using DVLD_General;
+using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Xml.Linq;
-
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DVLD_Business
 {
@@ -167,10 +168,10 @@ namespace DVLD_Business
         {
             return clsUserData.GetAllUsers();
         }
-        public static DataTable GetUsersByFilter(Common.UsersFilter filter, string FilterExpression)
-        {
-            return clsUserData.FilterUsers(filter, FilterExpression);
-        }
+        //public static DataTable GetUsersByFilter(object filter, string FilterExpression)
+        //{
+        //    return clsUserData.FilterUsers(filter, FilterExpression);
+        //}
         public static bool IsPersonLinkedToUser(int PersonID)
         {
             return clsUserData.IsPersonLinkedToUser(PersonID);

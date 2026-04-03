@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DVLD_General;
 using static DVLD_DataAccess.clsPeopleData;
 namespace DVLD_Business
 {
@@ -225,10 +224,7 @@ namespace DVLD_Business
         {
             return DVLD_DataAccess.clsPeopleData.IspersonExist(ID);
         }
-        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilter peopleFilter,string FilterExpression="")
-        {
-            return DVLD_DataAccess.clsPeopleData.FilterPeople(peopleFilter, FilterExpression);
-        }
+        
 
         
 

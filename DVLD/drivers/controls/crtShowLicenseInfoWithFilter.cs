@@ -30,18 +30,11 @@ namespace DVLD.drivers.controls
         {
             InitializeComponent();
         }
-
-
-
-
-
-
-
-
-
-
-
-
+        public void LoadData(int LicenseID)
+        {
+            crtShowLicenseInfo1.LoadData(LicenseID);
+            txtFilterValue.Text = LicenseID.ToString();
+        }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -63,9 +56,9 @@ namespace DVLD.drivers.controls
             {
                 return;
             }
-            int ID = Convert.ToInt32(txtFilterValue.Text);
+            int LicenseID = Convert.ToInt32(txtFilterValue.Text);
 
-            clsLicense license = clsLicense.Find(ID);
+            clsLicense license = clsLicense.Find(LicenseID);
             if (license == null)
             {
                 MessageBox.Show("cannot load form");
@@ -73,7 +66,7 @@ namespace DVLD.drivers.controls
 
             }
 
-            crtShowLicenseInfo1.LoadData(ID);
+            crtShowLicenseInfo1.LoadData(LicenseID);
             OnLicesneFound?.Invoke();
         }
 

@@ -5,8 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DVLD_General;
-using static DVLD_DataAccess.clsPeople;
 namespace DVLD_Business
 {
     public class clsPeople

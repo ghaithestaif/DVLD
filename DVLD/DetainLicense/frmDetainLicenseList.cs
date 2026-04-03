@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.License;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -161,6 +162,38 @@ namespace DVLD.DetainLicense
             frm.ShowDialog();
 
             this.frmDetainLicenseList_Load(null, null);
+        }
+
+        private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicenseID = Convert.ToInt32(dgvDetainLicenseList.CurrentRow.Cells[1].Value);
+            frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
+            frm.ShowDialog();
+            this.frmDetainLicenseList_Load(null, null);
+
+        }
+
+        private void releaseLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int DetainID = Convert.ToInt32(dgvDetainLicenseList.CurrentRow.Cells[0].Value);
+            int LicesneID = Convert.ToInt32(dgvDetainLicenseList.CurrentRow.Cells[1].Value);
+            frmReleaseLicense frm = new frmReleaseLicense(DetainID, LicesneID);
+            frm.ShowDialog();
+            this.frmDetainLicenseList_Load(null, null);
+
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int LicesneID = Convert.ToInt32(dgvDetainLicenseList.CurrentRow.Cells[1].Value);
+            clsLicense license = clsLicense.Find(LicesneID);
+            if (license == null)
+                return;
+
+            frmDriverLicenseHistory frm = new frmDriverLicenseHistory(license.DriverID);
+            frm.ShowDialog();
+            this.frmDetainLicenseList_Load(null, null);
+
         }
     }
 }

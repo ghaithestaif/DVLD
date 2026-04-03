@@ -779,5 +779,8 @@
   <ItemGroup>
     <None Include="Resources\Release Detained License 321.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release Detained License 322.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
