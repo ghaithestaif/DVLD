@@ -3,6 +3,7 @@ using DVLD.Application.International_Driving_License;
 using DVLD.Application.Renew_Driving_License;
 using DVLD.Application.ReplacementForDamagedLostLicense;
 using DVLD.ApplicationTypes;
+using DVLD.DetainLicense;
 using DVLD.drivers;
 using DVLD.License;
 using DVLD.License.International_Driving_License;
@@ -119,8 +120,7 @@ namespace DVLD
 
         private void detainLicensesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmInternationalLicenseList frm = new frmInternationalLicenseList();
-            frm.ShowDialog();
+            
         }
 
         private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +138,36 @@ namespace DVLD
         private void replacementForDamageOrLostLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReplacementForDamagedLostLicense frm = new frmReplacementForDamagedLostLicense();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense frm =new frmReleaseLicense();
+            frm.ShowDialog();
+           
+        }
+
+        private void manageApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void releaseLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense frm = new frmReleaseLicense();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void detainLicensesLIstToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDetainLicenseList frm = new frmDetainLicenseList();
             frm.ShowDialog();
         }
     }

@@ -110,6 +110,24 @@
     <Compile Include="Application\ReplacementForDamagedLostLicense\frmReplacementForDamagedLostLicense.Designer.cs">
       <DependentUpon>frmReplacementForDamagedLostLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetainLicense\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetainLicense\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetainLicense\frmDetainLicenseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetainLicense\frmDetainLicenseList.Designer.cs">
+      <DependentUpon>frmDetainLicenseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetainLicense\frmReleaseLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetainLicense\frmReleaseLicense.Designer.cs">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="drivers\controls\crtShowLicenseInfoWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,10 +158,10 @@
     <Compile Include="drivers\frmDriverLicenseHistory.Designer.cs">
       <DependentUpon>frmDriverLicenseHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="License\Local Driving License\frmLicenseInfo.cs">
+    <Compile Include="License\frmLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="License\Local Driving License\frmLicenseInfo.Designer.cs">
+    <Compile Include="License\frmLicenseInfo.Designer.cs">
       <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\Local Driving License Application\frmIssueLicenseFirstTime.cs">
@@ -298,6 +316,15 @@
     <EmbeddedResource Include="Application\ReplacementForDamagedLostLicense\frmReplacementForDamagedLostLicense.resx">
       <DependentUpon>frmReplacementForDamagedLostLicense.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetainLicense\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetainLicense\frmDetainLicenseList.resx">
+      <DependentUpon>frmDetainLicenseList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetainLicense\frmReleaseLicense.resx">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="drivers\controls\crtShowLicenseInfoWithFilter.resx">
       <DependentUpon>crtShowLicenseInfoWithFilter.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,7 +343,7 @@
     <EmbeddedResource Include="Application\Local Driving License Application\frmIssueLicenseFirstTime.resx">
       <DependentUpon>frmIssueLicenseFirstTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="License\Local Driving License\frmLicenseInfo.resx">
+    <EmbeddedResource Include="License\frmLicenseInfo.resx">
       <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log In\frmLogin.resx">
@@ -733,6 +760,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Renew Driving License 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release Detained License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 323.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release Detained License 321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

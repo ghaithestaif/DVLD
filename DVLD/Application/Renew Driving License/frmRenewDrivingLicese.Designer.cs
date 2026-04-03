@@ -563,6 +563,7 @@
             this.crtShowLicenseInfoWithFilter2.Name = "crtShowLicenseInfoWithFilter2";
             this.crtShowLicenseInfoWithFilter2.Size = new System.Drawing.Size(724, 449);
             this.crtShowLicenseInfoWithFilter2.TabIndex = 55604;
+            this.crtShowLicenseInfoWithFilter2.OnLicesneFound += new System.Action(this.crtShowLicenseInfoWithFilter2_OnLicesneFound);
             // 
             // frmRenewDrivingLicese
             // 
@@ -579,6 +580,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRenewDrivingLicese";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmRenewDrivingLicese";
             this.Load += new System.EventHandler(this.frmRenewDrivingLicese_Load);
             gpApplicationInfo.ResumeLayout(false);

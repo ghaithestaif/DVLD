@@ -244,8 +244,12 @@ namespace DVLD_Business
             if (!IsLicenseExpired())
                 return null;
 
+
+
+
+
             //create a new application 
-            clsApplication RenewApp=new clsApplication();
+            clsApplication RenewApp =new clsApplication();
             RenewApp.ApplicantPerson=this.ApplicationInfo.ApplicantPerson;
             RenewApp.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
             RenewApp.ApplicationDate = DateTime.Now;
@@ -303,13 +307,22 @@ namespace DVLD_Business
         public clsLicense ReplaceLicense(string Notes, clsApplication.enApplicationType Type)
         {
 
+
+            //check if the application type is valid for replacement
+
             if (Type!= clsApplication.enApplicationType.ReplaceDamagedDrivingLicense && Type != clsApplication.enApplicationType.ReplaceLostDrivingLicense) 
             {
                 return null;
             }
+            if (clsDetainLicense.IsLicenseDetained(this.LicenseID))
+            {
+                return null;
+            }
 
-                //check if the licsens is expired or not 
-                if (this.IsLicenseExpired())
+
+
+            //check if the licsens is expired or not 
+            if (this.IsLicenseExpired())
                 return null;
             //create a new application 
             clsApplication ReplaceApp = new clsApplication();
@@ -367,6 +380,47 @@ namespace DVLD_Business
 
 
         }
+        public  bool ReleaseLicense( int UserID, ref int ApplicationID)
+        {
+            if (!clsDetainLicense.IsLicenseDetained(this.LicenseID))
+            {
+                return false; // License is not detained, cannot release
+            }
+            //create a new release application for the License
+            
+            clsApplication releaseApp = new clsApplication();
+
+            releaseApp.ApplicationTypeID = (int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense;
+            releaseApp.ApplicationDate = DateTime.Now;
+            releaseApp.ApplicantPerson = clsPeople.Find(this.DriverInfo.PersonID);
+            releaseApp.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            releaseApp.CreatedByUser = clsUser.Find(UserID);
+            releaseApp.LastStatusDate = DateTime.Now;
+            releaseApp.PaidFees = clsApplicationType.Find(releaseApp.ApplicationTypeID).Fees;
+
+            if(!releaseApp.Save())
+            {
+                return false;
+            }
+
+            ApplicationID= releaseApp.ApplicationID;
+            if (!clsDetainLicenseData.ReleaseLicense(LicenseID, releaseApp.ApplicationID, UserID))
+            {
+                //rollback
+                releaseApp.Cancel();
+                return false;
+
+            }
+
+            return true;
+        }
+
+        public bool DetainLicense(int LicenseID,decimal Fees)
+        {
+            return clsDetainLicense.DetainLicense(this,Fees,this.CreatedByUserID);
+        }
+
+
 
     }
 }

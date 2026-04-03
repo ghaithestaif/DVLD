@@ -13,12 +13,16 @@ namespace DVLD.License
 {
     public partial class frmDriverLicenseHistory : Form
     {
-        int _PersonID;
+        int _PersonID;  
         DataTable _LocalDrivingLicense;
         DataTable _InternationalDrivingLicense;
-        public frmDriverLicenseHistory(int PersonID)
+        clsDriver Driver;
+        int _DriverID;
+        public frmDriverLicenseHistory(int DriverID)
         {
-            _PersonID = PersonID;
+            _DriverID = DriverID;
+             Driver = clsDriver.Find(DriverID);
+                _PersonID = Driver.PersonID;
             InitializeComponent();
         }
         void _FormatGrid()
@@ -51,9 +55,9 @@ namespace DVLD.License
         {
              personDetailsWithFilters1.loadPersonInfo(_PersonID);
             personDetailsWithFilters1.FilterEnabled = false;
-            _LocalDrivingLicense = clsLicense.GetAllPersonLicenses(_PersonID);
+            _LocalDrivingLicense = clsLicense.GetAllPersonLicenses(_DriverID);
             dgvLocal.DataSource= _LocalDrivingLicense;
-            _InternationalDrivingLicense = clsInternationalLicense.GetDriverInternationalLicenses(_PersonID);
+            _InternationalDrivingLicense = clsInternationalLicense.GetDriverInternationalLicenses(_DriverID);
             dgvInternation.DataSource = _InternationalDrivingLicense;
             _FormatGrid();
 

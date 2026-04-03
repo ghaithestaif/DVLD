@@ -59,7 +59,12 @@ namespace DVLD.drivers.controls
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            if (txtFilterValue.Text == null)
+            {
+                return;
+            }
             int ID = Convert.ToInt32(txtFilterValue.Text);
+
             clsLicense license = clsLicense.Find(ID);
             if (license == null)
             {

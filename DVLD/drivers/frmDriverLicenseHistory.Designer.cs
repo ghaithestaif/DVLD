@@ -31,18 +31,18 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Local = new System.Windows.Forms.TabControl();
             this.tabControl1 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvLocal = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dgvLocal = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvInternation = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.personDetailsWithFilters1 = new DVLD.People.Controls.PersonDetailsWithFilters();
             this.groupBox1.SuspendLayout();
             this.Local.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocal)).BeginInit();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +81,23 @@
             this.tabControl1.Text = "Local";
             this.tabControl1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(195, 27);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Local License History";
+            // 
+            // dgvLocal
+            // 
+            this.dgvLocal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocal.Location = new System.Drawing.Point(6, 88);
+            this.dgvLocal.Name = "dgvLocal";
+            this.dgvLocal.Size = new System.Drawing.Size(972, 150);
+            this.dgvLocal.TabIndex = 0;
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dgvInternation);
@@ -93,22 +110,13 @@
             this.tabPage1.Text = "International";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dgvLocal
+            // dgvInternation
             // 
-            this.dgvLocal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLocal.Location = new System.Drawing.Point(6, 88);
-            this.dgvLocal.Name = "dgvLocal";
-            this.dgvLocal.Size = new System.Drawing.Size(972, 150);
-            this.dgvLocal.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 27);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Local License History";
+            this.dgvInternation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInternation.Location = new System.Drawing.Point(6, 92);
+            this.dgvInternation.Name = "dgvInternation";
+            this.dgvInternation.Size = new System.Drawing.Size(972, 150);
+            this.dgvInternation.TabIndex = 2;
             // 
             // label2
             // 
@@ -119,14 +127,6 @@
             this.label2.Size = new System.Drawing.Size(253, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "International Licenses History";
-            // 
-            // dgvInternation
-            // 
-            this.dgvInternation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInternation.Location = new System.Drawing.Point(6, 92);
-            this.dgvInternation.Name = "dgvInternation";
-            this.dgvInternation.Size = new System.Drawing.Size(972, 150);
-            this.dgvInternation.TabIndex = 2;
             // 
             // pictureBox1
             // 
@@ -155,16 +155,17 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.personDetailsWithFilters1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmDriverLicenseHistory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmDriverLicenseHistory";
             this.Load += new System.EventHandler(this.frmDriverLicenseHistory_Load);
             this.groupBox1.ResumeLayout(false);
             this.Local.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocal)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLocal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInternation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

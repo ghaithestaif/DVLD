@@ -17,7 +17,6 @@ namespace DVLD.Application.Renew_Driving_License
     public partial class frmRenewDrivingLicese : Form
     {
         clsLicense OldLicense;
-        int OldLicenseID;
         int NewLicenseID;
         void LoadLicenseData()
         { 
@@ -48,22 +47,13 @@ namespace DVLD.Application.Renew_Driving_License
    
 
         }
-
-        private void crtShowLicenseInfoWithFilter2_OnLicesneFound(int obj)
-        {
-            OldLicenseID = obj;
-            OldLicense = crtShowLicenseInfoWithFilter2.LicenseInfo;
-            if (!OldLicense.IsLicenseExpired())
-            {
-                MessageBox.Show("This License is not valid for renewal", "Invalid License", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnRenew.Enabled = false;
-            }
-            LoadLicenseData();
-        }
-
         private void btnRenew_Click(object sender, EventArgs e)
         {
             clsLicense NewLicense = new clsLicense();
+            if (txtNotes.Text == null)
+            {
+                txtNotes.Text = string.Empty;
+            }
             NewLicense = OldLicense.RenewLicense(txtNotes.Text.Trim());
 
             if(NewLicense == null)
@@ -92,6 +82,17 @@ namespace DVLD.Application.Renew_Driving_License
             frmLicenseInfo frm = new frmLicenseInfo(NewLicenseID);
             frm.ShowDialog();
 
+        }
+
+        private void crtShowLicenseInfoWithFilter2_OnLicesneFound()
+        {
+            OldLicense = crtShowLicenseInfoWithFilter2.LicenseInfo;
+            if (!OldLicense.IsLicenseExpired())
+            {
+                MessageBox.Show("This License is not valid for renewal", "Invalid License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnRenew.Enabled = false;
+            }
+            LoadLicenseData();
         }
     }
 }
