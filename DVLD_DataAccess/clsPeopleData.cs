@@ -9,25 +9,39 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using DVLD_General;
 
 namespace DVLD_DataAccess
 {
     static public class clsPeopleData
     {
-        private static readonly Dictionary<DVLD_General.Common.PeopleFilter, string> _ColumnMap
-             = new Dictionary<DVLD_General.Common.PeopleFilter, string>()
+        public enum PeopleFilter
+        {
+            none,
+            PersonID,
+            NationalNo,
+            FirstName,
+            SecondName,
+            ThirdName,
+            LastName,
+            Gendor,
+            Phone,
+            Email,
+            CountryID
+        }
+
+        private static readonly Dictionary<PeopleFilter, string> _ColumnMap
+             = new Dictionary<PeopleFilter, string>()
          {
-            { DVLD_General.Common.PeopleFilter.FirstName, "FirstName" },
-            { DVLD_General.Common.PeopleFilter.LastName, "LastName" },
-            { DVLD_General.Common.PeopleFilter.SecondName, "SecondName" },
-            { DVLD_General.Common.PeopleFilter.NationalNo, "NationalNo" },
-            {DVLD_General.Common.PeopleFilter.ThirdName,"ThirdName" },
-            {DVLD_General.Common.PeopleFilter.Phone,"Phone" },
-            {DVLD_General.Common.PeopleFilter.Gendor,"Gendor" },
-            {DVLD_General.Common.PeopleFilter.PersonID, "PersonID"},
-            {Common.PeopleFilter.CountryID,"NationalityCountryID"},
-            {Common.PeopleFilter.Email,"Email" }
+            { PeopleFilter.FirstName, "FirstName" },
+            { PeopleFilter.LastName, "LastName" },
+            { PeopleFilter.SecondName, "SecondName" },
+            { PeopleFilter.NationalNo, "NationalNo" },
+            { PeopleFilter.ThirdName, "ThirdName" },
+            { PeopleFilter.Phone, "Phone" },
+            { PeopleFilter.Gendor, "Gendor" },
+            { PeopleFilter.PersonID, "PersonID"},
+            { PeopleFilter.CountryID, "NationalityCountryID"},
+            { PeopleFilter.Email, "Email" }
          };
         
 
@@ -394,43 +408,43 @@ namespace DVLD_DataAccess
 
         }
 
-        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilter FilterBy, string FilterExpression)
-        {
-            if (FilterBy == DVLD_General.Common.PeopleFilter.none)
-            {
-                return GetAllPeople();
-            }
-            string ColumnName = _ColumnMap[FilterBy];
+        //static public DataTable FilterPeople(PeopleFilter FilterBy, string FilterExpression)
+        //{
+        //    if (FilterBy == PeopleFilter.none)
+        //    {
+        //        return GetAllPeople();
+        //    }
+        //    string ColumnName = _ColumnMap[FilterBy];
 
-            SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
+        //    SqlConnection connection = new SqlConnection(AppSettings.ConnectionString);
 
-            string query = $@"SELECT *
-                          FROM People
-                          WHERE {ColumnName} = @FilterExpression";
+        //    string query = $@"SELECT *
+        //                  FROM People
+        //                  WHERE {ColumnName} = @FilterExpression";
 
 
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@FilterExpression", FilterExpression);
-            DataTable dataTable = new DataTable();
-            try
-            {
-                connection.Open();
+        //    SqlCommand cmd = new SqlCommand(query, connection);
+        //    cmd.Parameters.AddWithValue("@FilterExpression", FilterExpression);
+        //    DataTable dataTable = new DataTable();
+        //    try
+        //    {
+        //        connection.Open();
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
+        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+        //        adapter.Fill(dataTable);
 
-            }
-            catch
-            {
+        //    }
+        //    catch
+        //    {
 
-            }
-            finally
-            {
-                connection.Close();
-            }
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
 
-            return dataTable;
-        }
+        //    return dataTable;
+        //}
 
         
 

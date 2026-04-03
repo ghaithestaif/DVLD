@@ -1,34 +1,31 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using DVLD_General;
 
 namespace DVLD_DataAccess
 {
     static public class clsPeople
     {
-        private static readonly Dictionary<DVLD_General.Common.PeopleFilterSort, string> _ColumnMap
-             = new Dictionary<DVLD_General.Common.PeopleFilterSort, string>()
-         {
-            { DVLD_General.Common.PeopleFilterSort.FirstName, "FirstName" },
-            { DVLD_General.Common.PeopleFilterSort.LastName, "LastName" },
-            { DVLD_General.Common.PeopleFilterSort.SecondName, "SecondName" },
-            { DVLD_General.Common.PeopleFilterSort.NationalNo, "NationalNo" },
-            {DVLD_General.Common.PeopleFilterSort.ThirdName,"ThirdName" },
-            {DVLD_General.Common.PeopleFilterSort.Phone,"Phone" },
-            {DVLD_General.Common.PeopleFilterSort.Gendor,"Gendor" },
-            {DVLD_General.Common.PeopleFilterSort.PersonID, "PersonID"},
-            {Common.PeopleFilterSort.CountryID,"NationalityCountryID"},
-            {Common.PeopleFilterSort.Email,"Email" }
-         };
+        public enum PeopleFilterSort
+        {
+            FirstName,
+            LastName,
+            SecondName,
+            NationalNo,
+            ThirdName,
+            Phone,
+            Gendor,
+            PersonID,
+            CountryID,
+            Email
+        }
+
+        
         
 
         static public int AddNewPerson(
@@ -363,9 +360,9 @@ namespace DVLD_DataAccess
 
         }
 
-        static public DataTable FilterPeople(DVLD_General.Common.PeopleFilterSort FilterBy, string FilterExpression)
+        static public DataTable FilterPeople(PeopleFilterSort FilterBy, string FilterExpression)
         {
-            if (FilterBy == DVLD_General.Common.PeopleFilterSort.none)
+            if (FilterBy == PeopleFilterSort.none)
             {
                 return GetAllPeople();
             }

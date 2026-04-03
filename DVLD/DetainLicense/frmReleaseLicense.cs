@@ -20,37 +20,73 @@ namespace DVLD.DetainLicense
         {
             InitializeComponent();
         }
+
+        public frmReleaseLicense(int DetainID, int LicenseID)
+        {
+            _License = clsLicense.Find(LicenseID);
+            _Detaininfo = clsDetainLicense.Find(DetainID);
+            InitializeComponent();
+        }
+
         private void frmReleaseLicense_Load(object sender, EventArgs e)
         {
             lblApplicationFees.Text =  clsApplicationType.Find((int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense).Fees.ToString("C");
             lblCreatedByUser.Text = Global_Classes.General.CurrentUser.UserName;
+
+            if(_License != null && _Detaininfo != null)
+            {
+                crtShowLicenseInfoWithFilter1.LoadData(_License.LicenseID);
+                crtShowLicenseInfoWithFilter1.DisableFilter = false;
+                if(!_Validate())
+                {
+                    return;
+                }
+                LoadData();
+            }
+            
         }
 
-        private void crtShowLicenseInfoWithFilter1_OnLicesneFound()
+        bool _Validate()
         {
-            _License = crtShowLicenseInfoWithFilter1.LicenseInfo;
+            if (_Detaininfo == null)
+            {
+                MessageBox.Show("Failed to find the detain information for the license");
+                return false;
+            }
             if (!clsDetainLicense.IsLicenseDetained(_License.LicenseID))
             {
                 MessageBox.Show("The license is not detained");
-                return;
+                return false;
             }
+            btnRelease.Enabled = true;
+            return true;
+            
+        }
+        void LoadData()
+        {
+            if (_License == null || _Detaininfo == null)
+                return;
+
 
             lblLicenseID.Text = _License.LicenseID.ToString();
-            //find the Detain record for the Licesnse
-
-            _Detaininfo = clsDetainLicense.FindDetainByLicenseID(_License.LicenseID);
-            if(_Detaininfo == null)
-            {
-                MessageBox.Show("Failed to find the detain information for the license");
-                return;
-            }
-
             lblDetainDate.Text = _Detaininfo.DetainDate.ToShortDateString();
-             lblDetainID.Text = _Detaininfo.DetainID.ToString();
+            lblDetainID.Text = _Detaininfo.DetainID.ToString();
             lblFineFees.Text = _Detaininfo.FineFees.ToString("C");
             lblTotalFees.Text = (_Detaininfo.FineFees + clsApplicationType.Find((int)clsApplication.enApplicationType.ReleaseDetainedDrivingLicsense).Fees).ToString("C");
 
-            btnRelease.Enabled = true;
+        }
+        private void crtShowLicenseInfoWithFilter1_OnLicesneFound()
+        {
+            _License = crtShowLicenseInfoWithFilter1.LicenseInfo;
+            _Detaininfo = clsDetainLicense.FindDetainByLicenseID(_License.LicenseID);
+
+            if(!_Validate())
+            {
+                return;
+            }
+            LoadData();
+
+
         }
 
         private void btnRelease_Click(object sender, EventArgs e)
