@@ -1,6 +1,7 @@
 ﻿using DVLD_Buisness;
 using DVLD_DataAccess;
 using System;
+using System.ComponentModel;
 using System.Data;
 
 namespace DVLD_Business
@@ -203,6 +204,12 @@ namespace DVLD_Business
             {
                 return -1;
             }
+            //check if the class is truck or Motorcycle driving license because we don't issue international license for them
+            if (this.LicenseClassID != 3) {
+
+                return -1;
+            }
+
 
             //  create the object the application object
             clsInternationalLicense internationalLicense = new clsInternationalLicense();

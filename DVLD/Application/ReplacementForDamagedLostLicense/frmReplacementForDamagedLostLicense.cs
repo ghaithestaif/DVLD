@@ -31,6 +31,7 @@ namespace DVLD.Application.ReplacementForDamagedLostLicense
         private void rbDamagedLicense_CheckedChanged(object sender, EventArgs e)
         {
             _ReplacementType = rbDamagedLicense.Checked ? enReplacementType.Damaged : enReplacementType.Lost;
+            lblApplicationFees.Text = clsApplicationType.Find((int)(_ReplacementType == enReplacementType.Damaged ? clsApplication.enApplicationType.ReplaceDamagedDrivingLicense : clsApplication.enApplicationType.ReplaceLostDrivingLicense)).Fees.ToString("C");
         }
 
         private void frmReplacementForDamagedLostLicense_Load(object sender, EventArgs e)
@@ -38,7 +39,6 @@ namespace DVLD.Application.ReplacementForDamagedLostLicense
             // first check that tha License is active or not, if not active then show message and close the form
             
             lblCreatedByUser.Text = Global_Classes.General.CurrentUser.UserName;
-            lblApplicationFees.Text = clsApplicationType.Find((int)clsApplication.enApplicationType.ReplaceDamagedDrivingLicense).Fees.ToString("C");
             lblApplicationDate.Text = DateTime.Now.ToShortDateString();
         }
 
@@ -54,6 +54,7 @@ namespace DVLD.Application.ReplacementForDamagedLostLicense
                 return;
             }
             btnIssueReplacement.Enabled = true;
+
         }
 
         private void btnIssueReplacement_Click(object sender, EventArgs e)
@@ -72,6 +73,7 @@ namespace DVLD.Application.ReplacementForDamagedLostLicense
             llShowLicenseHistory.Enabled = true;
             llShowLicenseInfo.Enabled = true;
             btnIssueReplacement.Enabled = false;
+            crtShowLicenseInfoWithFilter1.enableFilter = false;
         }
 
         private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

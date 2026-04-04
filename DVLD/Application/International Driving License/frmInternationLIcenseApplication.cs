@@ -39,6 +39,13 @@ namespace DVLD.License.International_Driving_License
                 MessageBox.Show("the driver already has an international driving license");
                 return false;
             }
+            if (License.LicenseClassID != 3 )
+            {
+
+                MessageBox.Show("this License class is not valid for international license");
+                return false;
+            }
+
             return true;
 
         }

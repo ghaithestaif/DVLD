@@ -414,7 +414,7 @@
             // 
             // crtShowLicenseInfoWithFilter1
             // 
-            this.crtShowLicenseInfoWithFilter1.DisableFilter = true;
+            this.crtShowLicenseInfoWithFilter1.enableFilter = true;
             this.crtShowLicenseInfoWithFilter1.Location = new System.Drawing.Point(14, 41);
             this.crtShowLicenseInfoWithFilter1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.crtShowLicenseInfoWithFilter1.Name = "crtShowLicenseInfoWithFilter1";

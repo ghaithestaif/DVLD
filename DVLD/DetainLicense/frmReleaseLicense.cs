@@ -36,7 +36,7 @@ namespace DVLD.DetainLicense
             if(_License != null && _Detaininfo != null)
             {
                 crtShowLicenseInfoWithFilter1.LoadData(_License.LicenseID);
-                crtShowLicenseInfoWithFilter1.DisableFilter = false;
+                crtShowLicenseInfoWithFilter1.enableFilter = false;
                 if(!_Validate())
                 {
                     return;

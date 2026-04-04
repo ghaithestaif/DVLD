@@ -14,7 +14,7 @@ namespace DVLD.drivers.controls
     public partial class crtShowLicenseInfoWithFilter : UserControl
     {
 
-        public bool DisableFilter { 
+        public bool enableFilter { 
             get {
                 return gbFilters.Enabled;
             }

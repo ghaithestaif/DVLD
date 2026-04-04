@@ -558,7 +558,7 @@
             // 
             // crtShowLicenseInfoWithFilter2
             // 
-            this.crtShowLicenseInfoWithFilter2.DisableFilter = true;
+            this.crtShowLicenseInfoWithFilter2.enableFilter = true;
             this.crtShowLicenseInfoWithFilter2.Location = new System.Drawing.Point(5, 40);
             this.crtShowLicenseInfoWithFilter2.Name = "crtShowLicenseInfoWithFilter2";
             this.crtShowLicenseInfoWithFilter2.Size = new System.Drawing.Size(724, 449);
